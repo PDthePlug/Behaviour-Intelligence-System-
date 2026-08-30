@@ -43,6 +43,7 @@ import { buildEvidenceLedger, pairedSelfReportChange } from "@/lib/measurement";
 import { defaultDeliveryEdition, deliverySkins, productFamilies, productLabs, type ProductFamilyId } from "@/lib/product-architecture";
 import { readApiResponse } from "@/lib/api-response";
 import type { ExperimentView } from "@/lib/experiment";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { BimsMark } from "./BimsMark";
 import { GoogleSignInButton } from "./GoogleSignInButton";
 import { LabPlayer } from "./LabPlayer";
@@ -251,7 +252,7 @@ export function PortalExperience() {
       {!online && <div className="offline-banner">You’re offline. Keep reflecting; reconnect before saving the next interaction.</div>}
       <header className="quiet-desktop-header">
         <div className="room-identity"><BimsMark progress={progress} size="small" /><div><strong>{roomDetails[room].name}</strong><span>{roomDetails[room].subtitle}</span></div></div>
-        <nav aria-label="Learner rooms">{roomNav.map((item) => { const Icon = item.icon; return <button key={item.room} className={room === item.room ? "active" : ""} onClick={() => setRoom(item.room)}><Icon size={15} />{item.label}</button>; })}</nav>
+        <nav aria-label="Learner rooms">{roomNav.map((item) => { const Icon = item.icon; return <button key={item.room} className={room === item.room ? "active" : ""} onClick={() => setRoom(item.room)}><Icon size={15} /><span>{item.label}</span></button>; })}</nav>
         <div className="environment-status"><span><SunMedium size={14} /> {activeEdition.name}</span><span><ShieldCheck size={14} /> Private {activeEdition.participant.toLowerCase()} vault</span></div>
       </header>
 
@@ -376,6 +377,7 @@ function TodayDesk({ profile, lab, currentStep, responses, progress, loadingLab,
   const stepPosition = Math.min(completedInStep + 1, currentStep.components.length);
   const rhythm = progress === 0 ? "Beginning" : progress < 1 ? "In progress" : "Complete";
   const shortLabTitle = lab.title.split(":")[0];
+  const activeLabPosition = Math.max(0, publishedLabs.findIndex((candidate) => candidate.cartridgeId === lab.cartridgeId));
   const experimentComponent = labComponents(lab).find((component) => component.type === "DailyExperiment");
   const experiment = experimentComponent && responses[experimentComponent.id]?.payload && typeof responses[experimentComponent.id].payload === "object" && "experimentVersion" in (responses[experimentComponent.id].payload as object) ? responses[experimentComponent.id].payload as ExperimentView : null;
   const openExperimentDay = experiment?.days.find((day) => day.state === "available" || day.state === "grace");
@@ -386,7 +388,27 @@ function TodayDesk({ profile, lab, currentStep, responses, progress, loadingLab,
         <p className={online ? "synced" : "offline"}><Wifi size={16} /> {online ? "ONLINE & SYNCED" : "OFFLINE"}</p>
       </header>
 
-      <div className="today-lab-switcher"><span>ACTIVE LAB</span><div>{publishedLabs.map((candidate) => <button key={candidate.cartridgeId} className={candidate.cartridgeId === lab.cartridgeId ? "active" : ""} onClick={() => onChangeLab(candidate.cartridgeId)}>{candidate.title.split(":")[0]}<small>{candidate.cartridgeId === lab.cartridgeId ? "Current" : "Open"}</small></button>)}</div></div>
+      <section className="today-lab-controller" aria-labelledby="active-lab-heading">
+        <div className="today-lab-current">
+          <span className="today-lab-icon"><FlaskConical size={20} /></span>
+          <div>
+            <small id="active-lab-heading">ACTIVE LAB · {activeLabPosition + 1} OF {publishedLabs.length}</small>
+            <strong>{shortLabTitle}</strong>
+            <span>{familyTitleForCartridge(lab.cartridgeId)} · {Math.round(progress * 100)}% complete</span>
+          </div>
+        </div>
+        <div className="today-lab-select-wrap">
+          <span id="switch-lab-label">Switch active Lab</span>
+          <Select value={lab.cartridgeId} onValueChange={onChangeLab}>
+            <SelectTrigger className="today-lab-select" aria-labelledby="switch-lab-label">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="today-lab-select-menu" position="popper" align="end">
+              {publishedLabs.map((candidate, index) => <SelectItem className="today-lab-select-item" key={candidate.cartridgeId} value={candidate.cartridgeId}>Volume 1 · {String(index + 1).padStart(2, "0")} — {candidate.title.split(":")[0]}</SelectItem>)}
+            </SelectContent>
+          </Select>
+        </div>
+      </section>
 
       <article className="habit-story-card">
         <div className="habit-story-copy">
@@ -419,29 +441,41 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
   const [view, setView] = useState<"storefront" | "library">("storefront");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<"all" | ProductFamilyId>("all");
+  const [availability, setAvailability] = useState<"all" | "available" | "preparing">("all");
   const habitResponses = responsesForLab(responseSets, habitLab);
   const habitStats = progressForLab(habitLab, habitResponses);
   const action = habitStats.progress === 0 ? "Start journey" : habitStats.progress === 1 ? "Review journey" : "Resume journey";
   const normalisedQuery = query.trim().toLowerCase();
-  const catalogueResults = productLabs.filter((lab) => lab.cartridgeId !== habitLab.cartridgeId).filter((lab) => {
+  const catalogueResults = useMemo(() => productLabs.filter((lab) => lab.cartridgeId !== habitLab.cartridgeId).filter((lab) => {
     const family = productFamilies.find((candidate) => candidate.id === lab.familyId);
     const matchesCategory = category === "all" || lab.familyId === category;
+    const matchesAvailability = availability === "all" || lab.status === availability;
     const searchText = `${lab.title} ${family?.title ?? ""}`.toLowerCase();
-    return matchesCategory && (!normalisedQuery || searchText.includes(normalisedQuery));
-  });
+    return matchesCategory && matchesAvailability && (!normalisedQuery || searchText.includes(normalisedQuery));
+  }), [availability, category, normalisedQuery]);
+  const libraryOverview = useMemo(() => publishedLabs.map((lab) => progressForLab(lab, responsesForLab(responseSets, lab))), [responseSets]);
+  const libraryInProgress = libraryOverview.filter((stats) => stats.progress > 0 && stats.progress < 1).length;
+  const libraryComplete = libraryOverview.filter((stats) => stats.progress === 1).length;
+  const libraryProgress = libraryOverview.length ? Math.round((libraryOverview.reduce((total, stats) => total + stats.progress, 0) / libraryOverview.length) * 100) : 0;
 
   return (
     <section className="marketplace-room">
       <header className="marketplace-store-header">
         <div className="marketplace-brand"><span className="marketplace-brand-mark"><ShoppingBag size={23} /></span><div><small>BMDP™ STORE</small><h1>Behaviour Marketplace</h1></div><em>Live</em></div>
         <div className="marketplace-tabs" role="tablist" aria-label="Marketplace views">
-          <button className={view === "storefront" ? "active" : ""} onClick={() => setView("storefront")} role="tab" aria-selected={view === "storefront"}>Storefront</button>
-          <button className={view === "library" ? "active" : ""} onClick={() => setView("library")} role="tab" aria-selected={view === "library"}>My Library <span>{publishedLabs.length}</span></button>
+          <button type="button" className={view === "storefront" ? "active" : ""} onClick={() => setView("storefront")} role="tab" aria-selected={view === "storefront"}>Storefront</button>
+          <button type="button" className={view === "library" ? "active" : ""} onClick={() => setView("library")} role="tab" aria-selected={view === "library"}>My Library <span>{publishedLabs.length}</span></button>
         </div>
       </header>
 
       {view === "storefront" ? (
         <>
+          <div className="marketplace-release-strip" aria-label="Marketplace release status">
+            <span><strong>{productLabs.length}</strong><small>named BIS Labs</small></span>
+            <span><strong>{liveCatalogueCount}</strong><small>live cartridges</small></span>
+            <span><strong>{preparingCatalogueCount}</strong><small>in preparation</small></span>
+            <span><strong>{productFamilies.length}</strong><small>product families</small></span>
+          </div>
           <div className="marketplace-results marketplace-featured-zone">
             <div className="marketplace-section-title"><div><span>FEATURED NOW</span><h2>Your next behaviour experience</h2></div><p>All twelve Volume 1 Labs are now available as source-faithful digital cartridges.</p></div>
             <article className="marketplace-feature">
@@ -469,10 +503,22 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
             <div className="marketplace-tools">
               <label><Search size={17} /><input aria-label="Search the Behaviour Marketplace" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search all 32 Labs" /></label>
               <div className="marketplace-categories" role="group" aria-label="Filter Labs by product family">
-                <button className={category === "all" ? "active" : ""} onClick={() => setCategory("all")}>All Labs</button>
-                {productFamilies.map((family) => <button key={family.id} className={category === family.id ? "active" : ""} onClick={() => setCategory(family.id)}>{family.title}</button>)}
+                <button type="button" aria-pressed={category === "all"} className={category === "all" ? "active" : ""} onClick={() => setCategory("all")}>All Labs</button>
+                {productFamilies.map((family) => <button type="button" aria-pressed={category === family.id} key={family.id} className={category === family.id ? "active" : ""} onClick={() => setCategory(family.id)}>{family.title}</button>)}
+              </div>
+              <div className="marketplace-availability">
+                <span id="availability-label">Availability</span>
+                <Select value={availability} onValueChange={(value) => setAvailability(value as typeof availability)}>
+                  <SelectTrigger className="marketplace-availability-select" aria-labelledby="availability-label"><SelectValue /></SelectTrigger>
+                  <SelectContent className="marketplace-filter-menu" position="popper" align="end">
+                    <SelectItem value="all">All release states</SelectItem>
+                    <SelectItem value="available">Available now</SelectItem>
+                    <SelectItem value="preparing">In preparation</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
+            <div className="marketplace-result-line" aria-live="polite"><strong>{catalogueResults.length} Labs</strong><span>match this view</span><small>Habit Lab is featured above and excluded from this count.</small></div>
 
             {catalogueResults.length ? (
               <div className="catalogue-grid">
@@ -481,7 +527,7 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
                   const runtimeLab = lab.cartridgeId ? labById(lab.cartridgeId) : undefined;
                   const labResponses = runtimeLab ? responsesForLab(responseSets, runtimeLab) : {};
                   const stats = runtimeLab ? progressForLab(runtimeLab, labResponses) : null;
-                  const labAction = !stats || stats.progress === 0 ? `Start ${lab.title}` : stats.progress === 1 ? `Review ${lab.title}` : `Resume ${lab.title}`;
+                  const labAction = !stats || stats.progress === 0 ? "Start Lab" : stats.progress === 1 ? "Review Lab" : "Resume Lab";
                   return (
                   <article className={`catalogue-card family-${lab.familyId} ${lab.status === "available" ? "available" : ""}`} key={lab.slug}>
                     <div className="catalogue-card-top"><span>{family?.title}</span><em>{lab.status === "available" ? "Available now" : "Digital edition in preparation"}</em></div>
@@ -504,7 +550,15 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
         </>
       ) : (
         <div className="marketplace-library">
-          <div className="marketplace-library-summary"><div><Library size={20} /><span>MY LEARNER LIBRARY</span></div><strong>{publishedLabs.length}</strong><small>cartridges available</small></div>
+          <div className="marketplace-library-summary">
+            <div className="marketplace-library-heading"><Library size={22} /><span><small>MY LEARNER LIBRARY</small><strong>Your private Lab shelf</strong></span></div>
+            <div className="marketplace-library-metrics">
+              <span><strong>{publishedLabs.length}</strong><small>available</small></span>
+              <span><strong>{libraryInProgress}</strong><small>in progress</small></span>
+              <span><strong>{libraryComplete}</strong><small>complete</small></span>
+              <span><strong>{libraryProgress}%</strong><small>portfolio progress</small></span>
+            </div>
+          </div>
           {publishedLabs.map((lab) => {
             const labResponses = responsesForLab(responseSets, lab);
             const stats = progressForLab(lab, labResponses);
