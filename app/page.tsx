@@ -94,8 +94,8 @@ export default function Home() {
           <p>The marketplace reflects the actual 32-Lab BIS source architecture. All twelve Volume 1 workbooks are now digital learner cartridges; future Labs remain listed without invented content.</p>
         </div>
         <div className="lab-grid">
-          <article className="lab-card featured"><span>01 · AVAILABLE NOW</span><div><h3>Habit Lab™</h3><p>11 milestones · 55 source-faithful interactions · seven-day practice record.</p></div><button className="lab-open" aria-label="Open Habit Lab" onClick={() => window.location.assign("/portal")}><ChevronRight size={18} /></button></article>
-          <article className="lab-card featured"><span>02 · AVAILABLE NOW</span><div><h3>Decision Lab™</h3><p>11 milestones · 84 source-faithful interactions · seven-day decision practice record.</p></div><button className="lab-open" aria-label="Open Decision Lab" onClick={() => window.location.assign("/portal")}><ChevronRight size={18} /></button></article>
+          <article className="lab-card featured"><span>01 · AVAILABLE NOW</span><div><h3>Habit Lab™</h3><p>11 milestones · 91 authored response points · one governed seven-calendar-day field experiment.</p></div><button className="lab-open" aria-label="Open Habit Lab" onClick={() => window.location.assign("/portal")}><ChevronRight size={18} /></button></article>
+          <article className="lab-card featured"><span>02 · AVAILABLE NOW</span><div><h3>Decision Lab™</h3><p>11 milestones · 92 authored response points · one governed seven-calendar-day field experiment.</p></div><button className="lab-open" aria-label="Open Decision Lab" onClick={() => window.location.assign("/portal")}><ChevronRight size={18} /></button></article>
           <article className="lab-card more"><Layers3 /><div><h3>10 more Volume 1 Labs now live</h3><p>Money, Identity, Attention, Time, Risk, Trust, Influence, Leadership, Purpose and Resilience.</p></div><button className="lab-open" aria-label="Open the complete Volume 1 library" onClick={() => window.location.assign("/portal")}><ChevronRight size={18} /></button></article>
         </div>
         <div className="family-grid">
@@ -120,7 +120,7 @@ export default function Home() {
           <div className="dash-header"><span>INTERFACE DEMONSTRATION · NO OUTCOME CLAIM</span><CircleDot size={17} /></div>
           <div className="dash-hero"><p>GOVERNANCE VIEW</p><h3>Participation and evidence stay separate.</h3><span>Illustrative structure; not a live cohort or benchmark</span></div>
           <div className="dash-stats"><div><small>LIVE LABS</small><strong>{liveLabCount}</strong></div><div><small>MODEL STATUS</small><strong>Descriptive</strong></div><div><small>MANUAL</small><strong>v0.1</strong></div></div>
-          <div className="dash-progress"><span>Completed interactions</span><div><i /><i /><i /><i className="pale" /><i className="pale" /></div><b>Count</b></div>
+          <div className="dash-progress"><span>Completed response points</span><div><i /><i /><i /><i className="pale" /><i className="pale" /></div><b>Count</b></div>
           <div className="dash-footer"><UsersRound size={17} /> Demonstration only · no private participant writing displayed</div>
         </div>
       </section>

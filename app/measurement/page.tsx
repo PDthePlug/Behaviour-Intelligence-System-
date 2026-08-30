@@ -39,7 +39,7 @@ export default function MeasurementPage() {
       </section>
 
       <section className="measurement-reporting">
-        <div><span>04 · REPORTING SEPARATION</span><h2>Operations can move now.<br />Interpretation waits for governance.</h2></div><div className="reporting-lanes"><article><small>PARTICIPATION LANE</small><strong>Operational reporting</strong><p>Active participants, saved interactions, completed interactions, published Labs and delivery status.</p></article><article><small>EVIDENCE LANE</small><strong>Descriptive reporting</strong><p>Captured evidence points, source class and learner-reported differences—without benchmarks or automated scoring.</p></article></div>
+        <div><span>04 · REPORTING SEPARATION</span><h2>Operations can move now.<br />Interpretation waits for governance.</h2></div><div className="reporting-lanes"><article><small>PARTICIPATION LANE</small><strong>Operational reporting</strong><p>Active participants, saved activities, completed milestones, captured response points, published Labs and delivery status.</p></article><article><small>EVIDENCE LANE</small><strong>Descriptive reporting</strong><p>Captured evidence points, source class and learner-reported differences—without benchmarks or automated scoring.</p></article></div>
       </section>
 
       <section className="measurement-roadmap">

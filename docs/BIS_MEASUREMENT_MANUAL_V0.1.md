@@ -232,8 +232,8 @@ At minimum, a reportable evidence record must have:
 Participation reporting supports operations. Permitted fields include:
 
 - active participants;
-- interactions saved;
-- interactions completed;
+- activities saved;
+- authored response points captured;
 - milestones completed;
 - published Lab access;
 - delivery status; and
