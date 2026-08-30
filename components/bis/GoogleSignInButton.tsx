@@ -75,7 +75,7 @@ export function GoogleSignInButton({ selectedPattern, profileStyle, country, del
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ credential, selectedPattern: current.selectedPattern, profileStyle: current.profileStyle, country: current.country, deliveryEdition: current.deliveryEdition }),
+                body: JSON.stringify({ credential, selectedPattern: current.selectedPattern, profileStyle: current.profileStyle, country: current.country, deliveryEdition: current.deliveryEdition, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone }),
               });
               const data = await readApiResponse<{ profile?: LearnerProfile; error?: string }>(authResponse, "Google sign-in could not be completed. Please try again.");
               if (!data.profile) throw new Error("Google did not return a learner profile.");

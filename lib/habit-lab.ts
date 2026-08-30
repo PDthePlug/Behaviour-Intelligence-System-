@@ -46,11 +46,19 @@ export type DailyExperimentProps = {
   notesLabel: string;
 };
 
+export type EvidenceSummaryProps = {
+  prompt: string;
+};
+
+export type CompletionCertificateProps = {
+  title?: string;
+};
+
 export type LabComponent = {
   id: string;
-  type: "StoryNarrative" | "PrivateReflection" | "LikertMatrix" | "MindfulBreath" | "WorkbookChecklist" | "DailyExperiment";
+  type: "StoryNarrative" | "PrivateReflection" | "LikertMatrix" | "MindfulBreath" | "WorkbookChecklist" | "DailyExperiment" | "EvidenceSummary" | "CompletionCertificate";
   beiTarget?: string;
-  props: StoryNarrativeProps | ReflectionProps | LikertProps | BreathProps | ChecklistProps | DailyExperimentProps;
+  props: StoryNarrativeProps | ReflectionProps | LikertProps | BreathProps | ChecklistProps | DailyExperimentProps | EvidenceSummaryProps | CompletionCertificateProps;
 };
 
 export type LabStep = {
@@ -135,6 +143,15 @@ export type ParsedWorkbookPrompt = {
   isStructured: boolean;
 };
 
+function cleanWorkbookText(value: string) {
+  return value
+    .replace(/\*\*/g, "")
+    .replace(/[＿_]{2,}/g, " ")
+    .replace(/\s+([?.:,])/g, "$1")
+    .replace(/[ \t]{2,}/g, " ")
+    .trim();
+}
+
 /**
  * Preserves the Portal B rule that one learner question becomes one visible
  * interaction, while retaining the canonical cartridge component IDs.
@@ -148,8 +165,32 @@ export function parseWorkbookPrompt(prompt: string): ParsedWorkbookPrompt {
     };
   }
 
-  const rawLines = prompt.split("\n").map((line) => line.trim()).filter(Boolean);
-  const numberedLines = rawLines.filter((line) => /^\d+\.\s+/.test(line));
+  const cleanedPrompt = prompt.replace(/\r/g, "");
+  if (/last three purchases/i.test(cleanedPrompt) && /feeling/i.test(cleanedPrompt)) {
+    return {
+      title: "Look at your last three purchases. Capture each purchase and the feeling you were trying to get from it.",
+      isStructured: true,
+      items: [1, 2, 3].flatMap((number) => ([
+        { id: `purchase_${number}`, label: `Purchase ${number}`, placeholder: "What did you buy?", rows: 1 },
+        { id: `feeling_${number}`, label: `Feeling behind purchase ${number}`, placeholder: "What feeling were you trying to get?", rows: 2 },
+      ])).concat([{ id: "spending_driver", label: "What feeling is most often driving your spending?", placeholder: "Name the pattern you notice…", rows: 3 }]),
+    };
+  }
+
+  if (/letter to my future self/i.test(cleanedPrompt) || /dear future me/i.test(cleanedPrompt)) {
+    const guidance = cleanedPrompt.split("\n").map(cleanWorkbookText).filter(Boolean).filter((line) => !/^dear future me[,.:]?$/i.test(line)).join("\n");
+    return {
+      title: "Letter to my future self",
+      isStructured: true,
+      items: [{ id: "future_self_letter", header: guidance, label: "Dear Future Me,", placeholder: "Write your letter in your own words…", rows: 8 }],
+    };
+  }
+
+  const rawLines = cleanedPrompt.split("\n").map(cleanWorkbookText).filter(Boolean);
+  const numberedLines = rawLines.flatMap((line) => {
+    const matches = [...line.matchAll(/(?:^|\s)(\d+)\.\s+(.+?)(?=(?:\s\d+\.\s)|$)/g)];
+    return matches.map((match) => `${match[1]}. ${match[2].trim()}`);
+  });
 
   if (numberedLines.length >= 2) {
     const title = rawLines.filter((line) => !/^\d+\.\s+/.test(line)).join(" ");
@@ -158,10 +199,21 @@ export function parseWorkbookPrompt(prompt: string): ParsedWorkbookPrompt {
       isStructured: true,
       items: numberedLines.map((line, index) => ({
         id: `q_${index + 1}`,
-        label: line,
+        label: cleanWorkbookText(line),
         placeholder: "Write your reflection answer here…",
         rows: 3,
       })),
+    };
+  }
+
+  const questionSentences = [...rawLines.join(" ").matchAll(/(?:^|[.!]\s+)([^?]{5,}\?)/g)]
+    .map((match) => cleanWorkbookText(match[1]))
+    .filter((question, index, all) => all.indexOf(question) === index);
+  if (questionSentences.length >= 2) {
+    return {
+      title: "Answer each question separately",
+      isStructured: true,
+      items: questionSentences.map((question, index) => ({ id: `question_${index + 1}`, label: question, placeholder: "Write your answer to this question…", rows: 3 })),
     };
   }
 
@@ -188,7 +240,7 @@ export function parseWorkbookPrompt(prompt: string): ParsedWorkbookPrompt {
       continue;
     }
 
-    const cleanLine = line.replace(/^[✍️\s]+/, "").trim();
+    const cleanLine = cleanWorkbookText(line.replace(/^[✍️\s]+/, ""));
     const isLabel = cleanLine.endsWith(":") || cleanLine.includes("✍️") || cleanLine.includes("___") || cleanLine.endsWith("?") || cleanLine.startsWith("Dear Future Me");
 
     if (isLabel) {
@@ -221,9 +273,29 @@ export function parseWorkbookPrompt(prompt: string): ParsedWorkbookPrompt {
     isStructured: false,
     items: [{
       id: "main",
-      label: rawLines.join("\n"),
+      label: cleanWorkbookText(rawLines.join("\n")),
       placeholder: "Write your reflections…",
       rows: 4,
     }],
   };
+}
+
+export function responseUnitsForComponent(component: LabComponent) {
+  if (component.type === "LikertMatrix") return Math.max((component.props as LikertProps).items.length, 1);
+  if (component.type === "PrivateReflection") return Math.max(parseWorkbookPrompt((component.props as ReflectionProps).prompt).items.length, 1);
+  if (component.type === "WorkbookChecklist") return Math.max((component.props as ChecklistProps).items.length, 1);
+  if (component.type === "DailyExperiment") return Math.max((component.props as DailyExperimentProps).days, 1);
+  return 1;
+}
+
+export function responseUnitsCaptured(component: LabComponent, payload: unknown, complete: boolean) {
+  if (!payload || typeof payload !== "object") return complete ? responseUnitsForComponent(component) : 0;
+  if (component.type === "LikertMatrix" || component.type === "PrivateReflection") {
+    const answers = "answers" in payload && payload.answers && typeof payload.answers === "object" ? Object.values(payload.answers) : [];
+    return answers.filter((answer) => String(answer ?? "").trim()).length;
+  }
+  if (component.type === "DailyExperiment") {
+    return "records" in payload && Array.isArray(payload.records) ? payload.records.length : 0;
+  }
+  return complete ? responseUnitsForComponent(component) : 0;
 }

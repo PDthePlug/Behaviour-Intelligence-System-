@@ -7,6 +7,10 @@ export type LearnerProfile = {
   selectedPattern: string;
   profileStyle: string;
   deliveryEdition: "school" | "youth_programme" | "workplace";
+  grade: string;
+  programme: string;
+  organisation: string;
+  timeZone: string;
   authProvider: string;
   avatarUrl?: string | null;
   createdAt: number;

@@ -3,6 +3,7 @@
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
+  BellRing,
   BookOpen,
   Check,
   CalendarDays,
@@ -36,11 +37,12 @@ import {
   UserRoundPlus,
   Wifi,
 } from "lucide-react";
-import { habitLab, type LabCartridge, type LabStep, type ReflectionProps } from "@/lib/habit-lab";
-import { labById, labComponents, publishedLabs } from "@/lib/lab-catalog";
+import { responseUnitsCaptured, responseUnitsForComponent, type LabCartridge, type LabStep, type ReflectionProps } from "@/lib/habit-lab";
+import { habitLab, labById, labComponents, publishedLabs } from "@/lib/lab-catalog";
 import { buildEvidenceLedger, pairedSelfReportChange } from "@/lib/measurement";
 import { defaultDeliveryEdition, deliverySkins, productFamilies, productLabs, type ProductFamilyId } from "@/lib/product-architecture";
 import { readApiResponse } from "@/lib/api-response";
+import type { ExperimentView } from "@/lib/experiment";
 import { BimsMark } from "./BimsMark";
 import { GoogleSignInButton } from "./GoogleSignInButton";
 import { LabPlayer } from "./LabPlayer";
@@ -103,7 +105,9 @@ function responsesForLab(responseSets: ResponseSets, lab: LabCartridge): Respons
 function progressForLab(lab: LabCartridge, responses: ResponseMap) {
   const components = labComponents(lab);
   const completed = components.filter((component) => responses[component.id]?.isComplete).length;
-  return { components, completed, progress: components.length ? completed / components.length : 0 };
+  const totalResponseUnits = components.reduce((total, component) => total + responseUnitsForComponent(component), 0);
+  const capturedResponseUnits = components.reduce((total, component) => total + responseUnitsCaptured(component, responses[component.id]?.payload, responses[component.id]?.isComplete ?? false), 0);
+  return { components, completed, progress: components.length ? completed / components.length : 0, totalResponseUnits, capturedResponseUnits };
 }
 
 function currentStepForLab(lab: LabCartridge, responses: ResponseMap): LabStep {
@@ -176,6 +180,21 @@ export function PortalExperience() {
     return () => window.clearTimeout(timer);
   }, [entryStage]);
 
+  useEffect(() => {
+    if (entryStage !== "shell") return;
+    const refreshVisibleState = () => {
+      if (document.visibilityState === "visible") void loadLabs();
+    };
+    const interval = window.setInterval(refreshVisibleState, 300_000);
+    window.addEventListener("focus", refreshVisibleState);
+    document.addEventListener("visibilitychange", refreshVisibleState);
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener("focus", refreshVisibleState);
+      document.removeEventListener("visibilitychange", refreshVisibleState);
+    };
+  }, [entryStage, loadLabs]);
+
   const saveComponent: SaveComponent = useCallback(async (stepId, componentId, payload, isComplete) => {
     const response = await fetch("/api/lab", {
       method: "POST",
@@ -183,13 +202,15 @@ export function PortalExperience() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cartridgeId: activeLabId, stepId, componentId, payload, isComplete }),
     });
-    const data = await response.json() as { error?: string; updatedAt?: number };
+    const data = await response.json() as { error?: string; response?: SavedResponse };
     if (!response.ok) throw new Error(data.error ?? "The interaction could not be saved.");
+    if (!data.response) throw new Error("BIS saved the activity but did not return its governed evidence state.");
+    const savedResponse = data.response;
     setResponseSets((current) => ({
       ...current,
       [activeLabId]: {
         ...(current[activeLabId] ?? {}),
-        [componentId]: { stepId, componentId, payload, isComplete, updatedAt: data.updatedAt ?? Date.now() },
+        [componentId]: savedResponse,
       },
     }));
   }, [activeLabId]);
@@ -240,7 +261,7 @@ export function PortalExperience() {
         <main className="quiet-workspace">
           {room === "marketplace" && <MarketplaceRoom responseSets={responseSets} onOpenLab={openLab} />}
           {room === "today" && <TodayDesk profile={profile} lab={activeLab} currentStep={currentStep} responses={responses} progress={progress} loadingLab={loadingLab} online={online} onOpenLab={() => openLab(activeLab.cartridgeId, currentStep.id)} onOpenJourney={() => setRoom("journey")} onChangeLab={(cartridgeId) => { setActiveLabId(cartridgeId); setRequestedStepId(null); }} />}
-          {room === "lab" && <LabPlayer key={activeLab.cartridgeId} lab={activeLab} responses={responses} onSave={saveComponent} requestedStepId={requestedStepId} onStepChange={setRequestedStepId} onReturnToDesk={() => setRoom("today")} deliveryEdition={profile?.deliveryEdition ?? defaultDeliveryEdition} />}
+          {room === "lab" && profile && <LabPlayer key={activeLab.cartridgeId} lab={activeLab} responses={responses} onSave={saveComponent} requestedStepId={requestedStepId} onStepChange={setRequestedStepId} onReturnToDesk={() => setRoom("today")} deliveryEdition={profile.deliveryEdition} profile={profile} />}
           {room === "journey" && <JourneyMap lab={activeLab} responses={responses} activeStepId={currentStep.id} onOpen={(stepId) => openLab(activeLab.cartridgeId, stepId)} />}
           {room === "profile" && profile && <IdentityDesk profile={profile} activeLab={activeLab} responseSets={responseSets} onProfileUpdated={(nextProfile) => { setProfile(nextProfile); setSelectedPattern(nextProfile.selectedPattern); }} onLogout={leaveProfile} />}
         </main>
@@ -248,7 +269,7 @@ export function PortalExperience() {
         <aside className="quiet-observation-panel">
           <div className="observation-heading"><Sparkles size={14} /><span>Quiet observation</span></div>
           <div className="observation-block"><small>Current pattern</small><strong>{profile?.selectedPattern ?? selectedPattern}</strong><p>The Lab is gathering evidence from what you notice—not assigning you a label.</p></div>
-          <div className="observation-block"><small>Participation record</small><strong>{completedComponents} interactions complete</strong><div className="observation-track"><i style={{ width: `${progress * 100}%` }} /></div><span>{activeComponents.length - completedComponents} interactions remain in this Lab</span></div>
+          <div className="observation-block"><small>Participation record</small><strong>{completedComponents} activities complete</strong><div className="observation-track"><i style={{ width: `${progress * 100}%` }} /></div><span>{activeComponents.length - completedComponents} activities remain in this Lab</span></div>
           <div className="intentional-silence"><Eye size={16} /><span>No automated interpretation is applied.<br />Your evidence remains descriptive.</span></div>
         </aside>
       </div>
@@ -298,7 +319,7 @@ function PatternPicker({ selected, onSelect, onContinue, onBack }: { selected: s
 }
 
 function AuthPanel({ mode, selectedPattern, onBack, onAuthenticated, onSwitch }: { mode: "login" | "register"; selectedPattern: string; onBack: () => void; onAuthenticated: (profile: LearnerProfile) => void; onSwitch: () => void }) {
-  const [form, setForm] = useState({ firstName: "", surname: "", email: "", passcode: "", country: "South Africa", profileStyle: "quiet", deliveryEdition: defaultDeliveryEdition });
+  const [form, setForm] = useState({ firstName: "", surname: "", email: "", passcode: "", country: "South Africa", profileStyle: "quiet", deliveryEdition: defaultDeliveryEdition, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Africa/Johannesburg" });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -355,6 +376,9 @@ function TodayDesk({ profile, lab, currentStep, responses, progress, loadingLab,
   const stepPosition = Math.min(completedInStep + 1, currentStep.components.length);
   const rhythm = progress === 0 ? "Beginning" : progress < 1 ? "In progress" : "Complete";
   const shortLabTitle = lab.title.split(":")[0];
+  const experimentComponent = labComponents(lab).find((component) => component.type === "DailyExperiment");
+  const experiment = experimentComponent && responses[experimentComponent.id]?.payload && typeof responses[experimentComponent.id].payload === "object" && "experimentVersion" in (responses[experimentComponent.id].payload as object) ? responses[experimentComponent.id].payload as ExperimentView : null;
+  const openExperimentDay = experiment?.days.find((day) => day.state === "available" || day.state === "grace");
   return (
     <section className="today-desk">
       <header className="today-welcome">
@@ -374,11 +398,12 @@ function TodayDesk({ profile, lab, currentStep, responses, progress, loadingLab,
       </article>
 
       <div className="today-section-heading"><h2>Today&apos;s focus</h2><span>{currentStep.difficulty}</span></div>
+      {experiment && !experiment.reviewAvailable && <article className="today-experiment-reminder"><div><BellRing size={20} /><span><small>{openExperimentDay ? `DAY ${openExperimentDay.dayNumber} IS OPEN` : "FIELD EXPERIMENT ACTIVE"}</small><h3>{openExperimentDay ? "Record the day you have experienced." : "Your next day is still scheduled."}</h3><p>{openExperimentDay?.state === "grace" ? "Yesterday remains open until 12:00 in your timezone and will be marked retrospective." : openExperimentDay ? `Notice your behaviour, then record it around ${experiment.eveningReminder}.` : "Future days remain locked and missing days are never converted into zeroes."}</p></span></div><button onClick={onOpenLab}>{openExperimentDay ? "Record today" : "View experiment"} <ChevronRight size={16} /></button></article>}
       <article className="today-focus-card">
         <div>
           <small>STEP PROGRESS: {stepPosition} / {currentStep.components.length}</small>
           <h3>{currentStep.title}</h3>
-          <p>{completedInStep === 0 ? "Your next reflection step is ready. Begin when you have a quiet moment." : `${completedInStep} interactions are complete. Continue from the next evidence point.`}</p>
+          <p>{completedInStep === 0 ? "Your next reflection step is ready. Begin when you have a quiet moment." : `${completedInStep} activities are complete. Continue from the next evidence point.`}</p>
           <button onClick={onOpenLab}>{loadingLab ? "Loading…" : progress === 0 ? "Begin reflection" : "Continue reflection"} <ChevronRight size={17} /></button>
         </div>
         <div className="focus-orbit" aria-label={`${Math.round(progress * 100)} percent complete`}><BimsMark progress={Math.max(progress, .04)} size="medium" /></div>
@@ -426,12 +451,12 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
                 <h2>{habitLab.title}</h2>
                 <p>Investigate one repeating pattern, map the trigger-to-payoff loop, and design a seven-day behaviour experiment grounded in your own evidence.</p>
                 <div className="marketplace-outcomes"><span><CircleCheck size={17} /> Notice the cue, response and payoff beneath a habit</span><span><CircleCheck size={17} /> Build a practical seven-day self-mastery experiment</span></div>
-                <div className="marketplace-meta"><span><strong>9</strong> investigations</span><span><strong>55</strong> interactions</span><span><strong>7</strong> experiment days</span></div>
+                <div className="marketplace-meta"><span><strong>9</strong> investigations</span><span><strong>{habitStats.totalResponseUnits}</strong> response points</span><span><strong>7</strong> calendar days</span></div>
                 <div className="marketplace-enrol"><div><small>ACCESS</small><strong>Included with your profile</strong></div><button onClick={() => onOpenLab(habitLab.cartridgeId)}>{action} <ArrowRight size={18} /></button></div>
               </div>
               <div className="marketplace-cover" aria-label="Habit Lab progress">
                 <BimsMark progress={Math.max(habitStats.progress, 0.04)} size="large" />
-                <div><small>YOUR PROGRESS</small><strong>{Math.round(habitStats.progress * 100)}%</strong><span>{habitStats.completed} of {habitStats.components.length} complete</span></div>
+                <div><small>YOUR PROGRESS</small><strong>{Math.round(habitStats.progress * 100)}%</strong><span>{habitStats.capturedResponseUnits} of {habitStats.totalResponseUnits} response points</span></div>
               </div>
             </article>
           </div>
@@ -485,7 +510,7 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
             const stats = progressForLab(lab, labResponses);
             const reflectionCount = stats.components.filter((component) => component.type === "PrivateReflection" && labResponses[component.id]?.isComplete).length;
             const labAction = stats.progress === 0 ? "Start journey" : stats.progress === 1 ? "Review journey" : "Resume journey";
-            return <article className={`marketplace-library-card library-${lab.cartridgeId}`} key={lab.cartridgeId}><div className="marketplace-library-mark"><BimsMark progress={Math.max(stats.progress, 0.04)} size="medium" /></div><div className="marketplace-library-copy"><small>CANONICAL CARTRIDGE · VERSION {lab.version}</small><h2>{lab.title}</h2><p>{familyTitleForCartridge(lab.cartridgeId)} · Private participant journey</p><div className="marketplace-library-progress"><i style={{ width: `${stats.progress * 100}%` }} /></div><span>{stats.completed} of {stats.components.length} interactions · {reflectionCount} private reflections</span></div><button onClick={() => onOpenLab(lab.cartridgeId)}>{labAction} <ChevronRight size={16} /></button></article>;
+            return <article className={`marketplace-library-card library-${lab.cartridgeId}`} key={lab.cartridgeId}><div className="marketplace-library-mark"><BimsMark progress={Math.max(stats.progress, 0.04)} size="medium" /></div><div className="marketplace-library-copy"><small>CANONICAL CARTRIDGE · VERSION {lab.version}</small><h2>{lab.title}</h2><p>{familyTitleForCartridge(lab.cartridgeId)} · Private participant journey</p><div className="marketplace-library-progress"><i style={{ width: `${stats.progress * 100}%` }} /></div><span>{stats.capturedResponseUnits} of {stats.totalResponseUnits} response points · {reflectionCount} private reflections</span></div><button onClick={() => onOpenLab(lab.cartridgeId)}>{labAction} <ChevronRight size={16} /></button></article>;
           })}
           <p className="marketplace-access"><ShieldCheck size={14} /> Included with your BIS learner access. Your saved work remains in your private reflection vault.</p>
           <PrivateLibrary responseSets={responseSets} />
@@ -497,11 +522,10 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
 
 function JourneyMap({ lab, responses, activeStepId, onOpen }: { lab: LabCartridge; responses: ResponseMap; activeStepId: string; onOpen: (stepId: string) => void }) {
   const steps = lab.timeline.steps;
-  const components = labComponents(lab);
   return (
     <section className="journey-room">
-      <header><span>{lab.title.split(":")[0].toUpperCase()} MAP</span><h1>Your investigation,<br />one page turn at a time.</h1><p>The map shows all {steps.length} section milestones. Inside them, {components.length} source-faithful interactions are revealed progressively.</p></header>
-      <div className="journey-list">{steps.map((step, index) => { const complete = step.components.every((component) => responses[component.id]?.isComplete); const previousComplete = index === 0 || steps[index - 1].components.every((component) => responses[component.id]?.isComplete); const unlocked = complete || previousComplete || step.id === activeStepId; const componentCount = step.components.filter((component) => responses[component.id]?.isComplete).length; return <article className={`${complete ? "complete" : step.id === activeStepId ? "current" : unlocked ? "open" : "locked"}`} key={step.id}><div className="journey-node">{complete ? <CircleCheck size={21} /> : unlocked ? <span>{index + 1}</span> : <LockKeyhole size={15} />}</div><div><small>{step.difficulty} · {step.components.length} interactions</small><h2>{step.title}</h2><p>{componentCount}/{step.components.length} complete</p></div><button disabled={!unlocked} onClick={() => onOpen(step.id)}>{complete ? "Review" : step.id === activeStepId ? "Continue" : unlocked ? "Open" : "Locked"}</button></article>; })}</div>
+      <header><span>{lab.title.split(":")[0].toUpperCase()} MAP</span><h1>Your investigation,<br />one page turn at a time.</h1><p>The map shows all {steps.length} milestones. Each activity may contain one or several clearly separated learner response points.</p></header>
+      <div className="journey-list">{steps.map((step, index) => { const complete = step.components.every((component) => responses[component.id]?.isComplete); const previousComplete = index === 0 || steps[index - 1].components.every((component) => responses[component.id]?.isComplete); const unlocked = complete || previousComplete || step.id === activeStepId; const componentCount = step.components.filter((component) => responses[component.id]?.isComplete).length; const responsePointCount = step.components.reduce((total, component) => total + responseUnitsForComponent(component), 0); return <article className={`${complete ? "complete" : step.id === activeStepId ? "current" : unlocked ? "open" : "locked"}`} key={step.id}><div className="journey-node">{complete ? <CircleCheck size={21} /> : unlocked ? <span>{index + 1}</span> : <LockKeyhole size={15} />}</div><div><small>{step.difficulty} · {responsePointCount} response points</small><h2>{step.title}</h2><p>{componentCount}/{step.components.length} activities complete</p></div><button disabled={!unlocked} onClick={() => onOpen(step.id)}>{complete ? "Review" : step.id === activeStepId ? "Continue" : unlocked ? "Open" : "Locked"}</button></article>; })}</div>
     </section>
   );
 }
@@ -527,6 +551,10 @@ function IdentityDesk({ profile, activeLab, responseSets, onProfileUpdated, onLo
     selectedPattern: profile.selectedPattern,
     profileStyle: profile.profileStyle,
     deliveryEdition: profile.deliveryEdition,
+    grade: profile.grade,
+    programme: profile.programme,
+    organisation: profile.organisation,
+    timeZone: profile.timeZone,
   });
   const [saving, setSaving] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
@@ -591,16 +619,16 @@ function IdentityDesk({ profile, activeLab, responseSets, onProfileUpdated, onLo
 
       <div className="identity-profile">
         <div className={`identity-avatar ${profile.avatarUrl ? "has-image" : ""}`} style={profile.avatarUrl ? { backgroundImage: `url(${profile.avatarUrl})` } : undefined}>{profile.avatarUrl ? <span className="sr-only">{profile.firstName} {profile.surname}</span> : initials}</div>
-        <div className="identity-profile-copy"><small>{providerLabel.toUpperCase()}</small><h2>{profile.firstName} {profile.surname}</h2><p>{profile.email}</p><div><span><Globe2 size={13} /> {profile.country}</span><span><CalendarDays size={13} /> Member since {memberSince}</span><span><User size={13} /> {edition.name}</span></div></div>
+        <div className="identity-profile-copy"><small>{providerLabel.toUpperCase()}</small><h2>{profile.firstName} {profile.surname}</h2><p>{profile.email}</p><div><span><Globe2 size={13} /> {profile.country}</span><span><CalendarDays size={13} /> Member since {memberSince}</span><span><User size={13} /> {edition.name}</span><span><Clock3 size={13} /> {profile.timeZone}</span></div></div>
         <div className="identity-progress-mark"><BimsMark progress={Math.max(activeStats.progress, .04)} size="medium" /><strong>{Math.round(activeStats.progress * 100)}%</strong><span>{activeLab.title.split(":")[0]}</span></div>
       </div>
 
-      <div className="identity-metrics"><article><small>ACTIVE LAB PROGRESS</small><strong>{Math.round(activeStats.progress * 100)}%</strong><span>{activeStats.completed}/{activeStats.components.length} interactions</span></article><article><small>MILESTONES</small><strong>{completedSteps}</strong><span>of {activeLab.timeline.steps.length} completed</span></article><article><small>PRIVATE REFLECTIONS</small><strong>{privateReflections}</strong><span>across your learner Library</span></article></div>
+      <div className="identity-metrics"><article><small>ACTIVE LAB PROGRESS</small><strong>{Math.round(activeStats.progress * 100)}%</strong><span>{activeStats.capturedResponseUnits}/{activeStats.totalResponseUnits} response points</span></article><article><small>MILESTONES</small><strong>{completedSteps}</strong><span>of {activeLab.timeline.steps.length} completed</span></article><article><small>PRIVATE REFLECTIONS</small><strong>{privateReflections}</strong><span>across your learner Library</span></article></div>
 
       <div className="profile-control-grid">
         <form className="profile-settings-card" onSubmit={saveProfile}>
           <div className="profile-card-heading"><div><Settings2 size={18} /><span><small>PROFILE SETTINGS</small><h2>Personal details</h2></span></div><p>Keep the details attached to your learner profile current.</p></div>
-          <div className="profile-form-grid"><label>First name<input required minLength={2} value={form.firstName} onChange={(event) => setForm({ ...form, firstName: event.target.value })} /></label><label>Surname<input required minLength={2} value={form.surname} onChange={(event) => setForm({ ...form, surname: event.target.value })} /></label><label className="profile-email-field">Email address<input readOnly value={profile.email} /><small>Your sign-in email is managed by your {providerLabel.toLowerCase()}.</small></label><label>Country<input required minLength={2} value={form.country} onChange={(event) => setForm({ ...form, country: event.target.value })} /></label></div>
+          <div className="profile-form-grid"><label>First name<input required minLength={2} value={form.firstName} onChange={(event) => setForm({ ...form, firstName: event.target.value })} /></label><label>Surname<input required minLength={2} value={form.surname} onChange={(event) => setForm({ ...form, surname: event.target.value })} /></label><label className="profile-email-field">Email address<input readOnly value={profile.email} /><small>Your sign-in email is managed by your {providerLabel.toLowerCase()}.</small></label><label>Country<input required minLength={2} value={form.country} onChange={(event) => setForm({ ...form, country: event.target.value })} /></label><label>Time zone<input required value={form.timeZone} onChange={(event) => setForm({ ...form, timeZone: event.target.value })} /><small>Used to unlock each experiment day correctly.</small></label>{form.deliveryEdition === "school" && <label>Grade<input value={form.grade} onChange={(event) => setForm({ ...form, grade: event.target.value })} placeholder="For example, 10" /></label>}{form.deliveryEdition === "youth_programme" && <label>Programme or cohort<input value={form.programme} onChange={(event) => setForm({ ...form, programme: event.target.value })} placeholder="Optional programme name" /></label>}{form.deliveryEdition === "workplace" && <label>Organisation<input value={form.organisation} onChange={(event) => setForm({ ...form, organisation: event.target.value })} placeholder="Organisation or employer" /></label>}</div>
 
           <div className="profile-preference-block"><div><small>CURRENT FOCUS</small><h3>What pattern are you exploring?</h3></div><select value={form.selectedPattern} onChange={(event) => setForm({ ...form, selectedPattern: event.target.value })}>{patterns.map((pattern) => <option key={pattern.name} value={pattern.name}>{pattern.name}</option>)}</select></div>
 

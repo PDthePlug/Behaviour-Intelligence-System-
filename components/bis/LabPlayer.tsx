@@ -2,12 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, ArrowLeft, ArrowRight, Check, FlaskConical, LockKeyhole, Sparkles, X } from "lucide-react";
-import type { LabCartridge } from "@/lib/habit-lab";
+import { responseUnitsCaptured, responseUnitsForComponent, type LabCartridge } from "@/lib/habit-lab";
 import { labComponents } from "@/lib/lab-catalog";
 import type { DeliveryEdition } from "@/lib/product-architecture";
 import { BimsMark } from "./BimsMark";
 import { LabComponentRenderer } from "./LabComponents";
-import { ResponseMap, SaveComponent } from "./types";
+import { type LearnerProfile, ResponseMap, SaveComponent } from "./types";
 
 type LabPlayerProps = {
   lab: LabCartridge;
@@ -17,20 +17,23 @@ type LabPlayerProps = {
   onStepChange?: (stepId: string) => void;
   onReturnToDesk: () => void;
   deliveryEdition: DeliveryEdition;
+  profile: LearnerProfile;
 };
 
-export function LabPlayer({ lab, responses, onSave, requestedStepId, onStepChange, onReturnToDesk, deliveryEdition }: LabPlayerProps) {
+export function LabPlayer({ lab, responses, onSave, requestedStepId, onStepChange, onReturnToDesk, deliveryEdition, profile }: LabPlayerProps) {
   const steps = lab.timeline.steps;
   const components = useMemo(() => labComponents(lab), [lab]);
   const completedStepIds = useMemo(() => steps.filter((step) => step.components.every((component) => responses[component.id]?.isComplete)).map((step) => step.id), [responses, steps]);
   const firstIncompleteIndex = steps.findIndex((step) => !completedStepIds.includes(step.id));
   const defaultIndex = firstIncompleteIndex === -1 ? steps.length - 1 : firstIncompleteIndex;
   const requestedIndex = requestedStepId ? steps.findIndex((step) => step.id === requestedStepId) : -1;
-  const [activeIndex, setActiveIndex] = useState(requestedIndex >= 0 ? requestedIndex : defaultIndex);
+  const [activeIndex, setActiveIndex] = useState(requestedIndex >= 0 ? Math.min(requestedIndex, defaultIndex) : defaultIndex);
   const [transitioning, setTransitioning] = useState(false);
   const activeStep = steps[activeIndex];
   const completedComponents = components.filter((component) => responses[component.id]?.isComplete).length;
   const globalProgress = completedComponents / components.length;
+  const totalResponseUnits = components.reduce((total, component) => total + responseUnitsForComponent(component), 0);
+  const capturedResponseUnits = components.reduce((total, component) => total + responseUnitsCaptured(component, responses[component.id]?.payload, responses[component.id]?.isComplete ?? false), 0);
 
   useEffect(() => {
     onStepChange?.(activeStep.id);
@@ -90,16 +93,16 @@ export function LabPlayer({ lab, responses, onSave, requestedStepId, onStepChang
         <button onClick={moveBack} disabled={activeIndex === 0}><ArrowLeft size={15} /> Previous</button>
         <div>
           <span>{activeStep.difficulty}</span>
-          <b>{visibleComponents.length} of {activeStep.components.length} interactions revealed</b>
+          <b>{visibleComponents.length} of {activeStep.components.length} activities revealed</b>
         </div>
-        <span className="lab-micro-count"><FlaskConical size={14} /> {completedComponents}/{components.length}</span>
+        <span className="lab-micro-count"><FlaskConical size={14} /> {capturedResponseUnits}/{totalResponseUnits} response points</span>
       </div>
 
       <main className="lab-component-stack">
         {visibleComponents.map((component, index) => (
           <div className="lab-component-frame" key={component.id}>
             <div className="component-order"><span>{String(index + 1).padStart(2, "0")}</span><i />{responses[component.id]?.isComplete && <Check size={14} />}</div>
-            <LabComponentRenderer stepId={activeStep.id} component={component} saved={responses[component.id]} onSave={onSave} deliveryEdition={deliveryEdition} />
+            <LabComponentRenderer stepId={activeStep.id} component={component} saved={responses[component.id]} onSave={onSave} deliveryEdition={deliveryEdition} lab={lab} responses={responses} profile={profile} />
           </div>
         ))}
       </main>

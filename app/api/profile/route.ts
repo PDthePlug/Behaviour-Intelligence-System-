@@ -16,6 +16,10 @@ type ProfilePayload = {
   selectedPattern?: string;
   profileStyle?: string;
   deliveryEdition?: string;
+  grade?: string;
+  programme?: string;
+  organisation?: string;
+  timeZone?: string;
 };
 
 const allowedPatterns = new Set([
@@ -27,6 +31,16 @@ const allowedPatterns = new Set([
   "Something Else",
 ]);
 const allowedProfileStyles = new Set(["quiet", "curious", "focused"]);
+
+function safeTimeZone(value: string | undefined, fallback: string) {
+  const candidate = value?.trim().slice(0, 80) || fallback;
+  try {
+    new Intl.DateTimeFormat("en-ZA", { timeZone: candidate }).format(0);
+    return candidate;
+  } catch {
+    return fallback;
+  }
+}
 
 function failure(message: string, status = 400) {
   return Response.json({ error: message }, { status, headers: { "Cache-Control": "no-store" } });
@@ -76,15 +90,19 @@ async function postProfile(request: Request) {
     const selectedPattern = requestedPattern && allowedPatterns.has(requestedPattern) ? requestedPattern : existing.selectedPattern;
     const profileStyle = requestedStyle && allowedProfileStyles.has(requestedStyle) ? requestedStyle : existing.profileStyle;
     const deliveryEdition = isDeliveryEdition(body.deliveryEdition) ? body.deliveryEdition : existing.deliveryEdition;
+    const grade = body.grade?.trim().slice(0, 40) ?? existing.grade;
+    const programme = body.programme?.trim().slice(0, 120) ?? existing.programme;
+    const organisation = body.organisation?.trim().slice(0, 120) ?? existing.organisation;
+    const timeZone = safeTimeZone(body.timeZone, existing.timeZone);
 
     if (firstName.length < 2 || surname.length < 2) return failure("Enter your first name and surname.");
     if (country.length < 2) return failure("Enter your country.");
 
     const updatedAt = Date.now();
-    const updatedProfile = { ...existing, firstName, surname, country, selectedPattern, profileStyle, deliveryEdition, updatedAt };
+    const updatedProfile = { ...existing, firstName, surname, country, selectedPattern, profileStyle, deliveryEdition, grade, programme, organisation, timeZone, updatedAt };
     await db
       .update(learnerProfiles)
-      .set({ firstName, surname, country, selectedPattern, profileStyle, deliveryEdition, updatedAt })
+      .set({ firstName, surname, country, selectedPattern, profileStyle, deliveryEdition, grade, programme, organisation, timeZone, updatedAt })
       .where(eq(learnerProfiles.id, existing.id));
     return Response.json(
       { profile: publicLearnerProfile(updatedProfile) },
@@ -120,6 +138,10 @@ async function postProfile(request: Request) {
     selectedPattern: body.selectedPattern?.trim().slice(0, 80) || "Focus & Distraction",
     profileStyle: body.profileStyle?.trim().slice(0, 24) || "quiet",
     deliveryEdition: isDeliveryEdition(body.deliveryEdition) ? body.deliveryEdition : defaultDeliveryEdition,
+    grade: body.grade?.trim().slice(0, 40) || "",
+    programme: body.programme?.trim().slice(0, 120) || "",
+    organisation: body.organisation?.trim().slice(0, 120) || "",
+    timeZone: safeTimeZone(body.timeZone, "Africa/Johannesburg"),
     createdAt: now,
     updatedAt: now,
   };

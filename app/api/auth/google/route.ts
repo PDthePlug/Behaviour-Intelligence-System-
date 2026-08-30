@@ -15,7 +15,18 @@ type GoogleAuthPayload = {
   profileStyle?: string;
   country?: string;
   deliveryEdition?: string;
+  timeZone?: string;
 };
+
+function safeTimeZone(value: string | undefined) {
+  const candidate = value?.trim().slice(0, 80) || "Africa/Johannesburg";
+  try {
+    new Intl.DateTimeFormat("en-ZA", { timeZone: candidate }).format(0);
+    return candidate;
+  } catch {
+    return "Africa/Johannesburg";
+  }
+}
 
 function googleClientId() {
   return (env as unknown as { GOOGLE_CLIENT_ID?: string }).GOOGLE_CLIENT_ID?.trim() ?? "";
@@ -128,6 +139,10 @@ export async function POST(request: Request) {
       selectedPattern: body.selectedPattern?.trim().slice(0, 80) || "Focus & Distraction",
       profileStyle: body.profileStyle?.trim().slice(0, 24) || "quiet",
       deliveryEdition: isDeliveryEdition(body.deliveryEdition) ? body.deliveryEdition : defaultDeliveryEdition,
+      grade: "",
+      programme: "",
+      organisation: "",
+      timeZone: safeTimeZone(body.timeZone),
       createdAt: now,
       updatedAt: now,
     };
