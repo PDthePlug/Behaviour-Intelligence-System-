@@ -3,7 +3,7 @@
 **Document ID:** BIS-MM-0.1.0  
 **Status:** Controlled draft for operational use  
 **Effective date:** 30 August 2026  
-**Initial scope:** Habit Lab™ and Decision Lab™ digital cartridges  
+**Initial scope:** All 12 BIS Volume 1 v3 digital Lab cartridges
 **Owner:** BIS Measurement and Product Governance  
 
 ## 1. Purpose
@@ -297,7 +297,7 @@ The marketplace contains 32 named source Labs organised as:
 - Applied Commerce & Enterprise Thinking: 10 Labs; and
 - Cross-cutting Labs: 3 Labs.
 
-Only Habit Lab and Decision Lab are published digital cartridges in v0.1. Listing an upcoming Lab does not authorise invented outcomes, interactions, BEIs or scores. Each future Lab requires source-faithful digitalisation and its own governed BEI register.
+All 12 BIS Volume 1 v3 Labs are published digital cartridges in v0.1: Habit, Decision, Money, Identity, Attention, Time, Risk, Trust, Influence, Leadership, Purpose and Resilience. Each cartridge preserves its authored learner-workbook sequence and maintains its own governed BEI register. Listing a Lab from a later volume does not authorise invented outcomes, interactions, BEIs or scores; every later release still requires source-faithful digitalisation and a governed BEI register.
 
 ## 13. Privacy and safeguarding
 
@@ -382,7 +382,7 @@ Existing responses must never be silently reinterpreted under a newer definition
 
 The digital product must enforce the following controls:
 
-- every Habit and Decision BEI has one or more valid source components;
+- every published Volume 1 BEI has one or more valid source components;
 - every governed response is server-stamped with manual version and evidence class;
 - seven-day practice controls use the binary source structure;
 - no current endpoint produces a composite Behaviour Intelligence score;
@@ -400,13 +400,33 @@ The digital product must enforce the following controls:
 | Habit Lab | BEI-04 | BEI-08 | Behaviour Equation Confidence learner-reported difference |
 | Decision Lab | BEI-01 | BEI-07 | Decision Quality learner-reported difference |
 | Decision Lab | BEI-04 | BEI-08 | Decision Equation Confidence learner-reported difference |
+| Money Lab | BEI-01 | BEI-07 | Money Consciousness learner-reported difference |
+| Money Lab | BEI-04 | BEI-08 | Money Equation Confidence learner-reported difference |
+| Identity Lab | BEI-01 | BEI-07 | Identity Clarity learner-reported difference |
+| Identity Lab | BEI-04 | BEI-08 | Identity Equation Confidence learner-reported difference |
+| Attention Lab | BEI-01 | BEI-07 | Attention Quality learner-reported difference |
+| Attention Lab | BEI-04 | BEI-08 | Attention Equation Confidence learner-reported difference |
+| Time Lab | BEI-01 | BEI-07 | Time Awareness learner-reported difference |
+| Time Lab | BEI-04 | BEI-08 | Time Equation Confidence learner-reported difference |
+| Risk Lab | BEI-01 | BEI-07 | Risk Awareness learner-reported difference |
+| Risk Lab | BEI-04 | BEI-08 | Risk Equation Confidence learner-reported difference |
+| Trust Lab | BEI-01 | BEI-07 | Trust Awareness learner-reported difference |
+| Trust Lab | BEI-04 | BEI-08 | Trust Equation Confidence learner-reported difference |
+| Influence Lab | BEI-01 | BEI-07 | Influence Awareness learner-reported difference |
+| Influence Lab | BEI-04 | BEI-08 | Influence Equation Confidence learner-reported difference |
+| Leadership Lab | BEI-01 | BEI-07 | Leadership Identity learner-reported difference |
+| Leadership Lab | BEI-04 | BEI-08 | Leadership Equation Confidence learner-reported difference |
+| Purpose Lab | BEI-01 | BEI-07 | Purpose Clarity learner-reported difference |
+| Purpose Lab | BEI-04 | BEI-08 | Purpose Equation Confidence learner-reported difference |
+| Resilience Lab | BEI-01 | BEI-07 | Resilience learner-reported difference |
+| Resilience Lab | BEI-04 | BEI-08 | Resilience Equation Confidence learner-reported difference |
 
 ## Appendix B — Current system status
 
 | Capability | Status in v0.1 |
 |---|---|
 | Participation reporting | Active |
-| Source-versioned BEI capture | Active for Habit and Decision |
+| Source-versioned BEI capture | Active for all 12 Volume 1 Labs |
 | Learner-reported pre/post differences | Active when both source responses exist |
 | Binary seven-day practice records | Active |
 | Private reflection completion | Active |

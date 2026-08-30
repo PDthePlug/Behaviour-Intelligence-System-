@@ -1,0 +1,999 @@
+{
+  "cartridgeId": "leadership-lab-2026",
+  "version": "3.0.1",
+  "title": "Leadership Lab™: The Posture of Service v3.0",
+  "description": "Leadership is not a title. It is a posture. Investigate responsibility, service and example, then test one leadership action for seven days.",
+  "theme": {
+    "primary": "#1e3a8a",
+    "accent": "#f59e0b",
+    "background": "#f8faff"
+  },
+  "source": {
+    "document": "BIS Volume 1 v3.pdf",
+    "volume": 1,
+    "labNumber": 10,
+    "learnerWorkbookPages": [
+      341,
+      362
+    ],
+    "interpretationStatus": "source_faithful_digital_cartridge"
+  },
+  "measurement": {
+    "manualVersion": "BIS-MM-0.1.0",
+    "modelStatus": "descriptive_evidence",
+    "claimsBoundary": "Behaviour Evidence Indicators describe source-specific learner evidence. They are not validated psychometric measures, diagnoses, forensic markers or proof of causation."
+  },
+  "beiSchema": [
+    {
+      "code": "BEI-01",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Leadership Identity Self-Rating (Pre)",
+      "construct": "Perceived leadership awareness or capability",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Record the selected workbook response from 1 to 10 without norming or classification.",
+      "sourceComponentIds": [
+        "comp_baseline_index"
+      ],
+      "interpretationLimit": "A single learner self-rating; it is not a validated measure of leadership capability.",
+      "pairedWith": "BEI-07",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-02",
+      "type": "scale",
+      "range": [
+        1,
+        5
+      ],
+      "description": "Leadership Baseline Item Set",
+      "construct": "Self-reported frequency of workbook behaviours related to leadership",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Retain all ten item responses from 1 to 5. A mean may be displayed only when every item is answered and must remain descriptive.",
+      "sourceComponentIds": [
+        "comp_baseline_profile"
+      ],
+      "interpretationLimit": "The item set is not a validated scale and must not be used to diagnose or label a learner.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-03",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Prediction Check",
+      "construct": "Learner comparison of a prediction with the revealed story outcome",
+      "evidenceClass": "self_report",
+      "timepoint": "during",
+      "scoringRule": "Record Yes as 1 and No as 0 for this workbook episode only.",
+      "sourceComponentIds": [
+        "comp_03_calibration"
+      ],
+      "interpretationLimit": "One story prediction is not a general calibration measure.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-04",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Leadership Confidence Self-Rating (Pre)",
+      "construct": "Confidence in the learner-authored leadership equation",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Record the selected workbook response from 1 to 10 without norming or classification.",
+      "sourceComponentIds": [
+        "comp_05_bei04"
+      ],
+      "interpretationLimit": "Confidence does not establish that the learner-authored equation is accurate.",
+      "pairedWith": "BEI-08",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-05",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Reported Leadership Impact Areas",
+      "construct": "Self-reported areas affected by the selected leadership pattern",
+      "evidenceClass": "self_report",
+      "timepoint": "during",
+      "scoringRule": "Retain each selected workbook area as selected or not selected; do not create a risk classification or threshold.",
+      "sourceComponentIds": [
+        "comp_06_bei05"
+      ],
+      "interpretationLimit": "This is not a clinical, safeguarding, actuarial or organisational risk assessment.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-06",
+      "type": "scale",
+      "range": [
+        0,
+        1
+      ],
+      "description": "7-Day Leadership Practice Record",
+      "construct": "Learner-recorded completion of the selected routine or rule",
+      "evidenceClass": "practice_record",
+      "timepoint": "during",
+      "scoringRule": "Count Done responses across seven days and report the observed count as x/7. Missing days remain missing and are not treated as zero.",
+      "sourceComponentIds": [
+        "comp_07_bei06"
+      ],
+      "interpretationLimit": "The record is learner-entered and does not by itself establish sustained adherence.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-07",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Leadership Identity Self-Rating (Post)",
+      "construct": "Perceived leadership awareness or capability",
+      "evidenceClass": "self_report",
+      "timepoint": "post",
+      "scoringRule": "Record the selected workbook response from 1 to 10. A difference from BEI-01 may be shown as learner-reported change only.",
+      "sourceComponentIds": [
+        "comp_08_bei07"
+      ],
+      "interpretationLimit": "A pre/post self-rating difference is not proof that the Lab caused change.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-08",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Leadership Confidence Self-Rating (Post)",
+      "construct": "Confidence in the learner-authored leadership equation",
+      "evidenceClass": "self_report",
+      "timepoint": "post",
+      "scoringRule": "Record the selected workbook response from 1 to 10. A difference from BEI-04 may be shown as learner-reported change only.",
+      "sourceComponentIds": [
+        "comp_08_bei08"
+      ],
+      "interpretationLimit": "A confidence difference is not evidence that the equation became more accurate.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-09",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Learner Identity Statement",
+      "construct": "Learner-authored identity reflection",
+      "evidenceClass": "reflection_output",
+      "timepoint": "post",
+      "scoringRule": "Record completion and preserve the private learner-authored text; do not score sentiment or identity.",
+      "sourceComponentIds": [
+        "comp_09_bei09"
+      ],
+      "interpretationLimit": "Completion does not demonstrate an identity shift.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-10",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Learner Behaviour Summary",
+      "construct": "Learner synthesis of the Leadership Lab evidence",
+      "evidenceClass": "reflection_output",
+      "timepoint": "summary",
+      "scoringRule": "Record completion and preserve the private learner-authored summary; no automated profile is generated.",
+      "sourceComponentIds": [
+        "comp_09_bei10"
+      ],
+      "interpretationLimit": "The summary is a learner reflection, not a behavioural classification.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    }
+  ],
+  "timeline": {
+    "steps": [
+      {
+        "id": "step_baseline_00",
+        "title": "Leadership Baseline Check-in (Pre-Workshop)",
+        "difficulty": "Observe",
+        "tensionLevel": 1,
+        "components": [
+          {
+            "id": "comp_baseline_story",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_baseline_story_ep",
+              "markdown": "### LEADERSHIP BASELINE — PRE\n\nBefore you begin, complete this baseline check-in. Be honest. No one will see this but you.\n\nEach designated workbook response is recorded as a Behaviour Evidence Indicator (BEI): a source-specific evidence point for this Lab.",
+              "pivots": [
+                {
+                  "text": "Open baseline check-in",
+                  "beiScore": 5
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_baseline_profile",
+            "type": "LikertMatrix",
+            "beiTarget": "BEI-02",
+            "props": {
+              "question": "BEI-02: Leadership Baseline Profile",
+              "items": [
+                "See yourself as a leader",
+                "Take responsibility for outcomes",
+                "Influence others positively",
+                "Listen before you speak",
+                "Make decisions under pressure",
+                "Admit when you are wrong",
+                "Lead by example",
+                "Empower others to act",
+                "Have a clear vision",
+                "Act with integrity when no one is watching"
+              ],
+              "labels": [
+                "Never",
+                "Rarely",
+                "Sometimes",
+                "Often",
+                "Always"
+              ]
+            }
+          },
+          {
+            "id": "comp_baseline_index",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-01",
+            "props": {
+              "episodeId": "comp_baseline_index_ep",
+              "markdown": "### BEI-01: Leadership Identity Index (Pre)\n\n\"On a scale of 1–10, how much do you identify as a leader? 1 = I am not a leader. 10 = Leadership is central to who I am.\"",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_01_leadership",
+        "title": "Investigation 1: The Hook",
+        "difficulty": "Observe",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_baseline_00"
+        ],
+        "components": [
+          {
+            "id": "comp_01_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_intro_ep",
+              "markdown": "### INVESTIGATION 1: THE HOOK\n\nMISSION: Meet someone who never called herself a leader—but everyone followed her.\n\nYOU WILL PRODUCE:\n● ☐ A prediction about leadership\n\nTIME: 5 minutes\n\nDIFFICULTY:         Observe"
+            }
+          },
+          {
+            "id": "comp_01_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_read_ep",
+              "markdown": "### 📖 Read\n\nEpisode 1: The Woman Who Never Called Herself a Leader\n\nMeet Mama Rose.\n\nMama Rose is sixty years old. She runs a kitchen in Alexandra. She has been cooking for twenty years. She has no formal position. No title. No authority.\n\nBut everyone comes to her. Taxi drivers at dawn. Workers at lunch. Elders in the afternoon. People who are hungry. People who are lonely. People who need advice.\n\nShe knows everyone's name. She gives extra gravy to those who need it. She lets people pay later when they are struggling. She has been doing this for twenty years.\n\nOne day, Myah asks her: \"Mama Rose, are you a leader?\"\n\nMama Rose laughs. \"Me? I am just a cook.\"\n\nBut Myah presses. \"People come to you for advice. They trust you. They listen to you. When you speak, they follow. That is leadership.\"\n\nMama Rose is quiet for a moment. Then: \"I never called myself that. But I suppose I am. Not because I have a title. Because people trust me. I showed up every day for twenty years. I remembered their names. I gave extra gravy when they needed it. I saw them when no one else did. That is not a title. That is a life.\"\n\nShe looks at Myah. \"Why are you asking?\"\n\nMyah thinks. \"Because I think I'm becoming one. And I don't know if I'm ready.\"\n\nMama Rose puts down her spoon. \"Nobody is ever ready. You just start. You show up. You do the next thing. And twenty years later, you realise you've been leading the whole time.\"\n\nMyah nods.\n\nMama Rose looks around her kitchen. She has been here for twenty years. She has no successor. She has no one to take over.\n\nShe is sixty. She cannot do this forever.\n\nShe doesn't know what happens after her."
+            }
+          },
+          {
+            "id": "comp_01_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔎 Evidence Challenge \"Think of a leader you admire. Write their name. Now ask: 'What do they do that makes them a leader?'\"\n\nLeader I admire:\n\nWhat makes them a leader:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_01_predict",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_predict_ep",
+              "markdown": "### 🤔 Predict\n\n\"What do you think makes someone a leader?\"\n\nBEI-03: Prediction Calibration Score\n\nComplete this after Investigation 3.",
+              "pivots": [
+                {
+                  "text": "A title or position",
+                  "beiScore": 1
+                },
+                {
+                  "text": "The ability to command others",
+                  "beiScore": 2
+                },
+                {
+                  "text": "Trust and consistent presence",
+                  "beiScore": 3
+                },
+                {
+                  "text": "Being loud and confident",
+                  "beiScore": 4
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_01_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What surprised me most so far?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_02_leadership",
+        "title": "Investigation 2: The Prediction",
+        "difficulty": "Observe",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_01_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_02_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_02_intro_ep",
+              "markdown": "### INVESTIGATION 2: THE PREDICTION\n\nMISSION: Name your leadership pattern.\n\nYOU WILL PRODUCE:\n● ☐ How you lead\n● ☐ Where you lead\n\nTIME: 2 minutes\n\nDIFFICULTY:         Observe"
+            }
+          },
+          {
+            "id": "comp_02_predict",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🤔 Predict \"How do you lead—even without a title?\"\n\nHow I lead:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔎 Evidence Challenge \"Look at your phone. Open your group chats. Who naturally leads the conversation? Now ask: 'When have I led without realising it?'\"\n\nWhen I led without realising it:\n\n\"Where do you lead? At home? At school? With friends? In your community?\"\n\nWhere I lead:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What surprised me most so far?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_03_leadership",
+        "title": "Investigation 3: The Revelation",
+        "difficulty": "Analyse",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_02_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_03_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_intro_ep",
+              "markdown": "### INVESTIGATION 3: THE REVELATION\n\nMISSION: Discover the hidden truth about leadership.\n\nYOU WILL PRODUCE:\n● ☐ Understanding of leadership as influence, not position\n● ☐ Prediction calibration check\n\nTIME: 3 minutes\n\nDIFFICULTY:           Analyse"
+            }
+          },
+          {
+            "id": "comp_03_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_read_ep",
+              "markdown": "### 📖 Read\n\nEpisode 2: What Mama Rose Didn't Say\n\nMama Rose never called herself a leader. She just showed up. She remembered names. She gave extra gravy. She saw people when no one else did.\n\nBut here is what nobody told her: leadership is not a title. It is a posture.\n\nShe had no title. No big salary. No formal authority. But everyone in her community listened to her. Trusted her. Came to her for advice. That is leadership. Not position. People.\n\nShe looks around her kitchen. She has been here for twenty years. She has no successor. She has no one to take over. She is sixty. She cannot do this forever.\n\nThe next day, Myah comes to the kitchen. She brings Atlehang.\n\n\"Mama Rose,\" Myah says, \"I want you to meet someone.\"\n\nMama Rose looks at Atlehang. \"You're the one who asked the question.\"\n\nAtlehang nods.\n\n\"Come,\" Mama Rose says. \"Sit. Eat.\"\n\nThey sit. Mama Rose serves them. She watches them. She sees something in both of them.\n\n\"You think I'm a leader,\" she says. \"But I'm just a cook.\"\n\n\"That's what I used to think about myself,\" Atlehang says.\n\nMama Rose looks at her. \"What changed?\"\n\n\"Myah told me I changed her path.\"\n\nMama Rose nods. \"That is how it happens. You don't notice. You just keep showing up. And one day, someone tells you that you changed their life.\"\n\nShe looks around her kitchen. She is sixty. She cannot do this forever. But she looks at Myah and Atlehang.\n\n\"Maybe I don't need to do it forever,\" she says. \"Maybe I just need to show them how.\""
+            }
+          },
+          {
+            "id": "comp_03_read_2",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_read_2_ep",
+              "markdown": "### 👁️ The Observer\n\n\"Interesting. Mama Rose never called herself a leader. Everyone else did.\""
+            }
+          },
+          {
+            "id": "comp_03_calibration",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-03",
+            "props": {
+              "episodeId": "comp_03_calibration_ep",
+              "markdown": "✅ Were You Correct? Look back at your prediction about what makes someone a leader.\n\nWas your prediction correct? ☐ Yes ☐ No\n\nBEI-03: Prediction Calibration Score: ☐ Correct ☐ Incorrect",
+              "pivots": [
+                {
+                  "text": "Yes",
+                  "beiScore": 1
+                },
+                {
+                  "text": "No",
+                  "beiScore": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_03_assumption",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "\"What assumption did this story challenge?\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_04_leadership",
+        "title": "Investigation 4: Leadership Mapping",
+        "difficulty": "Challenge Yourself",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_03_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_04_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_04_intro_ep",
+              "markdown": "### INVESTIGATION 4: LEADERSHIP MAPPING\n\nMISSION: Discover the real structure of leadership in your life, not the story you tell yourself.\n\nYOU WILL PRODUCE:\n● ☐ Leadership inventory\n● ☐ Leadership gaps\n● ☐ Priority leadership issue\n\nTIME: 15 minutes\n\nDIFFICULTY:           Challenge Yourself"
+            }
+          },
+          {
+            "id": "comp_04_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔍 Investigate\nStep 1: Draw Your Leadership Map\n\nDraw a circle in the centre: YOU. Around it, draw circles for:\n\n● Family\n● Friends\n● School/Work\n● Community\n● Teams/Groups\n● Projects\n\nFor each circle, write:\n\n● Where you lead\n● How you lead\n\n● Who you lead\n\n(Draw your map in the space below)\n\nMy Leadership Map:\n\nStep 2: Where Do You Lead?\n\nList the places where you already lead—even without a title.\n\nWhere I lead:\n\n1.\n2.\n3.\n\nStep 3: How Do You Lead?\n\nFor each place, write how you lead.\n\nHow I lead:\n\n1.\n2.\n3.\n\nStep 4: Your Leadership Qualities\n\n\"What are your leadership strengths?\"\n\nMy strengths:\n\n\"What are your leadership weaknesses?\"\n\nMy weaknesses:\n\nStep 5: Leadership Examples\n\n\"Who is a leader you admire? What makes them a leader?\"\n\nLeader I admire: _______________________________________\n\nWhat I can learn from them:\n\nStep 6: Your Leadership Gap\n\n\"Where is the gap between who you are as a leader and who you want to be?\"\n\nMy leadership gap:\n\nStep 7: Diagnostic Layer\n\n\"When do you feel most like a leader?\"\n\nMost like a leader: ____________________________________\n\n\"When do you feel least like a leader?\"\n\nLeast like a leader: ___________________________________\n\n\"What is one thing you could do this week to lead better?\"\n\nOne thing to improve: __________________________________\n\n\"How many people did you influence positively yesterday?\"\n\nPeople influenced: ___",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_04_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\n🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_04_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What is one thing I now see that I did not see before?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_05_leadership",
+        "title": "Investigation 5: Leadership Equation",
+        "difficulty": "Identity Shift",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_04_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_05_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_05_intro_ep",
+              "markdown": "### INVESTIGATION 5: LEADERSHIP EQUATION\n\nMISSION: Write the formula that explains your leadership pattern.\n\nYOU WILL PRODUCE:\n● ☐ Personal Equation\n● ☐ Falsification test\n\nTIME: 10 minutes\n\nDIFFICULTY:           Identity Shift"
+            }
+          },
+          {
+            "id": "comp_05_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🧠 Think Your Personal Equation\n\nWrite your leadership pattern as a diagnostic formula:\n\nTitle + Authority = Positional Leadership\n\nTrust + Consistency + Service = Real Leadership\n\nMy Equation:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_bei04",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-04",
+            "props": {
+              "episodeId": "comp_05_bei04_ep",
+              "markdown": "BEI-04: Leadership Confidence Index (Pre)\n\n\"How confident are you that this equation explains your leadership pattern?\"\n\nBEI-04-Pre: ___ / 10",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_05_falsification",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "\"What evidence would prove your equation is wrong?\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\n🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_05_read_ep",
+              "markdown": "### Example Equations:\n\n**Pattern**                                **Equation**\nTitle-based leadership                     Title + Authority = Obedience Trust-based leadership                     Trust + Consistency = Followership Service leadership                         Service + Presence = Influence Inconsistent leadership                    Trust + Inconsistency = Confusion"
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_06_leadership",
+        "title": "Investigation 6: Leadership Contract",
+        "difficulty": "Decide",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_05_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_06_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_06_intro_ep",
+              "markdown": "### INVESTIGATION 6: LEADERSHIP CONTRACT\n\nMISSION: Commit to a 7-day experiment that will test your leadership identity.\n\nYOU WILL PRODUCE:\n● ☐ Leadership Contract\n● ☐ Leadership Index\n● ☐ Signed commitment\n\nTIME: 10 minutes\n\nDIFFICULTY:           Decide"
+            }
+          },
+          {
+            "id": "comp_06_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🤝 Commit One leadership action I will take this week:\n\nMy leadership promise — I will\n\n(e.g., lead by example, serve someone, take responsibility, have a hard conversation, show up consistently)\n\nMy witness (who will hold me accountable):\n\nWhat I will do if I fail to lead (my restart plan):\n\nMy failure signal (how I will know if this experiment is not working):",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_06_bei05",
+            "type": "WorkbookChecklist",
+            "beiTarget": "BEI-05",
+            "props": {
+              "question": "BEI-05: Leadership Index",
+              "items": [
+                "My family",
+                "My friends/peers",
+                "My school/work",
+                "My community",
+                "My team",
+                "My own growth"
+              ],
+              "minimumSelections": 1
+            }
+          },
+          {
+            "id": "comp_06_commitment",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "My Commitment Statement\n\n\"I, ________________________________, commit to leading intentionally for 7 days, starting on ___________ and ending on ___________. I understand that I will not be perfect. When I fail to lead, I will learn and try again — because perfection is not a strategy.\"\n\nSigned: ________________________________\n\nDate: ________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_06_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_07_leadership",
+        "title": "Investigation 7: 7-Day Experiment",
+        "difficulty": "Track",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_06_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_07_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_07_intro_ep",
+              "markdown": "### INVESTIGATION 7: 7-DAY EXPERIMENT\n\nMISSION: Track your leadership for seven days. Collect evidence.\n\nYOU WILL PRODUCE:\n● ☐ 7-Day Completion Rate\n\nTIME: 5 minutes (setup)\n\nDIFFICULTY:         Track"
+            }
+          },
+          {
+            "id": "comp_07_bei06",
+            "type": "DailyExperiment",
+            "beiTarget": "BEI-06",
+            "props": {
+              "instructions": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-06: Experiment Adherence Rate\n\nInstructions: Each day, record ONE moment when you led—OR one moment when you failed to lead. Mark ✓ if you acted, or ✗ if you did not.\n\n**Day**       **Date**        **Moment I             **Did I act?**   **Notes**\nNoticed** 1                                                    ☐ Yes ☐ No 2                                                    ☐ Yes ☐ No 3                                                    ☐ Yes ☐ No 4                                                    ☐ Yes ☐ No 5                                                    ☐ Yes ☐ No 6                                                    ☐ Yes ☐ No 7                                                    ☐ Yes ☐ No\n\nBEI-06: Days Completed: ___ / 7 Leadership Actions: ___ / 7",
+              "days": 7,
+              "statusLabels": [
+                "Not done",
+                "Done"
+              ],
+              "momentLabel": "Moment or action I noticed",
+              "notesLabel": "Notes"
+            }
+          },
+          {
+            "id": "comp_07_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_07_read_ep",
+              "markdown": "### Continue your journey:\n\nIf you wish to continue your experiment beyond seven days, you can transfer it into a longer Behaviour Journal™.\n\nPHASE B: THE EXPERIMENT This is the 7-day experiment. Complete this section after you leave the workshop."
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_08_leadership",
+        "title": "Investigation 8: Evidence Review",
+        "difficulty": "Reflect",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_07_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_08_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_08_intro_ep",
+              "markdown": "### INVESTIGATION 8: EVIDENCE REVIEW\n\nMISSION: Harvest what you have learned from seven days of leading.\n\nYOU WILL PRODUCE:\n● ☐ BEI-07: Leadership Identity Shift Index\n● ☐ BEI-08: Leadership Confidence Index (Post)\n● ☐ Final Reflection\n\nTIME: 10 minutes\n\nDIFFICULTY:          Reflect"
+            }
+          },
+          {
+            "id": "comp_08_bei07",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-07",
+            "props": {
+              "episodeId": "comp_08_bei07_ep",
+              "markdown": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-07: Leadership Identity Shift Index\n\n\"On a scale of 1–10, how much do you identify as a leader now?\"\n\nBEI-07-Post: ___ / 10\n\nShift: ___ points (BEI-07 - BEI-01)",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_08_bei08",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-08",
+            "props": {
+              "episodeId": "comp_08_bei08_ep",
+              "markdown": "BEI-08: Leadership Confidence Index (Post)\n\n\"How confident are you now that your equation explains your leadership pattern?\"\n\nBEI-08-Post: ___ / 10\n\nShift: ___ points (BEI-08 - BEI-04)",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_08_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "Final Reflection Questions\n1. Did I lead intentionally most days? Why or why not?\n\n___________________________________________________________\n\n2. What was the hardest part of the 7 days?\n\n___________________________________________________________\n\n3. When did you feel most like a leader—and when did you feel least?\n\n___________________________________________________________\n\n4. What surprised you most about leadership in your life?\n\n___________________________________________________________\n\n5. What evidence convinced you that this pattern exists?\n\n___________________________________________________________\n\n6. Which belief became harder to defend after this experiment?\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_08_meta",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "My Meta-Leadership Skill\n\nThe meta-leadership skill is the habit of noticing when to lead.\n\nMy plan to keep the meta-leadership skill alive:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_09_leadership",
+        "title": "Investigation 9: Behaviour Evidence Summary",
+        "difficulty": "Identity Shift",
+        "tensionLevel": 5,
+        "prerequisites": [
+          "step_08_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_09_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_09_intro_ep",
+              "markdown": "### INVESTIGATION 9: BEHAVIOUR PROFILE\n\nMISSION: Synthesise everything you have discovered into one page.\n\nYOU WILL PRODUCE:\n● ☐ BEI-09: Identity Shift Indicator\n● ☐ BEI-10: Behaviour Profile Summary\n\nTIME: 10 minutes\n\nDIFFICULTY:          Identity Shift"
+            }
+          },
+          {
+            "id": "comp_09_bei09",
+            "type": "PrivateReflection",
+            "beiTarget": "BEI-09",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-09: Identity Shift Indicator\n\nComplete this sentence:\n\n\"I am becoming someone who ______________________________________________.\"",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_bei10",
+            "type": "PrivateReflection",
+            "beiTarget": "BEI-10",
+            "props": {
+              "prompt": "BEI-10: Learner Behaviour Evidence Summary\nWhere I Lead:\nHow I Lead:\nMy Leadership Strengths:\nMy Leadership Weaknesses:\nLeader I Admire:\nWhat I Can Learn:\nMy Equation:\nConfidence (Pre → Post):\nLeadership Identity (Pre → Post):\nNext Leadership to Investigate:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_identity_sentence",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "One Sentence That Describes Me Now\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "Letter to My Future Self Write a letter to yourself. Address it to \"Future Me.\" Tell your future self:\n\n● Who you are right now\n● What you learned from leading for 7 days\n● What you are proud of\n● What you still need to work on\n● One leadership principle you want to keep\n\nDear Future Me,\n\nFrom me, in Grade ___\n\nDate: ________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_09_read_ep",
+              "markdown": "### YOUR JOURNEY CONTINUES\n\nContinue your investigation with another Lab:\n\n☐ Influence Lab™ — Who shapes me and who I shape?\n☐ Decision Lab™ — Why do I keep making the same choices?\n☐ Risk Lab™ — What am I not protecting?\n☐ Identity Lab™ — Who am I becoming?\n☐ Career Lab™ — What do I actually want to do?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_certificate_10",
+        "title": "Leadership Lab Completion Certificate",
+        "difficulty": "Integrate",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_09_leadership"
+        ],
+        "components": [
+          {
+            "id": "comp_certificate",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_certificate_ep",
+              "markdown": "### APPLIED COMMERCE®\n\n### Behaviour Intelligence Series™\n\n### Leadership Lab™ Completion Certificate\n\nThis records completion of the Leadership Lab learner investigation and its seven-day practice record.\n\n**Certificate boundary**\n\nThis certificate records participation and completion. It does not certify transformation, a psychometric result, a diagnosis, or a causal outcome.\n\n**Measurement register**: BIS-MM-0.1.0\n\n**Workbook source**: BIS Volume 1 v3"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "signature": "AC-BIS-V1-LAB-10-LEADERSHIP-3.0.1"
+}

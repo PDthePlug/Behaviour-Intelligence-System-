@@ -32,11 +32,25 @@ export type BreathProps = {
   cycles: number;
 };
 
+export type ChecklistProps = {
+  question: string;
+  items: string[];
+  minimumSelections?: number;
+};
+
+export type DailyExperimentProps = {
+  instructions: string;
+  days: number;
+  statusLabels: [string, string];
+  momentLabel: string;
+  notesLabel: string;
+};
+
 export type LabComponent = {
   id: string;
-  type: "StoryNarrative" | "PrivateReflection" | "LikertMatrix" | "MindfulBreath";
+  type: "StoryNarrative" | "PrivateReflection" | "LikertMatrix" | "MindfulBreath" | "WorkbookChecklist" | "DailyExperiment";
   beiTarget?: string;
-  props: StoryNarrativeProps | ReflectionProps | LikertProps | BreathProps;
+  props: StoryNarrativeProps | ReflectionProps | LikertProps | BreathProps | ChecklistProps | DailyExperimentProps;
 };
 
 export type LabStep = {
@@ -70,12 +84,21 @@ export type MeasurementMetadata = {
   claimsBoundary: string;
 };
 
+export type CartridgeSource = {
+  document: string;
+  volume: number;
+  labNumber: number;
+  learnerWorkbookPages: [number, number];
+  interpretationStatus: "source_faithful_digital_cartridge";
+};
+
 export type LabCartridge = {
   cartridgeId: string;
   version: string;
   title: string;
   description: string;
   theme: { primary: string; accent: string; background: string };
+  source?: CartridgeSource;
   measurement: MeasurementMetadata;
   beiSchema: BeiIndicator[];
   timeline: { steps: LabStep[] };
@@ -166,7 +189,7 @@ export function parseWorkbookPrompt(prompt: string): ParsedWorkbookPrompt {
     }
 
     const cleanLine = line.replace(/^[✍️\s]+/, "").trim();
-    const isLabel = cleanLine.endsWith(":") || cleanLine.includes("✍️") || cleanLine.includes("___") || cleanLine.endsWith("?");
+    const isLabel = cleanLine.endsWith(":") || cleanLine.includes("✍️") || cleanLine.includes("___") || cleanLine.endsWith("?") || cleanLine.startsWith("Dear Future Me");
 
     if (isLabel) {
       const baseId = cleanLine

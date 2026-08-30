@@ -1,8 +1,33 @@
-# vinext-starter
+# Behaviour Intelligence System
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+The BIS learner portal publishes the complete 12-Lab sequence from **BIS Volume 1 v3** as full digital cartridges:
+
+1. Habit
+2. Decision
+3. Money
+4. Identity
+5. Attention
+6. Time
+7. Risk
+8. Trust
+9. Influence
+10. Leadership
+11. Purpose
+12. Resilience
+
+Each Lab contains an 11-step learner journey: the authored baseline, nine investigations and a completion record. The source-defined Behaviour Evidence Indicators remain descriptive evidence points under `BIS-MM-0.1.0`; they are not presented as validated psychometrics, diagnoses, forensic markers or causal proof.
+
+## Product architecture
+
+- **12 live Volume 1 Labs**, available through Marketplace and the learner library
+- **32 named BIS Labs** across Personal Operating System, Work & Leadership Readiness, Applied Commerce & Enterprise Thinking and cross-cutting categories
+- **Three delivery skins** for School, Youth Programme and Workplace contexts
+- **Private reflection controls** that keep learner-authored writing out of institution-facing reporting
+- **Source provenance** down to the workbook and learner-page range for every published cartridge
+
+## Application runtime
+
+The application runs on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
 
 ## Prerequisites
 

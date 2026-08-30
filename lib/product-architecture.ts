@@ -78,12 +78,12 @@ export const productFamilies: Array<{
     labs: [
       lab("personal-operating-system", "habit-lab", "Habit Lab™", "habit-lab-2026"),
       lab("personal-operating-system", "decision-lab", "Decision Lab™", "decision-lab-2026"),
-      lab("personal-operating-system", "identity-lab", "Identity Lab™"),
-      lab("personal-operating-system", "attention-lab", "Attention Lab™"),
-      lab("personal-operating-system", "time-lab", "Time Lab™"),
-      lab("personal-operating-system", "risk-lab", "Risk Lab™"),
+      lab("personal-operating-system", "identity-lab", "Identity Lab™", "identity-lab-2026"),
+      lab("personal-operating-system", "attention-lab", "Attention Lab™", "attention-lab-2026"),
+      lab("personal-operating-system", "time-lab", "Time Lab™", "time-lab-2026"),
+      lab("personal-operating-system", "risk-lab", "Risk Lab™", "risk-lab-2026"),
       lab("personal-operating-system", "future-self-lab", "Future Self Lab™"),
-      lab("personal-operating-system", "resilience-lab", "Resilience Lab™"),
+      lab("personal-operating-system", "resilience-lab", "Resilience Lab™", "resilience-lab-2026"),
     ],
   },
   {
@@ -94,9 +94,9 @@ export const productFamilies: Array<{
     labs: [
       lab("work-leadership-readiness", "communication-lab", "Communication Lab™"),
       lab("work-leadership-readiness", "team-lab", "Team Lab™"),
-      lab("work-leadership-readiness", "trust-lab", "Trust Lab™"),
-      lab("work-leadership-readiness", "influence-lab", "Influence Lab™"),
-      lab("work-leadership-readiness", "leadership-lab", "Leadership Lab™"),
+      lab("work-leadership-readiness", "trust-lab", "Trust Lab™", "trust-lab-2026"),
+      lab("work-leadership-readiness", "influence-lab", "Influence Lab™", "influence-lab-2026"),
+      lab("work-leadership-readiness", "leadership-lab", "Leadership Lab™", "leadership-lab-2026"),
       lab("work-leadership-readiness", "negotiation-lab", "Negotiation Lab™"),
       lab("work-leadership-readiness", "ethics-lab", "Ethics Lab™"),
       lab("work-leadership-readiness", "grit-lab", "Grit Lab™"),
@@ -111,7 +111,7 @@ export const productFamilies: Array<{
     eyebrow: "VALUE, SYSTEMS & ENTERPRISE",
     description: "The BIS Labs concerned with money, markets, enterprise, value creation and long-term thinking.",
     labs: [
-      lab("applied-commerce-enterprise", "money-lab", "Money Lab™"),
+      lab("applied-commerce-enterprise", "money-lab", "Money Lab™", "money-lab-2026"),
       lab("applied-commerce-enterprise", "entrepreneurship-lab", "Entrepreneurship Lab™"),
       lab("applied-commerce-enterprise", "opportunity-lab", "Opportunity Lab™"),
       lab("applied-commerce-enterprise", "customer-thinking-lab", "Customer Thinking Lab™"),
@@ -129,7 +129,7 @@ export const productFamilies: Array<{
     eyebrow: "PURPOSE & META-LEARNING",
     description: "Three source Labs that can be used across the commercial families when the programme design calls for them.",
     labs: [
-      lab("cross-cutting", "purpose-lab", "Purpose Lab™"),
+      lab("cross-cutting", "purpose-lab", "Purpose Lab™", "purpose-lab-2026"),
       lab("cross-cutting", "growth-mindset-lab", "Growth Mindset Lab™"),
       lab("cross-cutting", "meta-learning-lab", "Meta-Learning Lab™"),
     ],

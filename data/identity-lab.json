@@ -1,0 +1,999 @@
+{
+  "cartridgeId": "identity-lab-2026",
+  "version": "3.0.1",
+  "title": "Identity Lab™: Identity as a Verb v3.0",
+  "description": "Identity is not a noun. It is a verb. Trace inherited and chosen beliefs, write an identity equation, and document one seven-day act of becoming.",
+  "theme": {
+    "primary": "#6d28d9",
+    "accent": "#c084fc",
+    "background": "#fcfaff"
+  },
+  "source": {
+    "document": "BIS Volume 1 v3.pdf",
+    "volume": 1,
+    "labNumber": 4,
+    "learnerWorkbookPages": [
+      123,
+      144
+    ],
+    "interpretationStatus": "source_faithful_digital_cartridge"
+  },
+  "measurement": {
+    "manualVersion": "BIS-MM-0.1.0",
+    "modelStatus": "descriptive_evidence",
+    "claimsBoundary": "Behaviour Evidence Indicators describe source-specific learner evidence. They are not validated psychometric measures, diagnoses, forensic markers or proof of causation."
+  },
+  "beiSchema": [
+    {
+      "code": "BEI-01",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Identity Clarity Self-Rating (Pre)",
+      "construct": "Perceived identity awareness or capability",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Record the selected workbook response from 1 to 10 without norming or classification.",
+      "sourceComponentIds": [
+        "comp_baseline_index"
+      ],
+      "interpretationLimit": "A single learner self-rating; it is not a validated measure of identity capability.",
+      "pairedWith": "BEI-07",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-02",
+      "type": "scale",
+      "range": [
+        1,
+        5
+      ],
+      "description": "Identity Baseline Item Set",
+      "construct": "Self-reported frequency of workbook behaviours related to identity",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Retain all ten item responses from 1 to 5. A mean may be displayed only when every item is answered and must remain descriptive.",
+      "sourceComponentIds": [
+        "comp_baseline_profile"
+      ],
+      "interpretationLimit": "The item set is not a validated scale and must not be used to diagnose or label a learner.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-03",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Prediction Check",
+      "construct": "Learner comparison of a prediction with the revealed story outcome",
+      "evidenceClass": "self_report",
+      "timepoint": "during",
+      "scoringRule": "Record Yes as 1 and No as 0 for this workbook episode only.",
+      "sourceComponentIds": [
+        "comp_03_calibration"
+      ],
+      "interpretationLimit": "One story prediction is not a general calibration measure.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-04",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Identity Confidence Self-Rating (Pre)",
+      "construct": "Confidence in the learner-authored identity equation",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Record the selected workbook response from 1 to 10 without norming or classification.",
+      "sourceComponentIds": [
+        "comp_05_bei04"
+      ],
+      "interpretationLimit": "Confidence does not establish that the learner-authored equation is accurate.",
+      "pairedWith": "BEI-08",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-05",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Reported Identity Impact Areas",
+      "construct": "Self-reported areas affected by the selected identity pattern",
+      "evidenceClass": "self_report",
+      "timepoint": "during",
+      "scoringRule": "Retain each selected workbook area as selected or not selected; do not create a risk classification or threshold.",
+      "sourceComponentIds": [
+        "comp_06_bei05"
+      ],
+      "interpretationLimit": "This is not a clinical, safeguarding, actuarial or organisational risk assessment.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-06",
+      "type": "scale",
+      "range": [
+        0,
+        1
+      ],
+      "description": "7-Day Identity Practice Record",
+      "construct": "Learner-recorded completion of the selected routine or rule",
+      "evidenceClass": "practice_record",
+      "timepoint": "during",
+      "scoringRule": "Count Done responses across seven days and report the observed count as x/7. Missing days remain missing and are not treated as zero.",
+      "sourceComponentIds": [
+        "comp_07_bei06"
+      ],
+      "interpretationLimit": "The record is learner-entered and does not by itself establish sustained adherence.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-07",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Identity Clarity Self-Rating (Post)",
+      "construct": "Perceived identity awareness or capability",
+      "evidenceClass": "self_report",
+      "timepoint": "post",
+      "scoringRule": "Record the selected workbook response from 1 to 10. A difference from BEI-01 may be shown as learner-reported change only.",
+      "sourceComponentIds": [
+        "comp_08_bei07"
+      ],
+      "interpretationLimit": "A pre/post self-rating difference is not proof that the Lab caused change.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-08",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Identity Confidence Self-Rating (Post)",
+      "construct": "Confidence in the learner-authored identity equation",
+      "evidenceClass": "self_report",
+      "timepoint": "post",
+      "scoringRule": "Record the selected workbook response from 1 to 10. A difference from BEI-04 may be shown as learner-reported change only.",
+      "sourceComponentIds": [
+        "comp_08_bei08"
+      ],
+      "interpretationLimit": "A confidence difference is not evidence that the equation became more accurate.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-09",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Learner Identity Statement",
+      "construct": "Learner-authored identity reflection",
+      "evidenceClass": "reflection_output",
+      "timepoint": "post",
+      "scoringRule": "Record completion and preserve the private learner-authored text; do not score sentiment or identity.",
+      "sourceComponentIds": [
+        "comp_09_bei09"
+      ],
+      "interpretationLimit": "Completion does not demonstrate an identity shift.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-10",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Learner Behaviour Summary",
+      "construct": "Learner synthesis of the Identity Lab evidence",
+      "evidenceClass": "reflection_output",
+      "timepoint": "summary",
+      "scoringRule": "Record completion and preserve the private learner-authored summary; no automated profile is generated.",
+      "sourceComponentIds": [
+        "comp_09_bei10"
+      ],
+      "interpretationLimit": "The summary is a learner reflection, not a behavioural classification.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    }
+  ],
+  "timeline": {
+    "steps": [
+      {
+        "id": "step_baseline_00",
+        "title": "Identity Baseline Check-in (Pre-Workshop)",
+        "difficulty": "Observe",
+        "tensionLevel": 1,
+        "components": [
+          {
+            "id": "comp_baseline_story",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_baseline_story_ep",
+              "markdown": "### IDENTITY BASELINE — PRE\n\nBefore you begin, complete this baseline check-in. Be honest. No one will see this but you.\n\nEach designated workbook response is recorded as a Behaviour Evidence Indicator (BEI): a source-specific evidence point for this Lab.",
+              "pivots": [
+                {
+                  "text": "Open baseline check-in",
+                  "beiScore": 5
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_baseline_profile",
+            "type": "LikertMatrix",
+            "beiTarget": "BEI-02",
+            "props": {
+              "question": "BEI-02: Identity Baseline Profile",
+              "items": [
+                "Know exactly what you believe",
+                "Feel confident about who you are",
+                "Act differently depending on who you are with",
+                "Know what you stand for",
+                "Feel like you are pretending to be someone else",
+                "Question what you really want",
+                "Have a clear sense of your values",
+                "Know where your beliefs came from",
+                "Feel like you are becoming who you want to be",
+                "Feel like you are still figuring yourself out"
+              ],
+              "labels": [
+                "Never",
+                "Rarely",
+                "Sometimes",
+                "Often",
+                "Always"
+              ]
+            }
+          },
+          {
+            "id": "comp_baseline_index",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-01",
+            "props": {
+              "episodeId": "comp_baseline_index_ep",
+              "markdown": "### BEI-01: Identity Clarity Index (Pre)\n\n\"On a scale of 1–10, how clear are you about who you really are? 1 = I have no idea who I am. 10 = I know exactly who I am and what I stand for.\"",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_01_identity",
+        "title": "Investigation 1: The Hook",
+        "difficulty": "Observe",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_baseline_00"
+        ],
+        "components": [
+          {
+            "id": "comp_01_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_intro_ep",
+              "markdown": "### INVESTIGATION 1: THE HOOK\n\nMISSION: Meet someone who discovered who she really was.\n\nYOU WILL PRODUCE:\n\n● ☐ A prediction about Myah's choice\n\nTIME: 5 minutes\n\nDIFFICULTY:           Observe"
+            }
+          },
+          {
+            "id": "comp_01_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_read_ep",
+              "markdown": "### 📖 Read\n\nEpisode 1: The Girl Who Wrote Her Name\n\nMeet Myah.\n\nMyah is fifteen. She is quiet. She notices things. At the taxi rank, she watches people. She sees her mother counting coins every morning. She sees the vendors, the queue marshals, the money flowing between everyone. She writes in a small notebook.\n\nShe has never said what she notices out loud. She has never told anyone what she really thinks. She has never named who she is becoming.\n\nOne day, her teacher asks:\n\n\"Who are you?\"\n\nMyah thinks. She could say her name. Her age. Where she lives. Her family. But that is not who she is. That is just what people see.\n\nShe writes in her notebook:\n\n\"I am someone who notices. I am someone who asks questions. I am someone who wants to understand money—where it comes from, where it goes, how it works. I am someone who wants to help my mother instead of just taking from her.\"\n\nShe has not said this out loud. But she has written it. And writing it made it real.\n\nShe is becoming someone. She just did not have the words until she wrote them down.\n\nBut she still has not said it out loud. She still has not shown anyone. She still does not know if she believes it.\n\nShe is fifteen. She has written who she is becoming. But she has not become her yet."
+            }
+          },
+          {
+            "id": "comp_01_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔎 Evidence Challenge \"If you had to describe who you are becoming in one sentence, what would it be? Write it down. Now read it to yourself.\"\n\nThe identity I am building:\n\n\"Now ask yourself: 'Is this something I have ever said out loud?'\"\n\n☐ Yes ☐ No",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_01_predict",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_predict_ep",
+              "markdown": "### 🤔 Predict\n\n\"What do you think Myah will do with what she has written?\"\n\nBEI-03: Prediction Calibration Score\n\nComplete this after Investigation 3.",
+              "pivots": [
+                {
+                  "text": "She will keep it secret and never tell anyone",
+                  "beiScore": 1
+                },
+                {
+                  "text": "She will show it to someone she trusts",
+                  "beiScore": 2
+                },
+                {
+                  "text": "She will act on it and start building",
+                  "beiScore": 3
+                },
+                {
+                  "text": "She will forget about it and move on",
+                  "beiScore": 4
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_01_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What surprised me most so far?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_02_identity",
+        "title": "Investigation 2: The Prediction",
+        "difficulty": "Observe",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_01_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_02_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_02_intro_ep",
+              "markdown": "### INVESTIGATION 2: THE PREDICTION\n\nMISSION: Name the identity you are building.\n\nYOU WILL PRODUCE:\n● ☐ The identity you are becoming\n● ☐ Where your identity comes from\n\nTIME: 2 minutes\n\nDIFFICULTY:        Observe"
+            }
+          },
+          {
+            "id": "comp_02_predict",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🤔 Predict \"If you had to describe who you are becoming in one sentence, what would it be?\"\n\nThe identity I am building:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔎 Evidence Challenge \"Look at your phone. Open your contacts. Who are the three people you talk to most? Now ask: 'What does each one believe about me—and what do I believe about myself because of them?'\"\n\n**Person**         **What They Believe            **What I Believe About Myself\nAbout Me**                     Because of Them**\n1. ________        ______________                 ______________\n2. ________        ______________                 ______________\n3. ________        ______________                 ______________\n\n\"Where did your current identity come from? Family? Friends? Culture? Experience? Something else?\"\n\nWhere my identity comes from:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What surprised me most so far?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_03_identity",
+        "title": "Investigation 3: The Revelation",
+        "difficulty": "Analyse",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_02_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_03_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_intro_ep",
+              "markdown": "### INVESTIGATION 3: THE REVELATION\n\nMISSION: Discover the hidden truth about identity.\n\nYOU WILL PRODUCE:\n● ☐ Understanding of identity as becoming\n● ☐ Prediction calibration check\n\nTIME: 3 minutes\n\nDIFFICULTY:           Analyse"
+            }
+          },
+          {
+            "id": "comp_03_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_read_ep",
+              "markdown": "### 📖 Read\n\nEpisode 2: What Myah Didn't Say\n\nMyah wrote who she was becoming. She did not say it out loud. She did not show anyone. She just wrote it.\n\nBut here is what nobody told her: identity is not a noun. It is a verb.\n\nMost people think identity is something you have. Something fixed. Something you are born with or discover once and keep forever.\n\nBut identity is not fixed. It is becoming. Every choice, every habit, every belief is a vote for the person you are becoming.\n\nMyah wrote down who she was becoming. She did not wait to find herself. She started building herself.\n\nBut she still has not said it out loud. She still has not shown anyone. She still does not know if she believes it.\n\nThe next day, she walks past the spaza shop. She sees Sipho and Lethabo talking. Sipho is holding a packet of screws. Lethabo is showing him something—a clock.\n\nShe stops. She watches.\n\nSipho looks up. \"You're the girl with the notebook,\" he says.\n\nShe nods.\n\n\"What do you write in there?\" Lethabo asks.\n\nShe does not know what to say. She looks at them. She thinks about her notebook. She thinks about what she wrote.\n\n\"I write about who I'm becoming,\" she says.\n\nShe did not plan to say it. She just said it.\n\nSipho and Lethabo look at her. They do not laugh. They nod.\n\n\"Me too,\" Sipho says.\n\n\"Same,\" Lethabo says.\n\nShe walks home. She does not know what just happened. But she said it out loud.\n\nShe is fifteen. She has written who she is becoming. She has said it out loud. She still does not know if she believes it.\n\nBut she said it.\n\nAnd something shifted."
+            }
+          },
+          {
+            "id": "comp_03_read_2",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_read_2_ep",
+              "markdown": "### 👁️ The Observer\n\n\"Interesting. Myah wrote the words, but she didn't say them out loud. Until today.\""
+            }
+          },
+          {
+            "id": "comp_03_calibration",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-03",
+            "props": {
+              "episodeId": "comp_03_calibration_ep",
+              "markdown": "✅ Were You Correct? Look back at your prediction about Myah.\n\nWas your prediction correct? ☐ Yes ☐ No\n\nBEI-03: Prediction Calibration Score: ☐ Correct ☐ Incorrect",
+              "pivots": [
+                {
+                  "text": "Yes",
+                  "beiScore": 1
+                },
+                {
+                  "text": "No",
+                  "beiScore": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_03_assumption",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "\"What assumption did this story challenge?\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_04_identity",
+        "title": "Investigation 4: Identity Mapping",
+        "difficulty": "Challenge Yourself",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_03_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_04_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_04_intro_ep",
+              "markdown": "### INVESTIGATION 4: IDENTITY MAPPING\n\nMISSION: Discover the real structure of your identity, not the story you tell yourself.\n\nYOU WILL PRODUCE:\n● ☐ Identity Map\n● ☐ Inherited beliefs\n● ☐ Chosen beliefs\n● ☐ Identity gap\n\nTIME: 15 minutes\n\nDIFFICULTY:          Challenge Yourself"
+            }
+          },
+          {
+            "id": "comp_04_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔍 Investigate\nStep 1: Draw Your Identity Map\n\nDraw yourself in the centre. Around you, draw circles for:\n\n● Family\n● Friends\n● School\n● Things I believe\n● Things I value\n● Things I am good at\n● Things I wonder about\n\nFill each circle with words or small drawings.\n\n(Draw your map in the space below)\n\nMy Identity Map:\n\nStep 2: Inherited Beliefs\n\n\"What beliefs about yourself did you inherit from others—family, culture, community— without choosing them?\"\n\nMy inherited beliefs:\n\nStep 3: Chosen Beliefs\n\n\"What beliefs about yourself have you chosen for yourself?\"\n\nMy chosen beliefs:\n\nStep 4: The Gap\n\n\"Where is the gap between who you are and who you want to become?\"\n\nMy identity gap:\n\nStep 5: The Identity Tax\n\n\"What is the cost of being someone you are not—of pretending, hiding, or performing?\"\n\nThe cost of not being myself:\n\nStep 6: Diagnostic Layer\n\n\"Which person or group has most shaped your identity?\"\n\nBiggest influence: ________________________________________\n\n\"Which part of your identity do you hide most often?\"\n\nHidden part: _____________________________________________\n\n\"What would change if you stopped hiding it?\"\n\nWhat would change: _______________________________________\n\n\"How many times yesterday did you act like someone you are not?\"\n\nCount: ___",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_04_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\n🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_04_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE\n\nClose the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What is one thing I now see that I did not see before?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_05_identity",
+        "title": "Investigation 5: Identity Equation",
+        "difficulty": "Identity Shift",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_04_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_05_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_05_intro_ep",
+              "markdown": "### INVESTIGATION 5: IDENTITY EQUATION\n\nMISSION: Write the formula that explains your identity pattern.\n\nYOU WILL PRODUCE:\n● ☐ Personal Equation\n● ☐ Falsification test\n\nTIME: 10 minutes\n\nDIFFICULTY:           Identity Shift"
+            }
+          },
+          {
+            "id": "comp_05_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🧠 Think Your Personal Equation\n\nWrite your identity pattern as a diagnostic formula:\n\nInherited Beliefs + Chosen Actions = Current Identity\n\nChosen Beliefs + Chosen Actions = Becoming Identity\n\nMy Equation:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_bei04",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-04",
+            "props": {
+              "episodeId": "comp_05_bei04_ep",
+              "markdown": "BEI-04: Identity Confidence Index (Pre)\n\n\"How confident are you that this equation explains your identity pattern?\"\n\nBEI-04-Pre: ___ / 10",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_05_falsification",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "\"What evidence would prove your equation is wrong?\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\n🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_05_read_ep",
+              "markdown": "### Example Equations:\n\n**Pattern**                       **Equation**\nInherited identity                Family beliefs + Unquestioned actions = Someone else's life Performing identity               Others' expectations + Pretending = Exhaustion Becoming identity                 Chosen values + Intentional actions = Freedom Stuck identity                    Fear of change + Staying the same = Stagnation"
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_06_identity",
+        "title": "Investigation 6: Identity Contract",
+        "difficulty": "Decide",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_05_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_06_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_06_intro_ep",
+              "markdown": "### INVESTIGATION 6: IDENTITY CONTRACT\n\nMISSION: Commit to a 7-day experiment that will test your identity awareness.\n\nYOU WILL PRODUCE:\n● ☐ Identity Contract\n● ☐ Identity Risk Index\n● ☐ Signed commitment\n\nTIME: 10 minutes\n\nDIFFICULTY:          Decide"
+            }
+          },
+          {
+            "id": "comp_06_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🤝 Commit One identity I will observe this week:\n\nMy identity rule — I will notice when I act like myself vs when I act like someone else.\n\nMy witness (who will hold me accountable):\n\nWhat I will do if I catch myself pretending (my restart plan):\n\nMy failure signal (how I will know if this experiment is not working):",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_06_bei05",
+            "type": "WorkbookChecklist",
+            "beiTarget": "BEI-05",
+            "props": {
+              "question": "BEI-05: Identity Risk Index",
+              "items": [
+                "My relationships",
+                "My choices",
+                "My confidence",
+                "My future",
+                "My happiness",
+                "People who depend on me"
+              ],
+              "minimumSelections": 1
+            }
+          },
+          {
+            "id": "comp_06_commitment",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "My Commitment Statement\n\n\"I, ________________________________, commit to observing my identity for 7 days, starting on ___________ and ending on ___________. I understand that I will not be perfect. When I catch myself pretending, I will notice it without judgment and keep going — because guilt is not a strategy.\"\n\nSigned: ________________________________\n\nDate: ________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_06_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_07_identity",
+        "title": "Investigation 7: 7-Day Experiment",
+        "difficulty": "Track",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_06_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_07_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_07_intro_ep",
+              "markdown": "### INVESTIGATION 7: 7-DAY EXPERIMENT\n\nMISSION: Track your identity for seven days. Collect evidence.\n\nYOU WILL PRODUCE:\n● ☐ 7-Day Completion Rate\n\nTIME: 5 minutes (setup)\n\nDIFFICULTY:         Track"
+            }
+          },
+          {
+            "id": "comp_07_bei06",
+            "type": "DailyExperiment",
+            "beiTarget": "BEI-06",
+            "props": {
+              "instructions": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-06: Experiment Adherence Rate\n\nInstructions: Each day, record ONE moment when you acted like yourself—OR one moment when you acted like someone else. Mark ✓ if you noticed your identity in action, or ✗ if you did not.\n\n**Day**        **Date**        **Moment I              **Did I notice?**     **Notes**\nNoticed** 1                                                      ☐ Yes ☐ No 2                                                      ☐ Yes ☐ No 3                                                      ☐ Yes ☐ No 4                                                      ☐ Yes ☐ No 5                                                      ☐ Yes ☐ No 6                                                      ☐ Yes ☐ No 7                                                      ☐ Yes ☐ No\n\nBEI-06: Days Completed: ___ / 7 Identities Noticed: ___ / 7",
+              "days": 7,
+              "statusLabels": [
+                "Not done",
+                "Done"
+              ],
+              "momentLabel": "Moment or action I noticed",
+              "notesLabel": "Notes"
+            }
+          },
+          {
+            "id": "comp_07_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_07_read_ep",
+              "markdown": "### Continue your journey:\n\nIf you wish to continue your experiment beyond seven days, you can transfer it into a longer Behaviour Journal™.\n\nPHASE B: THE EXPERIMENT This is the 7-day experiment. Complete this section after you leave the workshop."
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_08_identity",
+        "title": "Investigation 8: Evidence Review",
+        "difficulty": "Reflect",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_07_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_08_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_08_intro_ep",
+              "markdown": "### INVESTIGATION 8: EVIDENCE REVIEW\n\nMISSION: Harvest what you have learned from seven days of observing your identity.\n\nYOU WILL PRODUCE:\n● ☐ BEI-07: Identity Clarity Shift Index\n● ☐ BEI-08: Identity Confidence Index (Post)\n● ☐ Final Reflection\n\nTIME: 10 minutes\n\nDIFFICULTY:         Reflect"
+            }
+          },
+          {
+            "id": "comp_08_bei07",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-07",
+            "props": {
+              "episodeId": "comp_08_bei07_ep",
+              "markdown": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-07: Identity Clarity Shift Index\n\n\"On a scale of 1–10, how clear are you about who you really are now?\"\n\nBEI-07-Post: ___ / 10\n\nShift: ___ points (BEI-07 - BEI-01)",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_08_bei08",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-08",
+            "props": {
+              "episodeId": "comp_08_bei08_ep",
+              "markdown": "BEI-08: Identity Confidence Index (Post)\n\n\"How confident are you now that your equation explains your identity pattern?\"\n\nBEI-08-Post: ___ / 10\n\nShift: ___ points (BEI-08 - BEI-04)",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_08_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "Final Reflection Questions\n1. Did I notice my identity in action most days? Why or why not?\n\n___________________________________________________________\n\n2. What was the hardest part of the 7 days?\n\n___________________________________________________________\n\n3. When did you feel most like yourself—and when did you feel least like yourself?\n\n___________________________________________________________\n\n4. What identity did you discover that you did not know you had?\n\n___________________________________________________________\n\n5. What evidence convinced you that this pattern exists?\n\n___________________________________________________________\n\n6. Which belief became harder to defend after this experiment?\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_08_meta",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "My Meta-Identity Skill The meta-identity skill is the habit of noticing who you are becoming.\n\nMy plan to keep the meta-identity skill alive:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_09_identity",
+        "title": "Investigation 9: Behaviour Evidence Summary",
+        "difficulty": "Identity Shift",
+        "tensionLevel": 5,
+        "prerequisites": [
+          "step_08_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_09_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_09_intro_ep",
+              "markdown": "### INVESTIGATION 9: BEHAVIOUR PROFILE\n\nMISSION: Synthesise everything you have discovered into one page.\n\nYOU WILL PRODUCE:\n● ☐ BEI-09: Identity Shift Indicator\n\n● ☐ BEI-10: Behaviour Profile Summary\n\nTIME: 10 minutes\n\nDIFFICULTY:          Identity Shift"
+            }
+          },
+          {
+            "id": "comp_09_bei09",
+            "type": "PrivateReflection",
+            "beiTarget": "BEI-09",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-09: Identity Shift Indicator\n\nComplete this sentence:\n\n\"I am becoming someone who ______________________________________________.\"",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_bei10",
+            "type": "PrivateReflection",
+            "beiTarget": "BEI-10",
+            "props": {
+              "prompt": "BEI-10: Learner Behaviour Evidence Summary\nThe Identity I Am Building:\nMy Inherited Beliefs:\nMy Chosen Beliefs:\nThe Gap Between Who I Am and Who I Want to Be:\nThe Cost of Not Being Myself:\nMy Equation:\nConfidence (Pre → Post):\nIdentity Clarity (Pre → Post):\nNext Identity to Investigate:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_identity_sentence",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "One Sentence That Describes Me Now\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "Letter to My Future Self Write a letter to yourself. Address it to \"Future Me.\" Tell your future self:\n\n● Who you are right now\n● What you learned from observing your identity for 7 days\n● What you are proud of\n● What you still need to work on\n● One identity you want to keep building\n\nDear Future Me,\n\nFrom me, in Grade ___\n\nDate: ________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_09_read_ep",
+              "markdown": "### YOUR JOURNEY CONTINUES\n\nContinue your investigation with another Lab:\n\n☐ Habit Lab™ — What habits are building my life?\n☐ Decision Lab™ — Why do I keep making the same choices?\n☐ Money Lab™ — Where does my money actually go?\n☐ Risk Lab™ — What am I not protecting?\n☐ Purpose Lab™ — What gives my life direction?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_certificate_10",
+        "title": "Identity Lab Completion Certificate",
+        "difficulty": "Integrate",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_09_identity"
+        ],
+        "components": [
+          {
+            "id": "comp_certificate",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_certificate_ep",
+              "markdown": "### APPLIED COMMERCE®\n\n### Behaviour Intelligence Series™\n\n### Identity Lab™ Completion Certificate\n\nThis records completion of the Identity Lab learner investigation and its seven-day practice record.\n\n**Certificate boundary**\n\nThis certificate records participation and completion. It does not certify transformation, a psychometric result, a diagnosis, or a causal outcome.\n\n**Measurement register**: BIS-MM-0.1.0\n\n**Workbook source**: BIS Volume 1 v3"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "signature": "AC-BIS-V1-LAB-04-IDENTITY-3.0.1"
+}

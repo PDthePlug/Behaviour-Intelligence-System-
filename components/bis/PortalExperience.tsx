@@ -74,6 +74,14 @@ const roomNav: Array<{ room: Room; label: string; icon: typeof Home }> = [
   { room: "profile", label: "Profile", icon: User },
 ];
 
+const liveCatalogueCount = productLabs.filter((lab) => lab.status === "available").length;
+const preparingCatalogueCount = productLabs.length - liveCatalogueCount;
+
+function familyTitleForCartridge(cartridgeId: string) {
+  const productLab = productLabs.find((lab) => lab.cartridgeId === cartridgeId);
+  return productFamilies.find((family) => family.id === productLab?.familyId)?.title ?? "BIS Volume 1";
+}
+
 function asResponseMap(responses: SavedResponse[]) {
   return responses.reduce<ResponseMap>((map, response) => {
     map[response.componentId] = response;
@@ -377,7 +385,7 @@ function TodayDesk({ profile, lab, currentStep, responses, progress, loadingLab,
       </article>
 
       <div className="today-map-strip"><div><Map size={19} /><span><strong>Your {shortLabTitle} Map</strong>{Math.round(progress * 100)}% of the full Lab complete</span></div><button onClick={onOpenJourney}>See all {lab.timeline.steps.length} milestones <ArrowRight size={16} /></button></div>
-      <div className="single-lab-note"><LockKeyhole size={16} /><span><strong>Two Labs. One Behaviour Story.</strong> Habit Lab and Decision Lab keep separate evidence while contributing to the same private learner journey.</span></div>
+      <div className="single-lab-note"><LockKeyhole size={16} /><span><strong>Twelve Volume 1 Labs. One private learner journey.</strong> Each Lab keeps its evidence separate while preserving one coherent Behaviour Intelligence experience.</span></div>
     </section>
   );
 }
@@ -410,7 +418,7 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
       {view === "storefront" ? (
         <>
           <div className="marketplace-results marketplace-featured-zone">
-            <div className="marketplace-section-title"><div><span>FEATURED NOW</span><h2>Your next behaviour experience</h2></div><p>Two source-faithful digital Labs are available now.</p></div>
+            <div className="marketplace-section-title"><div><span>FEATURED NOW</span><h2>Your next behaviour experience</h2></div><p>All twelve Volume 1 Labs are now available as source-faithful digital cartridges.</p></div>
             <article className="marketplace-feature">
               <div className="marketplace-feature-copy">
                 <div className="marketplace-kicker"><span><Sparkles size={13} /> Featured Lab release</span><em><ShieldCheck size={13} /> Canonical Volume 1</em></div>
@@ -430,8 +438,8 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
 
           <section className="catalogue-zone" aria-labelledby="catalogue-title">
             <div className="catalogue-heading">
-              <div><span>THE 32-LAB BIS CATALOGUE</span><h2 id="catalogue-title">One content engine. Three commercial families.</h2><p>Habit Lab and Decision Lab are live. The remaining named Labs come directly from the BIS source architecture and will be published only after source-faithful digitalisation.</p></div>
-              <strong>2 live · 30 in preparation</strong>
+              <div><span>THE 32-LAB BIS CATALOGUE</span><h2 id="catalogue-title">One content engine. Three commercial families.</h2><p>Volume 1 is fully digital: twelve governed learner cartridges are live. The remaining named Labs will be released only after the same source-faithful interpretation and governance review.</p></div>
+              <strong>{liveCatalogueCount} live · {preparingCatalogueCount} in preparation</strong>
             </div>
             <div className="marketplace-tools">
               <label><Search size={17} /><input aria-label="Search the Behaviour Marketplace" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search all 32 Labs" /></label>
@@ -467,7 +475,7 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
             )}
           </section>
 
-          <div className="marketplace-roadmap"><div><LockKeyhole size={16} /><span><strong>The catalogue grows deliberately.</strong> Upcoming cartridges become available only after their source workbooks are completely digitalised, measurement-governed and quality assured.</span></div><em>2 live · 30 preparing</em></div>
+          <div className="marketplace-roadmap"><div><LockKeyhole size={16} /><span><strong>Volume 1 is complete.</strong> Future cartridges become available only after their source workbooks are fully digitalised, measurement-governed and quality assured.</span></div><em>{liveCatalogueCount} live · {preparingCatalogueCount} preparing</em></div>
         </>
       ) : (
         <div className="marketplace-library">
@@ -477,7 +485,7 @@ function MarketplaceRoom({ responseSets, onOpenLab }: { responseSets: ResponseSe
             const stats = progressForLab(lab, labResponses);
             const reflectionCount = stats.components.filter((component) => component.type === "PrivateReflection" && labResponses[component.id]?.isComplete).length;
             const labAction = stats.progress === 0 ? "Start journey" : stats.progress === 1 ? "Review journey" : "Resume journey";
-            return <article className={`marketplace-library-card library-${lab.cartridgeId}`} key={lab.cartridgeId}><div className="marketplace-library-mark"><BimsMark progress={Math.max(stats.progress, 0.04)} size="medium" /></div><div className="marketplace-library-copy"><small>CANONICAL CARTRIDGE · VERSION {lab.version}</small><h2>{lab.title}</h2><p>Personal Operating System · Private participant journey</p><div className="marketplace-library-progress"><i style={{ width: `${stats.progress * 100}%` }} /></div><span>{stats.completed} of {stats.components.length} interactions · {reflectionCount} private reflections</span></div><button onClick={() => onOpenLab(lab.cartridgeId)}>{labAction} <ChevronRight size={16} /></button></article>;
+            return <article className={`marketplace-library-card library-${lab.cartridgeId}`} key={lab.cartridgeId}><div className="marketplace-library-mark"><BimsMark progress={Math.max(stats.progress, 0.04)} size="medium" /></div><div className="marketplace-library-copy"><small>CANONICAL CARTRIDGE · VERSION {lab.version}</small><h2>{lab.title}</h2><p>{familyTitleForCartridge(lab.cartridgeId)} · Private participant journey</p><div className="marketplace-library-progress"><i style={{ width: `${stats.progress * 100}%` }} /></div><span>{stats.completed} of {stats.components.length} interactions · {reflectionCount} private reflections</span></div><button onClick={() => onOpenLab(lab.cartridgeId)}>{labAction} <ChevronRight size={16} /></button></article>;
           })}
           <p className="marketplace-access"><ShieldCheck size={14} /> Included with your BIS learner access. Your saved work remains in your private reflection vault.</p>
           <PrivateLibrary responseSets={responseSets} />
@@ -506,7 +514,7 @@ function PrivateLibrary({ responseSets }: { responseSets: ResponseSets }) {
   return (
     <section className="library-room">
       <header><span>PRIVATE LIBRARY</span><h1>Your words remain yours.</h1><p>Saved reflections from every published Lab appear here. They are grouped by investigation and never appear in the manager-facing cohort view.</p></header>
-      {entries.length === 0 ? <div className="empty-library"><BookOpen size={27} /><h2>Your first page is still blank.</h2><p>Private reflections will appear here after you begin Habit Lab or Decision Lab.</p></div> : <div className="library-entries">{entries.map(({ lab, step, component, response }) => { const props = component.props as ReflectionProps; const answers = answersFromPayload(response.payload); return <details key={`${lab.cartridgeId}:${component.id}`}><summary><div><small>{lab.title.split(":")[0]} · {step.title}</small><strong>{props.prompt.split("\n").find(Boolean)?.replace(/[🔎⭐✍️]/g, "").trim()}</strong></div><span>{new Date(response.updatedAt).toLocaleDateString("en-ZA", { day: "2-digit", month: "short" })}</span></summary><div className="library-entry-body">{answers.map((answer, index) => <blockquote key={`${answer}-${index}`}>{answer}</blockquote>)}</div></details>; })}</div>}
+      {entries.length === 0 ? <div className="empty-library"><BookOpen size={27} /><h2>Your first page is still blank.</h2><p>Private reflections will appear here after you begin any Volume 1 Lab.</p></div> : <div className="library-entries">{entries.map(({ lab, step, component, response }) => { const props = component.props as ReflectionProps; const answers = answersFromPayload(response.payload); return <details key={`${lab.cartridgeId}:${component.id}`}><summary><div><small>{lab.title.split(":")[0]} · {step.title}</small><strong>{props.prompt.split("\n").find(Boolean)?.replace(/[🔎⭐✍️]/g, "").trim()}</strong></div><span>{new Date(response.updatedAt).toLocaleDateString("en-ZA", { day: "2-digit", month: "short" })}</span></summary><div className="library-entry-body">{answers.map((answer, index) => <blockquote key={`${answer}-${index}`}>{answer}</blockquote>)}</div></details>; })}</div>}
     </section>
   );
 }

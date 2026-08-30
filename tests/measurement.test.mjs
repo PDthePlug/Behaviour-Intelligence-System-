@@ -19,12 +19,12 @@ function filesUnder(directory) {
   });
 }
 
-test("governs all Habit and Decision indicators with versioned source provenance", async () => {
-  const { habitLab } = await vite.ssrLoadModule("/lib/habit-lab.ts");
-  const { decisionLab } = await vite.ssrLoadModule("/lib/lab-catalog.ts");
+test("governs all 12 Volume 1 Lab indicators with versioned source provenance", async () => {
+  const { publishedLabs } = await vite.ssrLoadModule("/lib/lab-catalog.ts");
   const { BIS_MEASUREMENT_MANUAL_VERSION, validateMeasurementRegistry } = await vite.ssrLoadModule("/lib/measurement.ts");
 
-  for (const lab of [habitLab, decisionLab]) {
+  assert.equal(publishedLabs.length, 12);
+  for (const lab of publishedLabs) {
     assert.equal(lab.measurement.manualVersion, BIS_MEASUREMENT_MANUAL_VERSION);
     assert.equal(lab.measurement.modelStatus, "descriptive_evidence");
     assert.equal(lab.beiSchema.length, 10);
@@ -41,10 +41,18 @@ test("governs all Habit and Decision indicators with versioned source provenance
 test("uses the source-faithful binary seven-day practice record", async () => {
   const { publishedLabs } = await vite.ssrLoadModule("/lib/lab-catalog.ts");
   for (const lab of publishedLabs) {
-    const component = lab.timeline.steps.flatMap((step) => step.components).find((candidate) => candidate.id === "comp_exp_matrix");
-    assert.deepEqual(component.props.labels, ["Not done", "Done"]);
-    assert.deepEqual(component.props.values, [0, 1]);
     const definition = lab.beiSchema.find((indicator) => indicator.code === "BEI-06");
+    const components = lab.timeline.steps.flatMap((step) => step.components);
+    const component = components.find((candidate) => definition.sourceComponentIds.includes(candidate.id));
+    assert.ok(component, `${lab.cartridgeId} must resolve BEI-06 to its practice record`);
+    if (component.type === "DailyExperiment") {
+      assert.equal(component.props.days, 7);
+      assert.deepEqual(component.props.statusLabels, ["Not done", "Done"]);
+    } else {
+      assert.equal(component.type, "LikertMatrix");
+      assert.deepEqual(component.props.labels, ["Not done", "Done"]);
+      assert.deepEqual(component.props.values, [0, 1]);
+    }
     assert.deepEqual(definition.range, [0, 1]);
     assert.equal(definition.evidenceClass, "practice_record");
   }
@@ -68,7 +76,7 @@ test("calculates only approved learner-reported pre/post differences", async () 
 test("publishes the exact 32-Lab architecture and three delivery skins", async () => {
   const { deliverySkins, productFamilies, productLabs } = await vite.ssrLoadModule("/lib/product-architecture.ts");
   assert.equal(productLabs.length, 32);
-  assert.equal(productLabs.filter((lab) => lab.status === "available").length, 2);
+  assert.equal(productLabs.filter((lab) => lab.status === "available").length, 12);
   assert.deepEqual(productFamilies.map((family) => family.labs.length), [8, 11, 10, 3]);
   assert.deepEqual(Object.keys(deliverySkins).sort(), ["school", "workplace", "youth_programme"]);
 });

@@ -294,6 +294,36 @@
 .matrix-options b { font-size:11px; }
 .matrix-options span { margin-top:2px; overflow:hidden; font-size:6px; text-overflow:ellipsis; white-space:nowrap; }
 .matrix-options button.selected { background:#ad7338; border-color:#ad7338; color:white; }
+.checklist-interaction > h3 { margin:6px 0 15px; color:#3c3731; font:500 18px/1.35 var(--serif); }
+.workbook-checklist { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.workbook-checklist button { min-height:52px; padding:11px 13px; border:1px solid #e0dbd3; border-radius:14px; background:#fff; color:#554f48; display:flex; align-items:center; gap:10px; text-align:left; transition:.16s; }
+.workbook-checklist button > span { width:20px; height:20px; border:1px solid #cec7be; border-radius:6px; display:grid; place-items:center; flex:none; }
+.workbook-checklist button b { font:650 11px/1.4 var(--sans); }
+.workbook-checklist button.selected { border-color:#a96f35; background:#fff6ea; color:#6f451e; }
+.workbook-checklist button.selected > span { border-color:#a96f35; background:#a96f35; color:#fff; }
+.checklist-guidance { margin:12px 0 0; color:#777066; display:flex; align-items:center; gap:6px; font-size:9px; line-height:1.45; }
+.experiment-instructions { margin-bottom:20px; padding:19px 21px; border:1px solid #e3ded6; border-radius:18px; background:#faf8f4; }
+.experiment-instructions .workbook-copy h3 { font-size:20px; }
+.experiment-instructions .workbook-copy p { font-size:12px; }
+.experiment-days { display:grid; gap:13px; }
+.experiment-days > article { padding:19px; border:1px solid #dfdad2; border-radius:19px; background:#fff; box-shadow:0 10px 30px rgba(54,38,23,.04); }
+.experiment-days header { margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; }
+.experiment-days header span { color:#3c3731; font:750 14px var(--sans); }
+.experiment-days header em { padding:5px 8px; border-radius:99px; background:#eef5ee; color:#55745d; font-size:8px; font-style:normal; font-weight:750; }
+.experiment-days label { margin-top:11px; display:block; color:#5f5850; font-size:9px; font-weight:750; }
+.experiment-days input, .experiment-days textarea { width:100%; margin-top:6px; padding:11px 12px; border:1px solid #dfdad3; border-radius:11px; outline:0; background:#fcfbf9; color:#3e3933; font:12px/1.5 var(--sans); resize:vertical; }
+.experiment-days input:focus, .experiment-days textarea:focus { border-color:#b87c40; box-shadow:0 0 0 3px rgba(184,124,64,.1); }
+.experiment-days fieldset { margin:13px 0 0; padding:0; border:0; }
+.experiment-days legend { margin-bottom:7px; color:#5f5850; font-size:9px; font-weight:750; }
+.experiment-days fieldset > div { display:grid; grid-template-columns:repeat(2,1fr); gap:7px; }
+.experiment-days fieldset button { min-height:42px; padding:8px 10px; border:1px solid #ddd7cf; border-radius:11px; background:#faf9f6; color:#6d655c; display:flex; align-items:center; justify-content:center; gap:7px; font-size:10px; font-weight:700; }
+.experiment-days fieldset button span { width:17px; height:17px; border:1px solid #d0c9c0; border-radius:50%; display:grid; place-items:center; }
+.experiment-days fieldset button.selected { border-color:#a96f35; background:#f9eee0; color:#70471f; }
+.experiment-days fieldset button.selected span { border-color:#a96f35; background:#a96f35; color:#fff; }
+.experiment-save { margin-top:16px; display:flex; align-items:center; gap:13px; }
+.experiment-save > button { min-height:46px; padding:0 18px; border:0; border-radius:13px; background:#211d19; color:#fff; font-size:10px; font-weight:750; }
+.experiment-save > button:disabled { opacity:.35; }
+.experiment-save p { margin:0; color:#55745d; display:flex; align-items:center; gap:5px; font-size:9px; }
 .breath-interaction { text-align:center; }
 .breath-interaction .interaction-label { text-align:left; }
 .breath-orbit { width:190px; height:190px; margin:17px auto; border:3px solid #dfd9d1; border-radius:50%; display:grid; place-items:center; background:radial-gradient(circle,#fff,#f7f3ed); transition:transform 1s, border-color 1s; }
@@ -845,6 +875,18 @@
 .room-lab .matrix-items article { padding:20px; border-radius:18px; background:#fff; }
 .room-lab .matrix-items p { font-family:var(--sans); font-size:14px; }
 .room-lab .matrix-options button { min-height:49px; }
+.room-lab .checklist-interaction > h3 { font:750 22px/1.3 var(--sans); }
+.room-lab .workbook-checklist { gap:11px; }
+.room-lab .workbook-checklist button { min-height:62px; padding:14px 16px; border-radius:17px; }
+.room-lab .workbook-checklist button b { font-size:14px; }
+.room-lab .experiment-instructions { padding:24px 26px; border-radius:22px; }
+.room-lab .experiment-instructions .workbook-copy p { font-size:15px; }
+.room-lab .experiment-days { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.room-lab .experiment-days > article { padding:23px; border-radius:22px; }
+.room-lab .experiment-days header span { font-size:16px; }
+.room-lab .experiment-days label, .room-lab .experiment-days legend { font-size:11px; }
+.room-lab .experiment-days input, .room-lab .experiment-days textarea { min-height:49px; padding:13px 14px; font-size:14px; }
+.room-lab .experiment-save > button { min-height:50px; padding:0 21px; font-size:11px; }
 .room-lab .breath-prompt { font-family:var(--sans); font-size:14px; }
 .room-lab .lab-save-bar { width:100%; min-height:80px; padding:15px clamp(22px,4vw,58px); bottom:0; border-color:#ded7ce; background:rgba(255,253,249,.97); }
 .room-lab .lab-save-bar > div { font-size:10px; }
@@ -890,6 +932,15 @@
   .room-lab .matrix-items article { padding:17px 14px; }
   .room-lab .matrix-options { gap:4px; }
   .room-lab .matrix-options button { min-height:47px; }
+  .room-lab .checklist-interaction > h3 { font-size:19px; }
+  .room-lab .workbook-checklist { grid-template-columns:1fr; }
+  .room-lab .workbook-checklist button { min-height:58px; }
+  .room-lab .experiment-instructions { padding:19px 17px; }
+  .room-lab .experiment-days { grid-template-columns:1fr; }
+  .room-lab .experiment-days > article { padding:19px 16px; }
+  .room-lab .experiment-days input, .room-lab .experiment-days textarea { font-size:16px; }
+  .room-lab .experiment-save { align-items:stretch; flex-direction:column; }
+  .room-lab .experiment-save > button { width:100%; }
   .room-lab .lab-save-bar { min-height:70px; padding:10px 14px max(10px,env(safe-area-inset-bottom)); }
   .room-lab .lab-save-bar button { width:100%; min-height:50px; }
   .room-lab .lab-transition-message { min-height:calc(100svh - 154px); padding:40px 22px; }

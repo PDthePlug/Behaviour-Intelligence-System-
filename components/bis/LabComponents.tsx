@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { BookOpen, Check, LockKeyhole, Pause, Play, RotateCcw, ShieldCheck, Wind } from "lucide-react";
+import { BookOpen, CalendarDays, Check, ListChecks, LockKeyhole, Pause, Play, RotateCcw, ShieldCheck, Wind } from "lucide-react";
 import {
   BreathProps,
+  ChecklistProps,
+  DailyExperimentProps,
   LabComponent,
   LikertProps,
   parseWorkbookPrompt,
@@ -185,6 +187,109 @@ function LikertMatrix({ stepId, component, saved, onSave, deliveryEdition }: Ren
   );
 }
 
+function WorkbookChecklist({ stepId, component, saved, onSave, deliveryEdition }: RendererProps) {
+  const props = component.props as ChecklistProps;
+  const savedSelection = ((saved?.payload as { selectedIndices?: number[] } | undefined)?.selectedIndices ?? []);
+  const [selectedIndices, setSelectedIndices] = useState<number[]>(savedSelection);
+  const [saving, setSaving] = useState(false);
+  const minimumSelections = props.minimumSelections ?? 1;
+
+  async function toggle(index: number) {
+    const next = selectedIndices.includes(index)
+      ? selectedIndices.filter((candidate) => candidate !== index)
+      : [...selectedIndices, index].sort((a, b) => a - b);
+    setSelectedIndices(next);
+    setSaving(true);
+    try {
+      await onSave(stepId, component.id, {
+        selectedIndices: next,
+        selectedItems: next.map((itemIndex) => props.items[itemIndex]),
+        selectedCount: next.length,
+      }, next.length >= minimumSelections);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <section className="lab-interaction checklist-interaction">
+      <div className="interaction-label"><ListChecks size={14} /><span>Workbook checklist</span><em className={selectedIndices.length >= minimumSelections ? "saved" : ""}>{selectedIndices.length} selected</em></div>
+      <h3>{contextualiseWorkbookText(props.question, deliveryEdition)}</h3>
+      <div className="workbook-checklist" role="group" aria-label={props.question}>
+        {props.items.map((item, index) => {
+          const selected = selectedIndices.includes(index);
+          return <button key={item} type="button" aria-pressed={selected} disabled={saving} className={selected ? "selected" : ""} onClick={() => toggle(index)}><span>{selected && <Check size={14} />}</span><b>{contextualiseWorkbookText(item, deliveryEdition)}</b></button>;
+        })}
+      </div>
+      <p className="checklist-guidance"><ShieldCheck size={13} /> Select every source-workbook area that applies. No risk label or score is generated.</p>
+    </section>
+  );
+}
+
+type DailyRecord = {
+  date: string;
+  moment: string;
+  status?: 0 | 1;
+  notes: string;
+};
+
+function DailyExperiment({ stepId, component, saved, onSave, deliveryEdition }: RendererProps) {
+  const props = component.props as DailyExperimentProps;
+  const savedRecords = (saved?.payload as { records?: DailyRecord[] } | undefined)?.records ?? [];
+  const [records, setRecords] = useState<DailyRecord[]>(() => Array.from({ length: props.days }, (_, index) => ({
+    date: savedRecords[index]?.date ?? "",
+    moment: savedRecords[index]?.moment ?? "",
+    status: savedRecords[index]?.status,
+    notes: savedRecords[index]?.notes ?? "",
+  })));
+  const [saving, setSaving] = useState(false);
+  const [savedNotice, setSavedNotice] = useState("");
+  const answeredDays = records.filter((record) => record.status !== undefined).length;
+  const recordComplete = records.every((record) => Boolean(record.date && record.moment.trim() && record.status !== undefined));
+  const hasProgress = records.some((record) => record.date || record.moment.trim() || record.status !== undefined || record.notes.trim());
+
+  function updateRecord(index: number, update: Partial<DailyRecord>) {
+    setRecords((current) => current.map((record, recordIndex) => recordIndex === index ? { ...record, ...update } : record));
+    setSavedNotice("");
+  }
+
+  async function saveRecord() {
+    setSaving(true);
+    setSavedNotice("");
+    try {
+      await onSave(stepId, component.id, {
+        records,
+        completedCount: records.filter((record) => record.status === 1).length,
+        answeredDays,
+        totalDays: props.days,
+        responseScale: "0,1",
+      }, recordComplete);
+      setSavedNotice(recordComplete ? "Seven-day record complete." : "Progress saved. Return after your next observation.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <section className="lab-interaction experiment-interaction">
+      <div className="interaction-label"><CalendarDays size={14} /><span>Seven-day practice record</span><em className={recordComplete ? "saved" : ""}>{answeredDays}/{props.days} days recorded</em></div>
+      <div className="experiment-instructions"><MarkdownCopy markdown={contextualiseWorkbookText(props.instructions, deliveryEdition)} /></div>
+      <div className="experiment-days">
+        {records.map((record, index) => (
+          <article key={index}>
+            <header><span>Day {index + 1}</span>{record.status !== undefined && <em>{props.statusLabels[record.status]}</em>}</header>
+            <label>Date<input type="date" value={record.date} onChange={(event) => updateRecord(index, { date: event.target.value })} /></label>
+            <label>{props.momentLabel}<textarea rows={2} value={record.moment} onChange={(event) => updateRecord(index, { moment: event.target.value })} placeholder="Record the moment in your own words…" /></label>
+            <fieldset><legend>Did you apply your rule?</legend><div>{([0, 1] as const).map((status) => <button type="button" key={status} className={record.status === status ? "selected" : ""} onClick={() => updateRecord(index, { status })}><span>{record.status === status && <Check size={13} />}</span>{props.statusLabels[status]}</button>)}</div></fieldset>
+            <label>{props.notesLabel}<input value={record.notes} onChange={(event) => updateRecord(index, { notes: event.target.value })} placeholder="Optional context…" /></label>
+          </article>
+        ))}
+      </div>
+      <div className="experiment-save"><button disabled={saving || !hasProgress} onClick={saveRecord}>{saving ? "Saving…" : recordComplete ? "Complete seven-day record" : "Save experiment progress"}</button>{savedNotice && <p><Check size={13} /> {savedNotice}</p>}</div>
+    </section>
+  );
+}
+
 function MindfulBreath({ stepId, component, saved, onSave }: RendererProps) {
   const props = component.props as BreathProps;
   const total = (props.inhaleSeconds + props.holdSeconds + props.exhaleSeconds) * props.cycles;
@@ -236,5 +341,7 @@ export function LabComponentRenderer(props: RendererProps) {
   if (props.component.type === "StoryNarrative") return <StoryNarrative {...props} />;
   if (props.component.type === "PrivateReflection") return <PrivateReflection {...props} />;
   if (props.component.type === "LikertMatrix") return <LikertMatrix {...props} />;
+  if (props.component.type === "WorkbookChecklist") return <WorkbookChecklist {...props} />;
+  if (props.component.type === "DailyExperiment") return <DailyExperiment {...props} />;
   return <MindfulBreath {...props} />;
 }

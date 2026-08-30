@@ -1,0 +1,999 @@
+{
+  "cartridgeId": "influence-lab-2026",
+  "version": "3.0.1",
+  "title": "Influence Lab™: Quiet Power v3.0",
+  "description": "Influence is not about volume. It is about presence. Map who shapes you and whom you shape, then test one intentional influence rule for seven days.",
+  "theme": {
+    "primary": "#0f766e",
+    "accent": "#f59e0b",
+    "background": "#f5fcfb"
+  },
+  "source": {
+    "document": "BIS Volume 1 v3.pdf",
+    "volume": 1,
+    "labNumber": 9,
+    "learnerWorkbookPages": [
+      304,
+      326
+    ],
+    "interpretationStatus": "source_faithful_digital_cartridge"
+  },
+  "measurement": {
+    "manualVersion": "BIS-MM-0.1.0",
+    "modelStatus": "descriptive_evidence",
+    "claimsBoundary": "Behaviour Evidence Indicators describe source-specific learner evidence. They are not validated psychometric measures, diagnoses, forensic markers or proof of causation."
+  },
+  "beiSchema": [
+    {
+      "code": "BEI-01",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Influence Awareness Self-Rating (Pre)",
+      "construct": "Perceived influence awareness or capability",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Record the selected workbook response from 1 to 10 without norming or classification.",
+      "sourceComponentIds": [
+        "comp_baseline_index"
+      ],
+      "interpretationLimit": "A single learner self-rating; it is not a validated measure of influence capability.",
+      "pairedWith": "BEI-07",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-02",
+      "type": "scale",
+      "range": [
+        1,
+        5
+      ],
+      "description": "Influence Baseline Item Set",
+      "construct": "Self-reported frequency of workbook behaviours related to influence",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Retain all ten item responses from 1 to 5. A mean may be displayed only when every item is answered and must remain descriptive.",
+      "sourceComponentIds": [
+        "comp_baseline_profile"
+      ],
+      "interpretationLimit": "The item set is not a validated scale and must not be used to diagnose or label a learner.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-03",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Prediction Check",
+      "construct": "Learner comparison of a prediction with the revealed story outcome",
+      "evidenceClass": "self_report",
+      "timepoint": "during",
+      "scoringRule": "Record Yes as 1 and No as 0 for this workbook episode only.",
+      "sourceComponentIds": [
+        "comp_03_calibration"
+      ],
+      "interpretationLimit": "One story prediction is not a general calibration measure.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-04",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Influence Confidence Self-Rating (Pre)",
+      "construct": "Confidence in the learner-authored influence equation",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Record the selected workbook response from 1 to 10 without norming or classification.",
+      "sourceComponentIds": [
+        "comp_05_bei04"
+      ],
+      "interpretationLimit": "Confidence does not establish that the learner-authored equation is accurate.",
+      "pairedWith": "BEI-08",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-05",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Reported Influence Impact Areas",
+      "construct": "Self-reported areas affected by the selected influence pattern",
+      "evidenceClass": "self_report",
+      "timepoint": "during",
+      "scoringRule": "Retain each selected workbook area as selected or not selected; do not create a risk classification or threshold.",
+      "sourceComponentIds": [
+        "comp_06_bei05"
+      ],
+      "interpretationLimit": "This is not a clinical, safeguarding, actuarial or organisational risk assessment.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-06",
+      "type": "scale",
+      "range": [
+        0,
+        1
+      ],
+      "description": "7-Day Influence Practice Record",
+      "construct": "Learner-recorded completion of the selected routine or rule",
+      "evidenceClass": "practice_record",
+      "timepoint": "during",
+      "scoringRule": "Count Done responses across seven days and report the observed count as x/7. Missing days remain missing and are not treated as zero.",
+      "sourceComponentIds": [
+        "comp_07_bei06"
+      ],
+      "interpretationLimit": "The record is learner-entered and does not by itself establish sustained adherence.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-07",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Influence Awareness Self-Rating (Post)",
+      "construct": "Perceived influence awareness or capability",
+      "evidenceClass": "self_report",
+      "timepoint": "post",
+      "scoringRule": "Record the selected workbook response from 1 to 10. A difference from BEI-01 may be shown as learner-reported change only.",
+      "sourceComponentIds": [
+        "comp_08_bei07"
+      ],
+      "interpretationLimit": "A pre/post self-rating difference is not proof that the Lab caused change.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-08",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Influence Confidence Self-Rating (Post)",
+      "construct": "Confidence in the learner-authored influence equation",
+      "evidenceClass": "self_report",
+      "timepoint": "post",
+      "scoringRule": "Record the selected workbook response from 1 to 10. A difference from BEI-04 may be shown as learner-reported change only.",
+      "sourceComponentIds": [
+        "comp_08_bei08"
+      ],
+      "interpretationLimit": "A confidence difference is not evidence that the equation became more accurate.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-09",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Learner Identity Statement",
+      "construct": "Learner-authored identity reflection",
+      "evidenceClass": "reflection_output",
+      "timepoint": "post",
+      "scoringRule": "Record completion and preserve the private learner-authored text; do not score sentiment or identity.",
+      "sourceComponentIds": [
+        "comp_09_bei09"
+      ],
+      "interpretationLimit": "Completion does not demonstrate an identity shift.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-10",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Learner Behaviour Summary",
+      "construct": "Learner synthesis of the Influence Lab evidence",
+      "evidenceClass": "reflection_output",
+      "timepoint": "summary",
+      "scoringRule": "Record completion and preserve the private learner-authored summary; no automated profile is generated.",
+      "sourceComponentIds": [
+        "comp_09_bei10"
+      ],
+      "interpretationLimit": "The summary is a learner reflection, not a behavioural classification.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    }
+  ],
+  "timeline": {
+    "steps": [
+      {
+        "id": "step_baseline_00",
+        "title": "Influence Baseline Check-in (Pre-Workshop)",
+        "difficulty": "Observe",
+        "tensionLevel": 1,
+        "components": [
+          {
+            "id": "comp_baseline_story",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_baseline_story_ep",
+              "markdown": "### INFLUENCE BASELINE — PRE\n\nBefore you begin, complete this baseline check-in. Be honest. No one will see this but you.\n\nEach designated workbook response is recorded as a Behaviour Evidence Indicator (BEI): a source-specific evidence point for this Lab.",
+              "pivots": [
+                {
+                  "text": "Open baseline check-in",
+                  "beiScore": 5
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_baseline_profile",
+            "type": "LikertMatrix",
+            "beiTarget": "BEI-02",
+            "props": {
+              "question": "BEI-02: Influence Baseline Profile",
+              "items": [
+                "Know who influences you most",
+                "Influence others without realising it",
+                "Change your mind because of others",
+                "Stand firm in your beliefs",
+                "Influence people positively",
+                "Feel influenced by social media",
+                "Know your own influence power",
+                "Resist negative influence",
+                "Influence without speaking",
+                "Have people who look up to you"
+              ],
+              "labels": [
+                "Never",
+                "Rarely",
+                "Sometimes",
+                "Often",
+                "Always"
+              ]
+            }
+          },
+          {
+            "id": "comp_baseline_index",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-01",
+            "props": {
+              "episodeId": "comp_baseline_index_ep",
+              "markdown": "### BEI-01: Influence Awareness Index (Pre)\n\n\"On a scale of 1–10, how aware are you of who influences you—and who you influence? 1 = I never think about influence. 10 = I consciously manage who influences me and how I influence others.\"",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_01_influence",
+        "title": "Investigation 1: The Hook",
+        "difficulty": "Observe",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_baseline_00"
+        ],
+        "components": [
+          {
+            "id": "comp_01_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_intro_ep",
+              "markdown": "### INVESTIGATION 1: THE HOOK\n\nMISSION: Meet someone who discovered her influence without knowing it.\n\nYOU WILL PRODUCE:\n● ☐ A prediction about what you would do\n\nTIME: 5 minutes\n\nDIFFICULTY:          Observe"
+            }
+          },
+          {
+            "id": "comp_01_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_read_ep",
+              "markdown": "### 📖 Read\n\nEpisode 1: The Girl Who Asked the Right Question\n\nMeet Atlehang.\n\nAtlehang is quiet. She has always been quiet. She notices things. She asks questions. She remembers what people say. But she has never thought of herself as influential.\n\nShe is sixteen. She lives in Alexandra. She goes to the same school as Myah. She has seen Myah's notebook. She has seen Myah write. She has seen Myah change.\n\nOne day, Myah tells her about the grant office. About the silence. About the proposal that was ignored for three months.\n\n\"I don't know what to do,\" Myah says. \"I've tried everything.\"\n\nAtlehang listens. Then she asks one question:\n\n\"Did you ask them why?\"\n\nMyah stops. She stares at Atlehang. \"What?\"\n\n\"Did you ask them why they didn't respond? Not to complain. To understand.\"\n\nMyah thinks. She has not asked why. She has complained. She has been angry. She has not asked.\n\nThe next day, Myah walks back into the grant office. She asks why. They tell her—her proposal was incomplete. She had missed a form. She can resubmit.\n\nShe resubmits. She gets the grant.\n\nShe starts her mini-business. She becomes the challenger.\n\nAll because of one question from a quiet girl.\n\nAtlehang never thought of herself as a leader. She never thought of herself as influential. But she influenced Myah more than anyone else that year.\n\nShe did not speak loudly. She did not command attention. She just saw something others missed. She asked the question that needed to be asked.\n\nShe is sixteen. She changed Myah's path.\n\nShe still doesn't believe she did anything special."
+            }
+          },
+          {
+            "id": "comp_01_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔎 Evidence Challenge \"Think of a time you asked a question that changed something—or a time you should have asked a question. What happened?\"\n\nThe question I asked (or should have asked):\n\nWhat happened next:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_01_predict",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_predict_ep",
+              "markdown": "### 🤔 Predict\n\n\"What do you think Atlehang learned from this experience?\"\n\nBEI-03: Prediction Calibration Score\n\nComplete this after Investigation 3.",
+              "pivots": [
+                {
+                  "text": "She learned that she is not influential",
+                  "beiScore": 1
+                },
+                {
+                  "text": "She learned that quiet people can change things",
+                  "beiScore": 2
+                },
+                {
+                  "text": "She learned to speak louder",
+                  "beiScore": 3
+                },
+                {
+                  "text": "She learned to keep her questions to herself",
+                  "beiScore": 4
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_01_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What surprised me most so far?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_02_influence",
+        "title": "Investigation 2: The Prediction",
+        "difficulty": "Observe",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_01_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_02_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_02_intro_ep",
+              "markdown": "### INVESTIGATION 2: THE PREDICTION\n\nMISSION: Name your influence pattern.\n\nYOU WILL PRODUCE:\n● ☐ Who influences you most\n● ☐ Who you influence most\n\nTIME: 2 minutes\n\nDIFFICULTY:           Observe"
+            }
+          },
+          {
+            "id": "comp_02_predict",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🤔 Predict \"Who influences you most—and in what direction?\"\n\nWho influences me most:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔎 Evidence Challenge \"Look at your phone. Open your last three messages. Who sent them? Now ask: 'How did each of these people influence my decisions today?'\"\n\nHow they influenced me:\n\n**Person**                           **How They Influenced Me**\n1. ________                          ______________\n2. ________                          ______________\n3. ________                          ______________\n\n\"Who do you influence most—and in what direction?\"\n\nWho I influence most:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What surprised me most so far?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_03_influence",
+        "title": "Investigation 3: The Revelation",
+        "difficulty": "Analyse",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_02_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_03_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_intro_ep",
+              "markdown": "### INVESTIGATION 3: THE REVELATION\n\nMISSION: Discover the hidden truth about influence.\n\nYOU WILL PRODUCE:\n● ☐ Understanding of influence as quiet power\n● ☐ Prediction calibration check\n\nTIME: 3 minutes\n\nDIFFICULTY:           Analyse"
+            }
+          },
+          {
+            "id": "comp_03_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_read_ep",
+              "markdown": "### 📖 Read\n\nEpisode 2: What Atlehang Didn't See\n\nAtlehang changed Myah's path with one question. She did not speak loudly. She did not command attention. She just asked the question that needed to be asked.\n\nBut here is what nobody told her: influence is not about volume. It is about presence.\n\nMost people think influence is about being loud. Commanding attention. Being the centre of every room. But Atlehang did none of those things. She was quiet. She asked one question. And it changed Myah's entire trajectory.\n\nShe still doesn't believe she did anything special.\n\nThe next day, she walks past the spaza shop. The shelf is finished. Myah, Sipho, Lethabo, Thabo, and Mr. Patel are standing around it.\n\n\"Atlehang!\" Myah calls. \"You have to see this.\"\n\nAtlehang walks over. She looks at the shelf. It is solid. It is useful. It was built by people who did not know each other a few weeks ago.\n\n\"We couldn't have done this without you,\" Myah says.\n\nAtlehang looks confused. \"I didn't build anything.\"\n\n\"You asked the question,\" Myah says. \"Without that question, I wouldn't have gone back to the grant office. Without that question, I wouldn't have started my business. Without that question, I wouldn't be here.\"\n\nAtlehang looks at the shelf. She looks at Myah. She looks at the others.\n\nShe is sixteen. She changed Myah's path.\n\nShe still doesn't believe she did anything special.\n\nBut she is starting to wonder."
+            }
+          },
+          {
+            "id": "comp_03_read_2",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_read_2_ep",
+              "markdown": "### 👁️ The Observer\n\n\"Interesting. Atlehang asked one question. Nobody asked her why.\""
+            }
+          },
+          {
+            "id": "comp_03_calibration",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-03",
+            "props": {
+              "episodeId": "comp_03_calibration_ep",
+              "markdown": "✅ Were You Correct? Look back at your prediction about Atlehang.\n\nWas your prediction correct? ☐ Yes ☐ No\n\nBEI-03: Prediction Calibration Score: ☐ Correct ☐ Incorrect",
+              "pivots": [
+                {
+                  "text": "Yes",
+                  "beiScore": 1
+                },
+                {
+                  "text": "No",
+                  "beiScore": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_03_assumption",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "\"What assumption did this story challenge?\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_04_influence",
+        "title": "Investigation 4: Influence Mapping",
+        "difficulty": "Challenge Yourself",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_03_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_04_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_04_intro_ep",
+              "markdown": "### INVESTIGATION 4: INFLUENCE MAPPING\n\nMISSION: Discover the real structure of influence in your life, not the story you tell yourself.\n\nYOU WILL PRODUCE:\n● ☐ Influence map\n● ☐ Influence gaps\n● ☐ Priority influence issue\n\nTIME: 15 minutes\n\nDIFFICULTY:          Challenge Yourself"
+            }
+          },
+          {
+            "id": "comp_04_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔍 Investigate\nStep 1: Draw Your Influence Map\n\nDraw a circle in the centre: YOU. Around it, draw circles for:\n\n● Family\n● Friends\n● School\n● Social media\n● Community\n● Mentors\n● Media/Entertainment\n\nFor each circle, write:\n\n● Who is in it\n● What they influence in you\n● In what direction\n\n(Draw your map in the space below)\n\nMy Influence Map:\n\nStep 2: Who Influences You Most?\n\nList the top three people or things that influence your decisions, beliefs, and actions.\n\nMy top influences:\n\n1.\n2.\n3.\n\nStep 3: Who Do You Influence Most?\n\nList the top three people you influence—without even trying.\n\nPeople I influence:\n\n1.\n2.\n3.\n\nStep 4: Positive vs Negative\n\n\"Which influences are positive—pulling you toward who you want to become?\"\n\nPositive influences:\n\n\"Which influences are negative—pulling you away from who you want to become?\"\n\nNegative influences:\n\nStep 5: The Gap\n\n\"Is there a gap between who influences you and who you want to be influenced by?\"\n\nThe influence gap:\n\nStep 6: Your Influence\n\n\"What kind of influence do you have on others? Is it the influence you want to have?\"\n\nMy influence:\n\nStep 7: Diagnostic Layer\n\n\"Who is the most influential person in your life—and why?\"\n\nMost influential: _____________________________________\n\n\"What is the influence you are most proud of?\"\n\nProud influence: ______________________________________\n\n\"What is the influence you regret?\"\n\nRegret influence: ______________________________________\n\n\"How many people did you influence yesterday—without realising it?\"\n\nPeople influenced: ___",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_04_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\n🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_04_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What is one thing I now see that I did not see before?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_05_influence",
+        "title": "Investigation 5: Influence Equation",
+        "difficulty": "Identity Shift",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_04_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_05_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_05_intro_ep",
+              "markdown": "### INVESTIGATION 5: INFLUENCE EQUATION\n\nMISSION: Write the formula that explains your influence pattern.\n\nYOU WILL PRODUCE:\n● ☐ Personal Equation\n\n● ☐ Falsification test\n\nTIME: 10 minutes\n\nDIFFICULTY:          Identity Shift"
+            }
+          },
+          {
+            "id": "comp_05_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🧠 Think Your Personal Equation\n\nWrite your influence pattern as a diagnostic formula:\n\nInfluence Received + Influence Given = Influence Balance\n\nPositive Influence - Negative Influence = Direction\n\nMy Equation:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_bei04",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-04",
+            "props": {
+              "episodeId": "comp_05_bei04_ep",
+              "markdown": "BEI-04: Influence Confidence Index (Pre)\n\n\"How confident are you that this equation explains your influence pattern?\"\n\nBEI-04-Pre: ___ / 10",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_05_falsification",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "\"What evidence would prove your equation is wrong?\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\n🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_05_read_ep",
+              "markdown": "### Example Equations:\n\n**Pattern**                         **Equation**\nUnconscious influence               Actions + Unawareness = Unintended influence Conscious influence                 Values + Intentional actions = Positive impact Negative influence                  Pressure + Weak boundaries = Being pulled off course Quiet influence                     Presence + Question = Change"
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_06_influence",
+        "title": "Investigation 6: Influence Contract",
+        "difficulty": "Decide",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_05_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_06_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_06_intro_ep",
+              "markdown": "### INVESTIGATION 6: INFLUENCE CONTRACT\n\nMISSION: Commit to a 7-day experiment that will test your influence awareness.\n\nYOU WILL PRODUCE:\n● ☐ Influence Contract\n● ☐ Influence Index\n● ☐ Signed commitment\n\nTIME: 10 minutes\n\nDIFFICULTY:           Decide"
+            }
+          },
+          {
+            "id": "comp_06_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🤝 Commit One influence action I will take this week:\n\nMy influence promise — I will\n\n(e.g., be more intentional about who I let influence me, use my influence for good, ask a hard question like Atlehang)\n\nMy witness (who will hold me accountable):\n\nWhat I will do if I let negative influence win (my restart plan):\n\nMy failure signal (how I will know if this experiment is not working):",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_06_bei05",
+            "type": "WorkbookChecklist",
+            "beiTarget": "BEI-05",
+            "props": {
+              "question": "BEI-05: Influence Index",
+              "items": [
+                "My decisions",
+                "My beliefs",
+                "My relationships",
+                "My future direction",
+                "My confidence",
+                "My values"
+              ],
+              "minimumSelections": 1
+            }
+          },
+          {
+            "id": "comp_06_commitment",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "My Commitment Statement\n\n\"I, ________________________________, commit to becoming aware of influence for 7 days, starting on ___________ and ending on ___________. I understand that I will not be perfect. When I let negative influence win, I will notice it and correct — because drift is not a strategy.\"\n\nSigned: ________________________________\n\nDate: ________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_06_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_07_influence",
+        "title": "Investigation 7: 7-Day Experiment",
+        "difficulty": "Track",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_06_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_07_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_07_intro_ep",
+              "markdown": "### INVESTIGATION 7: 7-DAY EXPERIMENT\n\nMISSION: Track your influence for seven days. Collect evidence.\n\nYOU WILL PRODUCE:\n● ☐ 7-Day Completion Rate\n\nTIME: 5 minutes (setup)\n\nDIFFICULTY:           Track"
+            }
+          },
+          {
+            "id": "comp_07_bei06",
+            "type": "DailyExperiment",
+            "beiTarget": "BEI-06",
+            "props": {
+              "instructions": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-06: Experiment Adherence Rate\n\nInstructions: Each day, record ONE moment when you influenced someone—OR one moment when someone influenced you. Mark ✓ if you noticed the influence, or ✗ if you did not.\n\n**Day**         **Date**        **Moment I          **Did I notice?**    **Notes**\nNoticed** 1                                                   ☐ Yes ☐ No 2                                                   ☐ Yes ☐ No 3                                                   ☐ Yes ☐ No 4                                                   ☐ Yes ☐ No\n\n**Day**        **Date**        **Moment I              **Did I notice?**     **Notes**\nNoticed** 5                                                      ☐ Yes ☐ No 6                                                      ☐ Yes ☐ No 7                                                      ☐ Yes ☐ No\n\nBEI-06: Days Completed: ___ / 7 Influence Moments Noticed: ___ / 7",
+              "days": 7,
+              "statusLabels": [
+                "Not done",
+                "Done"
+              ],
+              "momentLabel": "Moment or action I noticed",
+              "notesLabel": "Notes"
+            }
+          },
+          {
+            "id": "comp_07_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_07_read_ep",
+              "markdown": "### Continue your journey:\n\nIf you wish to continue your experiment beyond seven days, you can transfer it into a longer Behaviour Journal™.\n\nPHASE B: THE EXPERIMENT This is the 7-day experiment. Complete this section after you leave the workshop."
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_08_influence",
+        "title": "Investigation 8: Evidence Review",
+        "difficulty": "Reflect",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_07_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_08_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_08_intro_ep",
+              "markdown": "### INVESTIGATION 8: EVIDENCE REVIEW\n\nMISSION: Harvest what you have learned from seven days of noticing influence.\n\nYOU WILL PRODUCE:\n● ☐ BEI-07: Influence Awareness Shift Index\n● ☐ BEI-08: Influence Confidence Index (Post)\n● ☐ Final Reflection\n\nTIME: 10 minutes\n\nDIFFICULTY:          Reflect"
+            }
+          },
+          {
+            "id": "comp_08_bei07",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-07",
+            "props": {
+              "episodeId": "comp_08_bei07_ep",
+              "markdown": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-07: Influence Awareness Shift Index\n\n\"On a scale of 1–10, how aware are you of who influences you—and who you influence now?\"\n\nBEI-07-Post: ___ / 10\n\nShift: ___ points (BEI-07 - BEI-01)",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_08_bei08",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-08",
+            "props": {
+              "episodeId": "comp_08_bei08_ep",
+              "markdown": "BEI-08: Influence Confidence Index (Post)\n\n\"How confident are you now that your equation explains your influence pattern?\"\n\nBEI-08-Post: ___ / 10\n\nShift: ___ points (BEI-08 - BEI-04)",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_08_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "Final Reflection Questions\n1. Did I notice influence most days? Why or why not?\n\n___________________________________________________________\n\n2. What was the hardest part of the 7 days?\n\n___________________________________________________________\n\n3. When did you influence someone—and when did someone influence you?\n\n___________________________________________________________\n\n4. What surprised you most about influence in your life?\n\n___________________________________________________________\n\n5. What evidence convinced you that this pattern exists?\n\n___________________________________________________________\n\n6. Which belief became harder to defend after this experiment?\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_08_meta",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "My Meta-Influence Skill The meta-influence skill is the habit of noticing influence in action.\n\nMy plan to keep the meta-influence skill alive:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_09_influence",
+        "title": "Investigation 9: Behaviour Evidence Summary",
+        "difficulty": "Identity Shift",
+        "tensionLevel": 5,
+        "prerequisites": [
+          "step_08_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_09_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_09_intro_ep",
+              "markdown": "### INVESTIGATION 9: BEHAVIOUR PROFILE\n\nMISSION: Synthesise everything you have discovered into one page.\n\nYOU WILL PRODUCE:\n● ☐ BEI-09: Identity Shift Indicator\n● ☐ BEI-10: Behaviour Profile Summary\n\nTIME: 10 minutes\n\nDIFFICULTY:          Identity Shift"
+            }
+          },
+          {
+            "id": "comp_09_bei09",
+            "type": "PrivateReflection",
+            "beiTarget": "BEI-09",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-09: Identity Shift Indicator\n\nComplete this sentence:\n\n\"I am becoming someone who ______________________________________________.\"",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_bei10",
+            "type": "PrivateReflection",
+            "beiTarget": "BEI-10",
+            "props": {
+              "prompt": "BEI-10: Learner Behaviour Evidence Summary\nMy Top Influences:\nPeople I Influence:\nPositive Influences:\nNegative Influences:\nThe Influence Gap:\nMy Equation:\nConfidence (Pre → Post):\nInfluence Awareness (Pre → Post):\nNext Influence to Investigate:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_identity_sentence",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "One Sentence That Describes Me Now\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "Letter to My Future Self\n\nWrite a letter to yourself. Address it to \"Future Me.\" Tell your future self:\n\n● Who you are right now\n● What you learned from noticing influence for 7 days\n● What you are proud of\n● What you still need to work on\n● One influence principle you want to keep\n\nDear Future Me,\n\nFrom me, in Grade ___\n\nDate: ________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_09_read_ep",
+              "markdown": "### YOUR JOURNEY CONTINUES\n\nContinue your investigation with another Lab:\n\n☐ Habit Lab™ — What habits are building my life?\n☐ Decision Lab™ — Why do I keep making the same choices?\n☐ Money Lab™ — Where does my money actually go?\n☐ Identity Lab™ — Who am I becoming?\n☐ Leadership Lab™ — Who am I as a leader?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_certificate_10",
+        "title": "Influence Lab Completion Certificate",
+        "difficulty": "Integrate",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_09_influence"
+        ],
+        "components": [
+          {
+            "id": "comp_certificate",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_certificate_ep",
+              "markdown": "### APPLIED COMMERCE®\n\n### Behaviour Intelligence Series™\n\n### Influence Lab™ Completion Certificate\n\nThis records completion of the Influence Lab learner investigation and its seven-day practice record.\n\n**Certificate boundary**\n\nThis certificate records participation and completion. It does not certify transformation, a psychometric result, a diagnosis, or a causal outcome.\n\n**Measurement register**: BIS-MM-0.1.0\n\n**Workbook source**: BIS Volume 1 v3"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "signature": "AC-BIS-V1-LAB-09-INFLUENCE-3.0.1"
+}

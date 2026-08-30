@@ -8,6 +8,16 @@
     "accent": "#f97316",
     "background": "#fafafa"
   },
+  "source": {
+    "document": "BIS Volume 1 v3.pdf",
+    "volume": 1,
+    "labNumber": 1,
+    "learnerWorkbookPages": [
+      1,
+      23
+    ],
+    "interpretationStatus": "source_faithful_digital_cartridge"
+  },
   "measurement": {
     "manualVersion": "BIS-MM-0.1.0",
     "modelStatus": "descriptive_evidence",

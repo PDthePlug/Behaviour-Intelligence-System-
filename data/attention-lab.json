@@ -1,0 +1,999 @@
+{
+  "cartridgeId": "attention-lab-2026",
+  "version": "3.0.1",
+  "title": "Attention Lab™: The Most Valuable Resource v3.0",
+  "description": "You cannot make more time or energy, but you can choose where you put your attention. Map distraction, redesign one environment, and test an attention rule for seven days.",
+  "theme": {
+    "primary": "#075985",
+    "accent": "#38bdf8",
+    "background": "#f5fbff"
+  },
+  "source": {
+    "document": "BIS Volume 1 v3.pdf",
+    "volume": 1,
+    "labNumber": 5,
+    "learnerWorkbookPages": [
+      159,
+      180
+    ],
+    "interpretationStatus": "source_faithful_digital_cartridge"
+  },
+  "measurement": {
+    "manualVersion": "BIS-MM-0.1.0",
+    "modelStatus": "descriptive_evidence",
+    "claimsBoundary": "Behaviour Evidence Indicators describe source-specific learner evidence. They are not validated psychometric measures, diagnoses, forensic markers or proof of causation."
+  },
+  "beiSchema": [
+    {
+      "code": "BEI-01",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Attention Quality Self-Rating (Pre)",
+      "construct": "Perceived attention awareness or capability",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Record the selected workbook response from 1 to 10 without norming or classification.",
+      "sourceComponentIds": [
+        "comp_baseline_index"
+      ],
+      "interpretationLimit": "A single learner self-rating; it is not a validated measure of attention capability.",
+      "pairedWith": "BEI-07",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-02",
+      "type": "scale",
+      "range": [
+        1,
+        5
+      ],
+      "description": "Attention Baseline Item Set",
+      "construct": "Self-reported frequency of workbook behaviours related to attention",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Retain all ten item responses from 1 to 5. A mean may be displayed only when every item is answered and must remain descriptive.",
+      "sourceComponentIds": [
+        "comp_baseline_profile"
+      ],
+      "interpretationLimit": "The item set is not a validated scale and must not be used to diagnose or label a learner.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-03",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Prediction Check",
+      "construct": "Learner comparison of a prediction with the revealed story outcome",
+      "evidenceClass": "self_report",
+      "timepoint": "during",
+      "scoringRule": "Record Yes as 1 and No as 0 for this workbook episode only.",
+      "sourceComponentIds": [
+        "comp_03_calibration"
+      ],
+      "interpretationLimit": "One story prediction is not a general calibration measure.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-04",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Attention Confidence Self-Rating (Pre)",
+      "construct": "Confidence in the learner-authored attention equation",
+      "evidenceClass": "self_report",
+      "timepoint": "pre",
+      "scoringRule": "Record the selected workbook response from 1 to 10 without norming or classification.",
+      "sourceComponentIds": [
+        "comp_05_bei04"
+      ],
+      "interpretationLimit": "Confidence does not establish that the learner-authored equation is accurate.",
+      "pairedWith": "BEI-08",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-05",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Reported Attention Impact Areas",
+      "construct": "Self-reported areas affected by the selected attention pattern",
+      "evidenceClass": "self_report",
+      "timepoint": "during",
+      "scoringRule": "Retain each selected workbook area as selected or not selected; do not create a risk classification or threshold.",
+      "sourceComponentIds": [
+        "comp_06_bei05"
+      ],
+      "interpretationLimit": "This is not a clinical, safeguarding, actuarial or organisational risk assessment.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-06",
+      "type": "scale",
+      "range": [
+        0,
+        1
+      ],
+      "description": "7-Day Attention Practice Record",
+      "construct": "Learner-recorded completion of the selected routine or rule",
+      "evidenceClass": "practice_record",
+      "timepoint": "during",
+      "scoringRule": "Count Done responses across seven days and report the observed count as x/7. Missing days remain missing and are not treated as zero.",
+      "sourceComponentIds": [
+        "comp_07_bei06"
+      ],
+      "interpretationLimit": "The record is learner-entered and does not by itself establish sustained adherence.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-07",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Attention Quality Self-Rating (Post)",
+      "construct": "Perceived attention awareness or capability",
+      "evidenceClass": "self_report",
+      "timepoint": "post",
+      "scoringRule": "Record the selected workbook response from 1 to 10. A difference from BEI-01 may be shown as learner-reported change only.",
+      "sourceComponentIds": [
+        "comp_08_bei07"
+      ],
+      "interpretationLimit": "A pre/post self-rating difference is not proof that the Lab caused change.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-08",
+      "type": "scale",
+      "range": [
+        1,
+        10
+      ],
+      "description": "Attention Confidence Self-Rating (Post)",
+      "construct": "Confidence in the learner-authored attention equation",
+      "evidenceClass": "self_report",
+      "timepoint": "post",
+      "scoringRule": "Record the selected workbook response from 1 to 10. A difference from BEI-04 may be shown as learner-reported change only.",
+      "sourceComponentIds": [
+        "comp_08_bei08"
+      ],
+      "interpretationLimit": "A confidence difference is not evidence that the equation became more accurate.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-09",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Learner Identity Statement",
+      "construct": "Learner-authored identity reflection",
+      "evidenceClass": "reflection_output",
+      "timepoint": "post",
+      "scoringRule": "Record completion and preserve the private learner-authored text; do not score sentiment or identity.",
+      "sourceComponentIds": [
+        "comp_09_bei09"
+      ],
+      "interpretationLimit": "Completion does not demonstrate an identity shift.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    },
+    {
+      "code": "BEI-10",
+      "type": "boolean",
+      "range": [
+        0,
+        1
+      ],
+      "description": "Learner Behaviour Summary",
+      "construct": "Learner synthesis of the Attention Lab evidence",
+      "evidenceClass": "reflection_output",
+      "timepoint": "summary",
+      "scoringRule": "Record completion and preserve the private learner-authored summary; no automated profile is generated.",
+      "sourceComponentIds": [
+        "comp_09_bei10"
+      ],
+      "interpretationLimit": "The summary is a learner reflection, not a behavioural classification.",
+      "measurementVersion": "BIS-MM-0.1.0",
+      "reportingStatus": "descriptive_only"
+    }
+  ],
+  "timeline": {
+    "steps": [
+      {
+        "id": "step_baseline_00",
+        "title": "Attention Baseline Check-in (Pre-Workshop)",
+        "difficulty": "Observe",
+        "tensionLevel": 1,
+        "components": [
+          {
+            "id": "comp_baseline_story",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_baseline_story_ep",
+              "markdown": "### ATTENTION BASELINE — PRE\n\nBefore you begin, complete this baseline check-in. Be honest. No one will see this but you.\n\nEach designated workbook response is recorded as a Behaviour Evidence Indicator (BEI): a source-specific evidence point for this Lab.",
+              "pivots": [
+                {
+                  "text": "Open baseline check-in",
+                  "beiScore": 5
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_baseline_profile",
+            "type": "LikertMatrix",
+            "beiTarget": "BEI-02",
+            "props": {
+              "question": "BEI-02: Attention Baseline Profile",
+              "items": [
+                "Lose focus when you need to concentrate",
+                "Check your phone without thinking",
+                "Struggle to finish tasks without distraction",
+                "Know exactly where your attention goes",
+                "Feel like you are wasting time",
+                "Get distracted by notifications",
+                "Feel anxious when you are not on your phone",
+                "Work better when you remove distractions",
+                "Know what steals your focus most",
+                "Have control over where you put your attention"
+              ],
+              "labels": [
+                "Never",
+                "Rarely",
+                "Sometimes",
+                "Often",
+                "Always"
+              ]
+            }
+          },
+          {
+            "id": "comp_baseline_index",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-01",
+            "props": {
+              "episodeId": "comp_baseline_index_ep",
+              "markdown": "### BEI-01: Attention Quality Index (Pre)\n\n\"On a scale of 1–10, how good are you at controlling your attention? 1 = my attention controls me. 10 = I control my attention.\"",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_01_attention",
+        "title": "Investigation 1: The Hook",
+        "difficulty": "Observe",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_baseline_00"
+        ],
+        "components": [
+          {
+            "id": "comp_01_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_intro_ep",
+              "markdown": "### INVESTIGATION 1: THE HOOK\n\nMISSION: Meet someone who discovered what was stealing her attention.\n\nYOU WILL PRODUCE:\n● ☐ A prediction about Myah's choice\n\nTIME: 5 minutes\n\nDIFFICULTY:          Observe"
+            }
+          },
+          {
+            "id": "comp_01_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_read_ep",
+              "markdown": "### 📖 Read\n\nEpisode 1: The Girl Who Couldn't Stop Reaching\n\nMeet Myah.\n\nMyah is fifteen. She carries a notebook everywhere. She writes down what she sees. She has written who she is becoming. She has said it out loud.\n\nBut she is running late. Again.\n\nShe wakes up, reaches for her phone. Scrolls for twenty minutes. Then rushes to get ready.\n\nHer mother calls from the kitchen: \"Myah! Taxi does not wait!\"\n\nSame words. Same scramble. Same stress.\n\nThat night, she writes in her notebook:\n\nCue: Wake up Routine: Scroll phone Reward: ??? (I don't even feel good after)\n\nShe stares at the page.\n\nShe has been tracking her money for months. She has traced supply chains. She has mapped her community's money. But she has never really looked at her own morning. She has never asked herself why she keeps doing something that makes her feel worse.\n\n\"What if I changed the routine?\" she thinks. \"What if I put my phone in the kitchen before bed? Then when I wake up, it is not there. I would have to get up to get it. And by then, maybe I would not want to scroll.\"\n\nShe decides to try. Not because someone told her to. Because she is curious about her own behavior. She wants to see if she can change it.\n\nBut she is fifteen. She has written who she is becoming. She has said it out loud. She still does not know if she can change her own behaviour.\n\nThe next morning, she wakes up. She reaches for her phone. It is not there.\n\nShe lies in bed for a moment. She could get up. She could scroll. She could go back to sleep.\n\nShe gets up.\n\nShe does not know what she is doing. She just does it."
+            }
+          },
+          {
+            "id": "comp_01_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔎 Evidence Challenge \"Unlock your phone. Open Screen Time. Write today's total so far.\"\n\nToday's phone time so far: ________\n\n\"Now write yesterday's total if you can find it.\"\n\nYesterday's phone time: ________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_01_predict",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_01_predict_ep",
+              "markdown": "### 🤔 Predict\n\n\"What do you think will happen when Myah puts her phone in the kitchen?\"\n\nBEI-03: Prediction Calibration Score\n\nComplete this after Investigation 3.",
+              "pivots": [
+                {
+                  "text": "She will still find a way to scroll",
+                  "beiScore": 1
+                },
+                {
+                  "text": "She will get up and start her day without scrolling",
+                  "beiScore": 2
+                },
+                {
+                  "text": "She will go back to sleep",
+                  "beiScore": 3
+                },
+                {
+                  "text": "She will feel worse without her phone",
+                  "beiScore": 4
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_01_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What surprised me most so far?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_02_attention",
+        "title": "Investigation 2: The Prediction",
+        "difficulty": "Observe",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_01_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_02_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_02_intro_ep",
+              "markdown": "### INVESTIGATION 2: THE PREDICTION\n\nMISSION: Name what steals your attention most.\n\nYOU WILL PRODUCE:\n● ☐ Your biggest distraction\n● ☐ What your distraction costs you\n\nTIME: 2 minutes\n\nDIFFICULTY:           Observe"
+            }
+          },
+          {
+            "id": "comp_02_predict",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🤔 Predict \"What steals your attention most? What is the one thing that consistently pulls you away from what matters?\"\n\nMy biggest distraction:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔎 Evidence Challenge \"Open your phone. Check your notifications. How many are unread? Write the number.\"\n\nUnread notifications: ________\n\n\"Now open your messages. How many conversations have you not replied to?\"\n\nUnreplied conversations: ________\n\n\"What does this distraction cost you—in time, energy, relationships, or opportunity?\"\n\nThe cost of my distraction:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_02_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What surprised me most so far?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_03_attention",
+        "title": "Investigation 3: The Revelation",
+        "difficulty": "Analyse",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_02_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_03_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_intro_ep",
+              "markdown": "### INVESTIGATION 3: THE REVELATION\n\nMISSION: Discover the hidden structure of attention.\n\nYOU WILL PRODUCE:\n● ☐ Understanding of attention as choice\n● ☐ Prediction calibration check\n\nTIME: 3 minutes\n\nDIFFICULTY:           Analyse"
+            }
+          },
+          {
+            "id": "comp_03_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_read_ep",
+              "markdown": "### 📖 Read\n\nEpisode 2: What Myah Didn't Notice\n\nMyah put her phone in the kitchen. She woke up. She reached for it. It was not there.\n\nShe got up. She started her day without scrolling.\n\nShe did it again the next day. And the next.\n\nBut here is what nobody told her: attention is not a willpower problem. It is an environment problem. You are fighting against a system designed to capture your attention.\n\nMyah changed her environment. She did not try to be more disciplined. She put her phone in the kitchen. That one change—adding friction to the distraction—made the right choice easier and the wrong choice harder.\n\nBut she still struggles. She still finds herself reaching for her phone during the day. She still loses focus. She still wonders if she is wasting her attention.\n\nShe is fifteen. She changed her morning. But she has not changed everything.\n\nThe next day, she walks past the spaza shop. She sees Sipho and Lethabo again. They are building something—a small shelf for the spaza shop. She watches.\n\n\"You're the one with the notebook,\" Sipho says.\n\nShe nods.\n\n\"What are you building?\" Lethabo asks.\n\nShe thinks about her notebook. She thinks about her morning. She thinks about her attention.\n\n\"I'm trying to build focus,\" she says.\n\nSipho and Lethabo look at her. They nod.\n\n\"Me too,\" Sipho says.\n\n\"Same,\" Lethabo says.\n\nShe walks home. She does not know if she is building focus. But she is trying.\n\nShe is fifteen. She has written who she is becoming. She has said it out loud. She has changed her morning. She still does not know if she can control her attention.\n\nBut she is trying.\n\nAnd something shifted."
+            }
+          },
+          {
+            "id": "comp_03_read_2",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_03_read_2_ep",
+              "markdown": "### 👁️ The Observer\n\n\"Interesting. Myah put the phone in the kitchen, but she still reached for it.\""
+            }
+          },
+          {
+            "id": "comp_03_calibration",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-03",
+            "props": {
+              "episodeId": "comp_03_calibration_ep",
+              "markdown": "✅ Were You Correct? Look back at your prediction about Myah.\n\nWas your prediction correct? ☐ Yes ☐ No\n\nBEI-03: Prediction Calibration Score: ☐ Correct ☐ Incorrect",
+              "pivots": [
+                {
+                  "text": "Yes",
+                  "beiScore": 1
+                },
+                {
+                  "text": "No",
+                  "beiScore": 0
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_03_assumption",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "\"What assumption did this story challenge?\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_04_attention",
+        "title": "Investigation 4: Attention Mapping",
+        "difficulty": "Challenge Yourself",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_03_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_04_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_04_intro_ep",
+              "markdown": "### INVESTIGATION 4: ATTENTION MAPPING\n\nMISSION: Discover the real structure of your attention, not the story you tell yourself.\n\nYOU WILL PRODUCE:\n● ☐ Attention map\n● ☐ Distraction triggers\n● ☐ Cost of distraction\n\nTIME: 15 minutes\n\nDIFFICULTY:            Challenge Yourself"
+            }
+          },
+          {
+            "id": "comp_04_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🔍 Investigate\nStep 1: Map Your Average Day\n\nThink about a typical day. Where does your attention go?\n\n● Morning: ___________________________________________________\n● Midday: ____________________________________________________\n● Afternoon: _________________________________________________\n● Evening: ___________________________________________________\n● Night: _____________________________________________________\n\nMy attention map:\n\nStep 2: Your Top Distractions\n\n\"What are the top three things that steal your attention?\"\n\nMy top distractions:\n\n1.\n2.\n3.\n\nStep 3: The Cost\n\n\"What does each distraction cost you—in time, energy, relationships, or opportunity?\"\n\nThe cost of my distractions:\n\nStep 4: The Environment\n\n\"What in your environment makes distraction easy?\"\n\nWhat makes distraction easy:\n\nStep 5: The Environment Design\n\n\"What could you change in your environment to make focus easier and distraction harder?\"\n\nMy environment changes:\n\nStep 6: Diagnostic Layer\n\n\"Which time of day is hardest for your focus?\"\n\nHardest time: __________________________________________\n\n\"Which environment makes you most distracted?\"\n\nMost distracting environment: __________________________\n\n\"What is the one thing you could remove from your environment to immediately improve focus?\"\n\nOne thing to remove: ___________________________________\n\n\"How many times yesterday did you check your phone without thinking?\"\n\nCount: ___",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_04_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\n🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_04_pause",
+            "type": "MindfulBreath",
+            "props": {
+              "prompt": "⏸ PAUSE Close the workbook.\n\nTake 30 seconds.\n\nAsk yourself:\n\n\"What is one thing I now see that I did not see before?\"\n\nThen continue.",
+              "inhaleSeconds": 5,
+              "holdSeconds": 5,
+              "exhaleSeconds": 5,
+              "cycles": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_05_attention",
+        "title": "Investigation 5: Attention Equation",
+        "difficulty": "Identity Shift",
+        "tensionLevel": 3,
+        "prerequisites": [
+          "step_04_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_05_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_05_intro_ep",
+              "markdown": "### INVESTIGATION 5: ATTENTION EQUATION\n\nMISSION: Write the formula that explains your attention pattern.\n\nYOU WILL PRODUCE:\n● ☐ Personal Equation\n● ☐ Falsification test\n\nTIME: 10 minutes\n\nDIFFICULTY:           Identity Shift"
+            }
+          },
+          {
+            "id": "comp_05_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🧠 Think Your Personal Equation\n\nWrite your attention pattern as a diagnostic formula:\n\nEnvironment + Habit = Attention Pattern\n\nEnvironment Redesign + New Habit = Focus\n\nMy Equation:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_bei04",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-04",
+            "props": {
+              "episodeId": "comp_05_bei04_ep",
+              "markdown": "BEI-04: Attention Confidence Index (Pre)\n\n\"How confident are you that this equation explains your attention pattern?\"\n\nBEI-04-Pre: ___ / 10",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_05_falsification",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "\"What evidence would prove your equation is wrong?\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\n🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_05_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_05_read_ep",
+              "markdown": "### Example Equations:\n\n**Pattern**                            **Equation**\nPhone addiction                        Boredom + Phone nearby = 30 minutes lost Distracted work                        Task + Notifications = Fragmented focus Friction design                        Distraction + Friction = Focus Environmental control                  Focus + Designed space = Flow"
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_06_attention",
+        "title": "Investigation 6: Attention Contract",
+        "difficulty": "Decide",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_05_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_06_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_06_intro_ep",
+              "markdown": "### INVESTIGATION 6: ATTENTION CONTRACT\n\nMISSION: Commit to a 7-day experiment that will test your attention awareness.\n\nYOU WILL PRODUCE:\n● ☐ Attention Contract\n● ☐ Attention Risk Index\n● ☐ Signed commitment\n\nTIME: 10 minutes\n\nDIFFICULTY:          Decide"
+            }
+          },
+          {
+            "id": "comp_06_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🤝 Commit One attention rule I will follow this week:\n\nMy environment change — I will\n\n(e.g., put my phone in another room, turn off notifications, create a focus space)\n\nMy focus time — I will spend ___ minutes per day on focused work without distraction.\n\nMy witness (who will hold me accountable):\n\nWhat I will do if I break my attention rule (my restart plan):\n\nMy failure signal (how I will know if this experiment is not working):",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_06_bei05",
+            "type": "WorkbookChecklist",
+            "beiTarget": "BEI-05",
+            "props": {
+              "question": "BEI-05: Attention Risk Index",
+              "items": [
+                "My school/work performance",
+                "My relationships",
+                "My sleep",
+                "My stress levels",
+                "My future goals",
+                "My mental wellbeing"
+              ],
+              "minimumSelections": 1
+            }
+          },
+          {
+            "id": "comp_06_commitment",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "My Commitment Statement\n\n\"I, ________________________________, commit to tracking my attention for 7 days, starting on ___________ and ending on ___________. I understand that I will not be perfect. When I get distracted, I will notice it without judgment and return to focus — because guilt is not a strategy.\"\n\nSigned: ________________________________\n\nDate: ________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_06_activity_2",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "🌱 Today's Insight \"Right now I feel like someone who...\"\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_07_attention",
+        "title": "Investigation 7: 7-Day Experiment",
+        "difficulty": "Track",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_06_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_07_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_07_intro_ep",
+              "markdown": "### INVESTIGATION 7: 7-DAY EXPERIMENT\n\nMISSION: Track your attention for seven days. Collect evidence.\n\nYOU WILL PRODUCE:\n● ☐ 7-Day Completion Rate\n\nTIME: 5 minutes (setup)\n\nDIFFICULTY:         Track"
+            }
+          },
+          {
+            "id": "comp_07_bei06",
+            "type": "DailyExperiment",
+            "beiTarget": "BEI-06",
+            "props": {
+              "instructions": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-06: Experiment Adherence Rate\n\nInstructions: Each day, record ONE moment when you protected your focus—OR one moment when you got distracted. Mark ✓ if you applied your attention rule, or ✗ if you did not.\n\n**Day**       **Date**       **Moment I             **Did I apply my          **Notes**\nNoticed**              rule?** 1                                                   ☐ Yes ☐ No 2                                                   ☐ Yes ☐ No 3                                                   ☐ Yes ☐ No 4                                                   ☐ Yes ☐ No 5                                                   ☐ Yes ☐ No 6                                                   ☐ Yes ☐ No 7                                                   ☐ Yes ☐ No\n\nBEI-06: Days Completed: ___ / 7 Focus Protected: ___ / 7",
+              "days": 7,
+              "statusLabels": [
+                "Not done",
+                "Done"
+              ],
+              "momentLabel": "Moment or action I noticed",
+              "notesLabel": "Notes"
+            }
+          },
+          {
+            "id": "comp_07_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_07_read_ep",
+              "markdown": "### Continue your journey:\n\nIf you wish to continue your experiment beyond seven days, you can transfer it into a longer Behaviour Journal™.\n\nPHASE B: THE EXPERIMENT This is the 7-day experiment. Complete this section after you leave the workshop."
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_08_attention",
+        "title": "Investigation 8: Evidence Review",
+        "difficulty": "Reflect",
+        "tensionLevel": 4,
+        "prerequisites": [
+          "step_07_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_08_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_08_intro_ep",
+              "markdown": "### INVESTIGATION 8: EVIDENCE REVIEW\n\nMISSION: Harvest what you have learned from seven days of tracking your attention.\n\nYOU WILL PRODUCE:\n● ☐ BEI-07: Attention Quality Shift Index\n● ☐ BEI-08: Attention Confidence Index (Post)\n● ☐ Final Reflection\n\nTIME: 10 minutes\n\nDIFFICULTY:          Reflect"
+            }
+          },
+          {
+            "id": "comp_08_bei07",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-07",
+            "props": {
+              "episodeId": "comp_08_bei07_ep",
+              "markdown": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-07: Attention Quality Shift Index\n\n\"On a scale of 1–10, how good are you at controlling your attention now?\"\n\nBEI-07-Post: ___ / 10\n\nShift: ___ points (BEI-07 - BEI-01)",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_08_bei08",
+            "type": "StoryNarrative",
+            "beiTarget": "BEI-08",
+            "props": {
+              "episodeId": "comp_08_bei08_ep",
+              "markdown": "BEI-08: Attention Confidence Index (Post)\n\n\"How confident are you now that your equation explains your attention pattern?\"\n\nBEI-08-Post: ___ / 10\n\nShift: ___ points (BEI-08 - BEI-04)",
+              "pivots": [
+                {
+                  "text": "1",
+                  "beiScore": 1
+                },
+                {
+                  "text": "2",
+                  "beiScore": 2
+                },
+                {
+                  "text": "3",
+                  "beiScore": 3
+                },
+                {
+                  "text": "4",
+                  "beiScore": 4
+                },
+                {
+                  "text": "5",
+                  "beiScore": 5
+                },
+                {
+                  "text": "6",
+                  "beiScore": 6
+                },
+                {
+                  "text": "7",
+                  "beiScore": 7
+                },
+                {
+                  "text": "8",
+                  "beiScore": 8
+                },
+                {
+                  "text": "9",
+                  "beiScore": 9
+                },
+                {
+                  "text": "10",
+                  "beiScore": 10
+                }
+              ]
+            }
+          },
+          {
+            "id": "comp_08_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "Final Reflection Questions\n1. Did I apply my attention rule most days? Why or why not?\n\n___________________________________________________________\n\n2. What was the hardest part of the 7 days?\n\n___________________________________________________________\n\n3. When were you most focused—and when were you most distracted?\n\n___________________________________________________________\n\n4. What surprised you most about where your attention actually goes?\n\n___________________________________________________________\n\n5. What evidence convinced you that this pattern exists?\n\n___________________________________________________________\n\n6. Which belief became harder to defend after this experiment?\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_08_meta",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "My Meta-Attention Skill The meta-attention skill is the habit of noticing when your attention drifts.\n\nMy plan to keep the meta-attention skill alive:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_09_attention",
+        "title": "Investigation 9: Behaviour Evidence Summary",
+        "difficulty": "Identity Shift",
+        "tensionLevel": 5,
+        "prerequisites": [
+          "step_08_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_09_intro",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_09_intro_ep",
+              "markdown": "### INVESTIGATION 9: BEHAVIOUR PROFILE\n\nMISSION: Synthesise everything you have discovered into one page.\n\nYOU WILL PRODUCE:\n● ☐ BEI-09: Identity Shift Indicator\n● ☐ BEI-10: Behaviour Profile Summary\n\nTIME: 10 minutes\n\nDIFFICULTY:         Identity Shift"
+            }
+          },
+          {
+            "id": "comp_09_bei09",
+            "type": "PrivateReflection",
+            "beiTarget": "BEI-09",
+            "props": {
+              "prompt": "⭐ EVIDENCE POINT This page becomes part of your private Behaviour Evidence Summary.\n\nBEI-09: Identity Shift Indicator\n\nComplete this sentence:\n\n\"I am becoming someone who ______________________________________________.\"",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_bei10",
+            "type": "PrivateReflection",
+            "beiTarget": "BEI-10",
+            "props": {
+              "prompt": "BEI-10: Learner Behaviour Evidence Summary\nMy Biggest Distraction:\nWhat Distraction Costs Me:\nMy Top 3 Distractions:\nWhat Makes Distraction Easy:\nMy Environment Changes:\nMy Equation:\nConfidence (Pre → Post):\nAttention Quality (Pre → Post):\nNext Attention to Investigate:",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_identity_sentence",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "One Sentence That Describes Me Now\n\n___________________________________________________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_activity",
+            "type": "PrivateReflection",
+            "props": {
+              "prompt": "Letter to My Future Self Write a letter to yourself. Address it to \"Future Me.\" Tell your future self:\n\n● Who you are right now\n● What you learned from tracking your attention for 7 days\n● What you are proud of\n● What you still need to work on\n● One attention rule you want to keep\n\nDear Future Me,\n\nFrom me, in Grade ___\n\nDate: ________________",
+              "placeholder": "Write your workbook response…",
+              "isPrivate": true
+            }
+          },
+          {
+            "id": "comp_09_read",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_09_read_ep",
+              "markdown": "### YOUR JOURNEY CONTINUES\n\nContinue your investigation with another Lab:\n\n☐ Habit Lab™ — What habits are building my life?\n☐ Decision Lab™ — Why do I keep making the same choices?\n☐ Money Lab™ — Where does my money actually go?\n☐ Identity Lab™ — Who am I becoming?\n☐ Time Lab™ — Where does my time actually go?"
+            }
+          }
+        ]
+      },
+      {
+        "id": "step_certificate_10",
+        "title": "Attention Lab Completion Certificate",
+        "difficulty": "Integrate",
+        "tensionLevel": 2,
+        "prerequisites": [
+          "step_09_attention"
+        ],
+        "components": [
+          {
+            "id": "comp_certificate",
+            "type": "StoryNarrative",
+            "props": {
+              "episodeId": "comp_certificate_ep",
+              "markdown": "### APPLIED COMMERCE®\n\n### Behaviour Intelligence Series™\n\n### Attention Lab™ Completion Certificate\n\nThis records completion of the Attention Lab learner investigation and its seven-day practice record.\n\n**Certificate boundary**\n\nThis certificate records participation and completion. It does not certify transformation, a psychometric result, a diagnosis, or a causal outcome.\n\n**Measurement register**: BIS-MM-0.1.0\n\n**Workbook source**: BIS Volume 1 v3"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "signature": "AC-BIS-V1-LAB-05-ATTENTION-3.0.1"
+}

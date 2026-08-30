@@ -15,7 +15,10 @@ import {
   UsersRound,
 } from "lucide-react";
 import Image from "next/image";
-import { deliverySkins, productFamilies } from "@/lib/product-architecture";
+import { deliverySkins, productFamilies, productLabs } from "@/lib/product-architecture";
+
+const liveLabCount = productLabs.filter((lab) => lab.status === "available").length;
+const preparingLabCount = productLabs.length - liveLabCount;
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -58,7 +61,7 @@ export default function Home() {
             <div className="evidence-title"><p>HABIT LAB™</p><h2>A private record of what the learner notices, practises and reports.</h2></div>
             <div className="path-line"><span className="active" /><span className="active" /><span className="active" /><span /><span /><span /></div>
             <div className="evidence-metric-grid">
-              <div><small>PUBLISHED LABS</small><strong>2</strong><i>Habit + Decision</i></div>
+              <div><small>PUBLISHED LABS</small><strong>{liveLabCount}</strong><i>Complete Volume 1</i></div>
               <div><small>BEI DEFINITIONS</small><strong>10<span>/Lab</span></strong><i>Descriptive only</i></div>
             </div>
             <div className="observer-note"><Eye size={16} /><span><b>Interpretation boundary</b><br />No automated profile, diagnosis or composite score.</span></div>
@@ -87,13 +90,13 @@ export default function Home() {
 
       <section className="lab-section" id="labs">
         <div className="lab-heading">
-          <div><p className="section-kicker"><span>02</span> THE BIS LAB CATALOGUE</p><h2>Two Labs live.<br /><i>Thirty more named.</i></h2></div>
-          <p>The marketplace reflects the actual 32-Lab BIS source architecture. Upcoming cartridges are listed without inventing content before their source workbooks are digitalised.</p>
+          <div><p className="section-kicker"><span>02</span> THE BIS LAB CATALOGUE</p><h2>Volume 1 is live.<br /><i>{preparingLabCount} more remain governed.</i></h2></div>
+          <p>The marketplace reflects the actual 32-Lab BIS source architecture. All twelve Volume 1 workbooks are now digital learner cartridges; future Labs remain listed without invented content.</p>
         </div>
         <div className="lab-grid">
           <article className="lab-card featured"><span>01 · AVAILABLE NOW</span><div><h3>Habit Lab™</h3><p>11 milestones · 55 source-faithful interactions · seven-day practice record.</p></div><button className="lab-open" aria-label="Open Habit Lab" onClick={() => window.location.assign("/portal")}><ChevronRight size={18} /></button></article>
           <article className="lab-card featured"><span>02 · AVAILABLE NOW</span><div><h3>Decision Lab™</h3><p>11 milestones · 84 source-faithful interactions · seven-day decision practice record.</p></div><button className="lab-open" aria-label="Open Decision Lab" onClick={() => window.location.assign("/portal")}><ChevronRight size={18} /></button></article>
-          <article className="lab-card more"><Layers3 /><div><h3>30 in preparation</h3><p>Published only after source interpretation and governance review.</p></div></article>
+          <article className="lab-card more"><Layers3 /><div><h3>10 more Volume 1 Labs now live</h3><p>Money, Identity, Attention, Time, Risk, Trust, Influence, Leadership, Purpose and Resilience.</p></div><button className="lab-open" aria-label="Open the complete Volume 1 library" onClick={() => window.location.assign("/portal")}><ChevronRight size={18} /></button></article>
         </div>
         <div className="family-grid">
           {productFamilies.map((family) => <article key={family.id}><span>{family.eyebrow}</span><h3>{family.title}</h3><p>{family.description}</p><small>{family.labs.length} source Labs · {family.labs.filter((lab) => lab.status === "available").length} live</small></article>)}
@@ -116,7 +119,7 @@ export default function Home() {
         <div className="institution-dashboard">
           <div className="dash-header"><span>INTERFACE DEMONSTRATION · NO OUTCOME CLAIM</span><CircleDot size={17} /></div>
           <div className="dash-hero"><p>GOVERNANCE VIEW</p><h3>Participation and evidence stay separate.</h3><span>Illustrative structure; not a live cohort or benchmark</span></div>
-          <div className="dash-stats"><div><small>LIVE LABS</small><strong>2</strong></div><div><small>MODEL STATUS</small><strong>Descriptive</strong></div><div><small>MANUAL</small><strong>v0.1</strong></div></div>
+          <div className="dash-stats"><div><small>LIVE LABS</small><strong>{liveLabCount}</strong></div><div><small>MODEL STATUS</small><strong>Descriptive</strong></div><div><small>MANUAL</small><strong>v0.1</strong></div></div>
           <div className="dash-progress"><span>Completed interactions</span><div><i /><i /><i /><i className="pale" /><i className="pale" /></div><b>Count</b></div>
           <div className="dash-footer"><UsersRound size={17} /> Demonstration only · no private participant writing displayed</div>
         </div>

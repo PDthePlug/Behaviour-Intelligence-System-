@@ -9,7 +9,7 @@ export default function MeasurementPage() {
       <header className="measurement-nav"><Link href="/"><ArrowLeft size={15} /> BIS Outcomes Cloud</Link><span>{BIS_MEASUREMENT_MANUAL_VERSION}</span><Link href="/portal">Enter platform <ArrowRight size={15} /></Link></header>
 
       <section className="measurement-hero">
-        <div><p><ClipboardCheck size={15} /> CONTROLLED DRAFT · AUGUST 2026</p><h1>Measurement should make BIS<br /><i>more credible, not more theatrical.</i></h1><span>Measurement Manual v0.1 establishes the operational boundary for Habit Lab and Decision Lab. It is a governance release, not a validation claim.</span></div>
+        <div><p><ClipboardCheck size={15} /> CONTROLLED DRAFT · AUGUST 2026</p><h1>Measurement should make BIS<br /><i>more credible, not more theatrical.</i></h1><span>Measurement Manual v0.1 now governs all {publishedLabs.length} Volume 1 digital cartridges. It is a governance release, not a validation claim.</span></div>
         <aside><small>CURRENT MODEL STATUS</small><strong>Descriptive<br />behavioural evidence</strong><p>BEIs organise self-report, practice records and reflection outputs. They are not validated psychometric measures.</p></aside>
       </section>
 
